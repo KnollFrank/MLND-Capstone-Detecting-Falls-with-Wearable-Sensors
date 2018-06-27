@@ -1,10 +1,13 @@
 # Machine Learning Engineer Nanodegree
 ## Capstone Proposal
-Joe Udacity  
-December 31st, 2050
+Frank Knoll  
+July 1st, 2018
 
 ## Proposal
 _(approx. 2-3 pages)_
+
+- Özdemir, Ahmet Turan, and Billur Barshan. [“Detecting Falls with Wearable Sensors Using Machine Learning Techniques.”](http://www.mdpi.com/1424-8220/14/6/10691/pdf) Sensors (Basel, Switzerland) 14.6 (2014): 10691–10708. PMC. Web. 23 Apr. 2017.
+- ["Investigation of Sensor Placement for Accurate Fall Detection"](https://www.researchgate.net/profile/Billur_Barshan/publication/318146579_Investigation_of_Sensor_Placement_for_Accurate_Fall_Detection/links/5999a8a745851564432dbdf7/Investigation-of-Sensor-Placement-for-Accurate-Fall-Detection.pdf?origin=publication_detail)
 
 ### Domain Background
 _(approx. 1-2 paragraphs)_
@@ -20,6 +23,8 @@ In this section, clearly describe the problem that is to be solved. The problem 
 _(approx. 2-3 paragraphs)_
 
 In this section, the dataset(s) and/or input(s) being considered for the project should be thoroughly described, such as how they relate to the problem and why they should be used. Information such as how the dataset or input is (was) obtained, and the characteristics of the dataset or input, should be included with relevant references and citations as necessary It should be clear how the dataset(s) or input(s) will be used in the project and whether their use is appropriate given the context of the problem.
+
+[FallDataSet](https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t)
 
 ### Solution Statement
 _(approx. 1 paragraph)_
