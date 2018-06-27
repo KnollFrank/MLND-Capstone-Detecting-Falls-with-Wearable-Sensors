@@ -36,7 +36,8 @@ _(approximately 1-2 paragraphs)_
 
 In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
 
-J48 decision tree
+- random classifier
+- J48 decision tree
 
 ### Evaluation Metrics
 _(approx. 1-2 paragraphs)_
