@@ -1,4 +1,7 @@
 # Machine Learning Engineer Nanodegree
+
+## Detecting Falls with Wearable Sensors
+
 ## Capstone Proposal
 Frank Knoll  
 July 1st, 2018
@@ -18,6 +21,10 @@ In this section, provide brief details on the background information of the doma
 _(approx. 1 paragraph)_
 
 In this section, clearly describe the problem that is to be solved. The problem described should be well defined and should have at least one relevant potential solution. Additionally, describe the problem thoroughly such that it is clear that the problem is quantifiable (the problem can be expressed in mathematical or logical terms) , measurable (the problem can be measured by some metric and clearly observed), and replicable (the problem can be reproduced and occurs more than once).
+
+The main classification problem is to distinguish falls from activities of daily living (ADLs).
+ADL: standing, sitting, lying down, walking, ascending/descending stairs.
+Tabellen der Fall Actions und Non-Fall Actions (ADLs) aus Paper hier einfügen.
 
 ### Datasets and Inputs
 _(approx. 2-3 paragraphs)_
@@ -46,7 +53,7 @@ In this section, propose at least one evaluation metric that can be used to quan
 
 "The classification performance in terms of accuracy is used as the criterion to reveal the optimal sensor location."
 
-${\mathit{ACC}}=\frac{\mathit{TP}+\mathit{TN}}{\mathit{TP}+\mathit{FP}+\mathit{FN}+\mathit{TN}}$
+$${\mathit{ACC}}=\frac{\mathit{TP}+\mathit{TN}}{\mathit{TP}+\mathit{FP}+\mathit{FN}+\mathit{TN}}$$
 
 ### Project Design
 _(approx. 1 page)_
