@@ -66,9 +66,9 @@ _(approx. 1-2 paragraphs)_
 
 In this section, propose at least one evaluation metric that can be used to quantify the performance of both the benchmark model and the solution model. The evaluation metric(s) you propose should be appropriate given the context of the data, the problem statement, and the intended solution. Describe how the evaluation metric(s) are derived and provide an example of their mathematical representations (if applicable). Complex evaluation metrics should be clearly defined and quantifiable (can be expressed in mathematical or logical terms).
 
-accuracy, sensitivity and specificity. Formeln aus Paper einfügen.
-
-"The classification performance in terms of accuracy is used as the criterion to reveal the optimal sensor location."
+- accuracy, sensitivity and specificity. Formeln aus Paper einfügen.
+- F-beta score?
+- "The classification performance in terms of accuracy is used as the criterion to reveal the optimal sensor location."
 
 $${\mathit{ACC}}=\frac{\mathit{TP}+\mathit{TN}}{\mathit{TP}+\mathit{FP}+\mathit{FN}+\mathit{TN}}$$
 
