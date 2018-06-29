@@ -100,13 +100,11 @@ The FallDataSet kann be downloaded from https://drive.google.com/open?id=1gqS1fk
 - Then a Support Vector Machine is applied to the feature data set using 10-fold cross validation.
 
 ### Benchmark Model
-_(approximately 1-2 paragraphs)_
 
-In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
-
-- "In  fall detection  studies, typically  simple thresholding  is used. A fall is detected  when the acceleration  suddenly  increases  due  to  the change  in  orientation  from  upright  to  lying position  [9]. In  [10],  the results  of  certain  threshold-based  methods  that consider fall impact, velocity and posture  have been assessed  and tested on elderly subjects,  achieving 94.6% sensitivity. Thresholding  methods sometimes tend  to  miss  “soft  falls,”  meaning falls that might  not  exceed the threshold.  Also,  certain  ADLs with high acceleration may exceed the threshold and  be misclassified as falls."
+As a benchmark model the following classsifiers are used:
 - random classifier
-- J48 decision tree
+- classifier which classifies every action as a fall
+- classifier which classifies every action as an activity of daily living
 
 ### Evaluation Metrics
 _(approx. 1-2 paragraphs)_
