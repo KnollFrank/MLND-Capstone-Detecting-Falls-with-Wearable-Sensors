@@ -23,7 +23,7 @@ There are numerous types of falls and activities of daily living as can be seen 
 
 #### Fall Actions:
 
-#  | Label                  | Description
+\#  | Label                  | Description
 ---|------------------------|---------------------------------------------------------------------------
 1  | front-lying            | from vertical falling forward to the floor
 2  | front-protecting-lying | from vertical falling forward to the floor with arm protection
@@ -48,7 +48,7 @@ There are numerous types of falls and activities of daily living as can be seen 
 
 #### Non-Fall Actions (ADLs):
 
-#  | Label             | Description
+\#  | Label             | Description
 ---|-------------------|---------------------------------------------------------------------------------
 21 | lying-bed         | from vertical lying on the bed
 22 | rising-bed        | from lying to sitting
