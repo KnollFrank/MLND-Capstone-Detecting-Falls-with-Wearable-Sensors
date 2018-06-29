@@ -80,7 +80,7 @@ Seven males and seven females participated in a study. Six wireless sensor units
 | 9.750366        | 1.103210        | 0.941467        | -0.003242   | 0.004053    | 0.000763    | -0.821045     | 0.517334      | 0.009521      |
 | 9.745646        | 1.111937        | 0.999618        | 0.001383    | 0.005913    | -0.004005   | -0.821045     | 0.515137      | 0.009766      |
 | 9.725952        | 1.100159        | 1.019287        | -0.005913   | 0.006342    | -0.008965   | -0.821045     | 0.517334      | 0.00683       |
-| ...             | ...             | ...             | ...         | ...         | ...         | ...           | ...           | ...           |
+| $\vdots$        | $\vdots$        | $\vdots$        | $\vdots$    | $\vdots$    | $\vdots$    | $\vdots$      | $\vdots$      | $\vdots$      |
 
 The FallDataSet kann be downloaded from https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t.
 
