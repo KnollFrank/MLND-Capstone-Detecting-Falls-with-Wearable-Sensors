@@ -7,10 +7,8 @@ Frank Knoll
 July 1st, 2018
 
 ## Proposal
-_(approx. 2-3 pages)_
 
 ### Domain Background
-_(approx. 1-2 paragraphs)_
 
 One day you will be 65 years old. Then according to the World Health Organization<sup>[1]</sup> your chance of falling once a year is 28–35% with serious consequences such as heavy injuries. Imagine carrying a sensor or smartphone near your waist or thigh which recognizes your fall and immediately alerts a person to help you, that would be great. But imagine further the sensor would confuse one of your Activities of Daily Living (ADLs) such as sitting, standing or walking with a fall then the person to help you would have been alarmed without reason. Therefore such a sensor based fall detection system should not miss any falls and should also trigger no false alarms when performing ADLs.
 
@@ -19,13 +17,55 @@ One day you will be 65 years old. Then according to the World Health Organizatio
 - [1] World Health Organization: Global report on falls prevention in older age. http://www.who.int/ageing/publications/Falls_prevention7March.pdf
 
 ### Problem Statement
-_(approx. 1 paragraph)_
 
-In this section, clearly describe the problem that is to be solved. The problem described should be well defined and should have at least one relevant potential solution. Additionally, describe the problem thoroughly such that it is clear that the problem is quantifiable (the problem can be expressed in mathematical or logical terms) , measurable (the problem can be measured by some metric and clearly observed), and replicable (the problem can be reproduced and occurs more than once).
+The problem to be solved is to distinguish falls from activities of daily living (ADLs).
+There are numerous types of falls and activities of daily living as can be seen in the following tables, but the task is just to binary classify actions in falls an non-falls.
 
-- problem to be solved: The main classification problem is to distinguish falls from activities of daily living (ADLs).
-ADL: standing, sitting, lying down, walking, ascending/descending stairs.
-Tabellen der Fall Actions und Non-Fall Actions (ADLs) aus Paper hier einfügen.
+#### Fall Actions:
+
+#  | Label                  | Description
+---|------------------------|---------------------------------------------------------------------------
+1  | front-lying            | from vertical falling forward to the floor
+2  | front-protecting-lying | from vertical falling forward to the floor with arm protection
+3  | front-knees            | from vertical falling down on the knees
+4  | front-knees-lying      | from vertical falling down on the knees and then lying on the floor
+5  | front-right            | from vertical falling down on the floor, ending in right lateral position
+6  | front-left             | from vertical falling down on the floor, ending in left lateral position
+7  | front-quick-recovery   | from vertical falling on the floor and quick recovery
+8  | front-slow-recovery    | from vertical falling on the floor and slow recovery
+9  | back-sitting           | from vertical falling on the floor, ending sitting
+10 | back-lying             | from vertical falling on the floor, ending lying
+11 | back-right             | from vertical falling on the floor, ending lying in right lateral position
+12 | back-left              | from vertical falling on the floor, ending lying in left lateral position
+13 | right-sideway          | from vertical falling on the floor, ending lying
+14 | right-recovery         | from vertical falling on the floor with subsequent recovery
+15 | left-sideway           | from vertical falling on the floor, ending lying
+16 | left-recovery          | from vertical falling on the floor with subsequent recovery
+17 | syncope                | from standing falling on the floor following a vertical trajectory
+18 | syncope-wall           | from standing falling down slowly slipping on a wall
+19 | podium                 | from vertical standing on a podium going on the floor
+20 | rolling-out-bed        | from lying, rolling out of bed and going on the floor
+
+#### Non-Fall Actions (ADLs):
+
+#  | Label             | Description
+---|-------------------|---------------------------------------------------------------------------------
+21 | lying-bed         | from vertical lying on the bed
+22 | rising-bed        | from lying to sitting
+23 | sit-bed           | from vertical to sitting with a certain acceleration onto a bed (soft surface)
+24 | sit-chair         | from vertical to sitting with a certain acceleration onto a chair (hard surface)
+25 | sit-sofa          | from vertical to sitting with a certain acceleration onto a sofa (soft surface)
+26 | sit-air           | from vertical to sitting in the air exploiting the muscles of legs
+27 | walking-fw        | walking forward
+28 | jogging           | running
+29 | walking-bw        | walking backward
+30 | bending           | bending about 90 degrees
+31 | bending-pick-up   | bending to pick up an object on the floor
+32 | stumble           | stumbling with recovery
+33 | limp              | walking with a limp
+34 | squatting-down    | squatting, then standing up
+35 | trip-over         | bending while walking and then continuing walking
+36 | coughing-sneezing | coughing or sneezing
 
 ### Datasets and Inputs
 _(approx. 2-3 paragraphs)_
