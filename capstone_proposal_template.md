@@ -85,19 +85,19 @@ Seven males and seven females participated in a study. Six wireless sensor units
 The FallDataSet kann be downloaded from https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t.
 
 ### Solution Statement
-_(approx. 1 paragraph)_
 
-In this section, clearly describe a solution to the problem. The solution should be applicable to the project domain and appropriate for the dataset(s) or input(s) given. Additionally, describe the solution thoroughly such that it is clear that the solution is quantifiable (the solution can be expressed in mathematical or logical terms) , measurable (the solution can be measured by some metric and clearly observed), and replicable (the solution can be reproduced and occurs more than once).
+- From the raw data Acc_X, Acc_Y, Acc_Z, Gyr_X, Gyr_Y, Gyr_Z, Mag_X, Mag_Y and Mag_Z of the FallDataSet the following features are extracted: minimum, maximum, mean, skewness, kurtosis, the first 11 values of the autocorrelation sequence and the first five frequencies with maximum magnitude of the discrete Fourier transform (DFT) along with the five corresponding amplitudes, resulting in a feature vector of dimensionality 234 (26 features for each one of the nine measured signals) for each test.
 
-- Feature extraction: "We parameterize each one  of  the nine  measured  events using the features proposed in  [11]: minimum, maximum  and  mean  values,  skewness,  kurtosis, the first 11  values of  the  autocorrelation  sequence  and the first five  frequencies with  maximum magnitude  of  the  DFT  along  with  the  five  corresponding  amplitudes, resulting  in  a feature vector  of  dimensionality  234  (26  features for each  one of  the nine  measured  signals) for each  test." Formeln aus Paper einfügen mit Erklärung der Variablen in den Formeln.
-- $\operatorname{mean}(s) = \mu = \frac{1}{N} \sum_{n=1}^{N} s_n$
-- $\operatorname{variance}(s) = \sigma^2 = \frac{1}{N} \sum_{n=1}^{N} (s_n-\mu)^2$
-- $\operatorname{skewness}(s) = \frac{1}{N \sigma^3} \sum_{n=1}^{N} (s_n-\mu)^3$
-- $\operatorname{kurtosis}(s) = \frac{1}{N \sigma^4} \sum_{n=1}^{N} (s_n-\mu)^4$
-- $\operatorname{autocorrelation}(s) = \frac{1}{N - \Delta} \sum_{n=0}^{N - \Delta - 1} (s_n-\mu)(s_{n - \Delta} - \mu)$. where $\Delta = 0, 1, \dots, N-1$
-- $\operatorname{DFT}_q(s) = \sum_{n=0}^{N-1} s_n e^{- \frac{j 2 \pi q n}{N}}$, where $q = 0, 1, \dots, N-1$
-- Classification: Support Vector Machine
-- 10-fold cross validation
+   To be more specific, let $s = [s_1, s_2,\dots, s_N]^T$ be the raw data of a signal (e.g. the column Acc_X in the table above). Then the extracted features for this signal are defined as follows:
+   - $\operatorname{mean}(s) = \mu = \frac{1}{N} \sum_{n=1}^{N} s_n$
+   - $\operatorname{variance}(s) = \sigma^2 = \frac{1}{N} \sum_{n=1}^{N} (s_n-\mu)^2$
+   - $\operatorname{skewness}(s) = \frac{1}{N \sigma^3} \sum_{n=1}^{N} (s_n-\mu)^3$
+   - $\operatorname{kurtosis}(s) = \frac{1}{N \sigma^4} \sum_{n=1}^{N} (s_n-\mu)^4$
+   - $\operatorname{autocorrelation}(s) = \frac{1}{N - \Delta} \sum_{n=0}^{N - \Delta - 1} (s_n-\mu)(s_{n - \Delta} - \mu)$. where $\Delta = 0, 1, \dots, N-1$
+   - $\operatorname{DFT}_q(s) = \sum_{n=0}^{N-1} s_n e^{- \frac{j 2 \pi q n}{N}}$, where $q = 0, 1, \dots, N-1$
+
+    $\operatorname{DFT}_q(s)$ is the $q$th element of the 1-D $N$-point DFT
+- Then a Support Vector Machine is applied to the feature data set using 10-fold cross validation.
 
 ### Benchmark Model
 _(approximately 1-2 paragraphs)_
