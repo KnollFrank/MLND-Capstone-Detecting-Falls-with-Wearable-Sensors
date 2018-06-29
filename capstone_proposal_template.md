@@ -19,7 +19,7 @@ One day you will be 65 years old. Then according to the World Health Organizatio
 ### Problem Statement
 
 The problem to be solved is to distinguish falls from activities of daily living (ADLs).
-There are numerous types of falls and activities of daily living as can be seen in the following tables, but the task is just to binary classify actions in falls an non-falls.
+There are numerous types of falls and activities of daily living as can be seen in the following tables, but the task is just to binary classify actions in falls and non-falls. A challenge in this classification task is not to confuse some of the non-fall actions, which are high-impact events, with falls.
 
 #### Fall Actions:
 
@@ -68,25 +68,21 @@ There are numerous types of falls and activities of daily living as can be seen 
 36 | coughing-sneezing | coughing or sneezing
 
 ### Datasets and Inputs
-_(approx. 2-3 paragraphs)_
-
-In this section, the dataset(s) and/or input(s) being considered for the project should be thoroughly described, such as how they relate to the problem and why they should be used. Information such as how the dataset or input is (was) obtained, and the characteristics of the dataset or input, should be included with relevant references and citations as necessary It should be clear how the dataset(s) or input(s) will be used in the project and whether their use is appropriate given the context of the problem.
 
 ![sensors](images/sensors.png)
-- describe dataset: "With  Erciyes University  Ethics  Committee  approval,  seven  males (24 ±  3 years old, 67.5  ±  13.5  kg, 172 ±  12  cm) and seven  females  (21.5  ±  2.5 years  old,  58.5 ±  11.5  kg, 169.5 ±  12.5  cm) healthy volunteers  participated in the study  with  informed  written consent. We  tightly  fitted  six  wireless  sensor  units  with  special  strap  sets  to  the subjects’ heads, chests,  waists, right wrists, right  thighs, and  right ankles. Each  unit comprises three tri-axial devices (accelerometer, gyroscope, and  magnetometer/compass)  with respective ranges  of  ±120  m/s2, ±1200o/s, and ±1.5  Gs,  and an  atmospheric  pressure meter  with  300–1100  hPa operating  range, which  we  did not use. We  recorded  raw motion  data along three perpendicular  axes  (x,  y,  z)  from  each  unit  with  a sampling frequency  of 25  Hz  [11].  A set of  trials consists  of  20  fall actions  (front-lying,  frontprotection-lying, front-knees, front-knees-lying, front-right,  front-left, front-quickrecovery,  front-slow-recovery, back-sitting,  back-lying, back-right, back-left,  rightsideway,  right-recovery, left-sideway, left-recovery,  syncope, syncope-wall,  podium, rolling-out-bed)  and  16  ADLs (lying-bed, rising-bed, sit-bed,  sit-chair, sit-sofa, sit-air, walking-forward, jogging,  walking-backward, bending,  bending-pick-up,  stumble, limp,  squatting-down, trip-over,  coughing-sneezing).  We  adopted these from [19] and each lasted  about 15  s  on  the average. The 14  volunteers  repeated each  test  for  five times. Thus,  we  acquired  a  considerably  diverse  dataset  comprising  1400  falls  (20  tasks ×  14 volunteers × 5  trials) and  1120  ADLs  (16  tasks × 14  volunteers × 5  trials),  resulting  in 2520  trials.  Many  of  the non-fall  actions  included  in  the  dataset are high-impact events that may be  easily  confused with  falls."
-- detect  the peak  of the total acceleration  vector, keep  two  seconds of  the  sequence before and  after the peak  acceleration.
-- Dataframe oder Tabelle einfügen mit waist- oder thigh-Beispieldaten.
-- data/FallDataSet/101/Testler Export/901/Test_1/340535.txt:
 
-| Acc_X | Acc_Y | Acc_Z | Gyr_X | Gyr_Y | Gyr_Z | Mag_X | Mag_Y | Mag_Z |
-| ------------- |:-------------:| -----:|-----:| -----:| -----:| -----:| -----:| -----:|
-| 9.715271 | 1.121521 |	0.947571 | 0.004578  | -0.004530 |	-0.004768| 	-0.818604 |	0.515137 |	0.012207 |
-| 9.733534 | 1.131177 |	0.985241 | -0.014687 | -0.006580 |	0.000191 |	-0.818604 |	0.517334 |	0.009277 |
-| 9.750366 | 1.103210 |	0.941467 | -0.003242 | 0.004053  |0.000763 	|-0.821045 |	0.517334 |	0.009521 |
-| 9.745646 | 1.111937 | 0.999618 | 0.001383  | 0.005913  |-0.004005 	|-0.821045 |	0.515137 |	0.009766 |
-| 9.725952 | 1.100159 |	1.019287 | -0.005913 | 0.006342  |-0.008965 	|-0.821045 |	0.517334 |	0.00683 |
+Seven males and seven females participated in a study. Six wireless sensor units were fitted to the subjects’ heads, chests, waists, right wrists, right thighs, and right ankles as can be seen in the figure above. Each unit comprises three tri-axial devices: accelerometer, gyroscope, and  magnetometer/compass. Raw motion data was recorded along three perpendicular axes (x, y, z) from each unit with a sampling frequency of 25 Hz. A set of trials consists of 20 fall actions (see table above) and 16 ADLs (see table above). Each trial lasted about 15s on the average. The 14  volunteers repeated each test for five times. Then the peak of the total acceleration vector was detected, and two seconds of the sequence before and after the peak acceleration were kept. As an example, the first five records of the file `FallDataSet/101/Testler Export/901/Test_1/340535.txt` which contains the recorded data from the waist sensor attached to a male while he was falling from vertical forward to the floor, look like this:
 
-[FallDataSet](https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t)
+| Acc_X ($m/s^2$) | Acc_Y ($m/s^2$) | Acc_Z ($m/s^2$) | Gyr_X (°/s) | Gyr_Y (°/s) | Gyr_Z (°/s) | Mag_X (Gauss) | Mag_Y (Gauss) | Mag_Z (Gauss) |
+|-----------------|-----------------|-----------------|-------------|-------------|-------------|---------------|---------------|---------------|
+| 9.715271        | 1.121521        | 0.947571        | 0.004578    | -0.004530   | -0.004768   | -0.818604     | 0.515137      | 0.012207      |
+| 9.733534        | 1.131177        | 0.985241        | -0.014687   | -0.006580   | 0.000191    | -0.818604     | 0.517334      | 0.009277      |
+| 9.750366        | 1.103210        | 0.941467        | -0.003242   | 0.004053    | 0.000763    | -0.821045     | 0.517334      | 0.009521      |
+| 9.745646        | 1.111937        | 0.999618        | 0.001383    | 0.005913    | -0.004005   | -0.821045     | 0.515137      | 0.009766      |
+| 9.725952        | 1.100159        | 1.019287        | -0.005913   | 0.006342    | -0.008965   | -0.821045     | 0.517334      | 0.00683       |
+| ...             | ...             | ...             | ...         | ...         | ...         | ...           | ...           | ...           |
+
+The FallDataSet kann be downloaded from https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t.
 
 ### Solution Statement
 _(approx. 1 paragraph)_
