@@ -56,8 +56,10 @@ class FeatureExtractionTestCase(TestCase):
              'Gyr_X': [4.0, 5.0, 6.0]})
         features_actual = extract_features(df)
 
-        features_expected = pd.DataFrame(index=['min', 'max', 'mean', 'var'], columns=['Acc_X', 'Gyr_X'],
-                                         dtype=np.float64)
+        features_expected = pd.DataFrame(
+            index=['min', 'max', 'mean', 'var', 'skew'],
+            columns=['Acc_X', 'Gyr_X'],
+            dtype=np.float64)
         features_expected.at['min', 'Acc_X'] = 1.0
         features_expected.at['min', 'Gyr_X'] = 4.0
 
@@ -73,5 +75,10 @@ class FeatureExtractionTestCase(TestCase):
                 3.0 - mean_Acc_X) ** 2) / 3
         features_expected.at['var', 'Gyr_X'] = ((4.0 - mean_Gyr_X) ** 2 + (5.0 - mean_Gyr_X) ** 2 + (
                 6.0 - mean_Gyr_X) ** 2) / 3
+
+        features_expected.at['skew', 'Acc_X'] = ((1.0 - mean_Acc_X) ** 3 + (2.0 - mean_Acc_X) ** 3 + (
+                3.0 - mean_Acc_X) ** 3) / (3 * features_expected.at['var', 'Acc_X'] ** 3)
+        features_expected.at['skew', 'Gyr_X'] = ((4.0 - mean_Gyr_X) ** 3 + (5.0 - mean_Gyr_X) ** 3 + (
+                6.0 - mean_Gyr_X) ** 3) / (3 * features_expected.at['var', 'Gyr_X'] ** 3)
 
         self.assertTrue(features_expected.equals(features_actual))
