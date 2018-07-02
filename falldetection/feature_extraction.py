@@ -1,4 +1,4 @@
-def time_window(df, window_center_index, half_window_size):
+def slice_with_window(df, window_center_index, half_window_size):
     lower_bound_inclusive = window_center_index - half_window_size
     upper_bound_exclusive = window_center_index + half_window_size + 1
     if not (0 <= lower_bound_inclusive < len(df) and 0 <= upper_bound_exclusive <= len(df)):
@@ -12,7 +12,7 @@ def get_index_of_maximum_total_acceleration(df):
 
 
 def get_window_around_maximum_total_acceleration(df, half_window_size):
-    return time_window(
+    return slice_with_window(
         df,
         window_center_index=get_index_of_maximum_total_acceleration(df),
         half_window_size=half_window_size)
