@@ -57,7 +57,7 @@ class FeatureExtractionTestCase(TestCase):
         features_actual = extract_features(df)
 
         features_expected = pd.DataFrame(
-            index=['min', 'max', 'mean', 'var', 'skew'],
+            index=['min', 'max', 'mean', 'var', 'skew', 'kurtosis'],
             columns=['Acc_X', 'Gyr_X'],
             dtype=np.float64)
         features_expected.at['min', 'Acc_X'] = 1.0
@@ -80,5 +80,7 @@ class FeatureExtractionTestCase(TestCase):
                 3.0 - mean_Acc_X) ** 3) / (3 * features_expected.at['var', 'Acc_X'] ** 3)
         features_expected.at['skew', 'Gyr_X'] = ((4.0 - mean_Gyr_X) ** 3 + (5.0 - mean_Gyr_X) ** 3 + (
                 6.0 - mean_Gyr_X) ** 3) / (3 * features_expected.at['var', 'Gyr_X'] ** 3)
+
+        features_expected.loc['kurtosis', :] = df.kurtosis()[features_expected.columns].values
 
         self.assertTrue(features_expected.equals(features_actual))

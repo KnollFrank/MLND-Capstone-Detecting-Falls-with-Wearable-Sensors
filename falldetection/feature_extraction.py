@@ -24,7 +24,7 @@ def get_window_around_maximum_total_acceleration(df, half_window_size):
 
 def extract_features(df):
     features = pd.DataFrame(
-        index=['min', 'max', 'mean', 'var', 'skew'],
+        index=['min', 'max', 'mean', 'var', 'skew', 'kurtosis'],
         columns=df.columns,
         dtype=np.float64)
 
@@ -36,4 +36,5 @@ def extract_features(df):
     features.loc['mean', :] = order_by_column(df.mean())
     features.loc['var', :] = order_by_column(df.var(ddof=0))
     features.loc['skew', :] = order_by_column(df.skew())
+    features.loc['kurtosis', :] = order_by_column(df.kurtosis())
     return features
