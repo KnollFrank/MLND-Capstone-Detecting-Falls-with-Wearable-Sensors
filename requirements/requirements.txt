@@ -4,3 +4,4 @@ sklearn
 pandas
 ipykernel
 pytest
+scipy

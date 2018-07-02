@@ -1,11 +1,5 @@
-import pandas as pd
-from IPython.display import display
-
-# %matplotlib inline
-
-data = pd.read_csv("../data/FallDataSet/101/Testler Export/901/Test_1/340535.txt", skiprows=4, sep='\t',
-                   usecols=['Acc_X', 'Acc_Y', 'Acc_Z', 'Gyr_X', 'Gyr_Y', 'Gyr_Z', 'Mag_X', 'Mag_Y', 'Mag_Z'])
-
-# Success - Display the first record
-display(data.head())
-data.describe()
+def time_window(df, midpoint_index, window_size):
+    half_window_size = int(window_size / 2)
+    lower_boud = midpoint_index - half_window_size
+    uppder_bound = midpoint_index + half_window_size + 1
+    return df[lower_boud:uppder_bound].reset_index(drop=True)
