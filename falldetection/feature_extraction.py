@@ -23,12 +23,15 @@ def get_window_around_maximum_total_acceleration(df, half_window_size):
 
 
 def extract_features(df):
-    features = pd.DataFrame(index=['min', 'max', 'mean'], columns=df.columns, dtype=np.float64)
+    features = pd.DataFrame(
+        index=['min', 'max', 'mean'],
+        columns=df.columns,
+        dtype=np.float64)
 
-    def asOrderedArray(series):
+    def orderByColumn(series):
         return series[features.columns].values
 
-    features.loc['min', :] = asOrderedArray(df.min())
-    features.loc['max', :] = asOrderedArray(df.max())
-    features.loc['mean', :] = asOrderedArray(df.mean())
+    features.loc['min', :] = orderByColumn(df.min())
+    features.loc['max', :] = orderByColumn(df.max())
+    features.loc['mean', :] = orderByColumn(df.mean())
     return features
