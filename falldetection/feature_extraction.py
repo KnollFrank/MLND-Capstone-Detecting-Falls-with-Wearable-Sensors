@@ -24,7 +24,7 @@ def get_window_around_maximum_total_acceleration(df, half_window_size):
 
 def extract_features(df):
     features = pd.DataFrame(
-        index=['min', 'max', 'mean'],
+        index=['min', 'max', 'mean', 'var'],
         columns=df.columns,
         dtype=np.float64)
 
@@ -34,4 +34,5 @@ def extract_features(df):
     features.loc['min', :] = order_by_column(df.min())
     features.loc['max', :] = order_by_column(df.max())
     features.loc['mean', :] = order_by_column(df.mean())
+    features.loc['var', :] = order_by_column(df.var(ddof=0))
     return features

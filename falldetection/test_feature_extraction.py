@@ -56,14 +56,22 @@ class FeatureExtractionTestCase(TestCase):
              'Gyr_X': [4.0, 5.0, 6.0]})
         features_actual = extract_features(df)
 
-        features_expected = pd.DataFrame(index=['min', 'max', 'mean'], columns=['Acc_X', 'Gyr_X'], dtype=np.float64)
+        features_expected = pd.DataFrame(index=['min', 'max', 'mean', 'var'], columns=['Acc_X', 'Gyr_X'],
+                                         dtype=np.float64)
         features_expected.at['min', 'Acc_X'] = 1.0
         features_expected.at['min', 'Gyr_X'] = 4.0
 
         features_expected.at['max', 'Acc_X'] = 3.0
         features_expected.at['max', 'Gyr_X'] = 6.0
 
-        features_expected.at['mean', 'Acc_X'] = (1.0 + 2.0 + 3.0) / 3
-        features_expected.at['mean', 'Gyr_X'] = (4.0 + 5.0 + 6.0) / 3
+        mean_Acc_X = (1.0 + 2.0 + 3.0) / 3
+        features_expected.at['mean', 'Acc_X'] = mean_Acc_X
+        mean_Gyr_X = (4.0 + 5.0 + 6.0) / 3
+        features_expected.at['mean', 'Gyr_X'] = mean_Gyr_X
+
+        features_expected.at['var', 'Acc_X'] = ((1.0 - mean_Acc_X) ** 2 + (2.0 - mean_Acc_X) ** 2 + (
+                3.0 - mean_Acc_X) ** 2) / 3
+        features_expected.at['var', 'Gyr_X'] = ((4.0 - mean_Gyr_X) ** 2 + (5.0 - mean_Gyr_X) ** 2 + (
+                6.0 - mean_Gyr_X) ** 2) / 3
 
         self.assertTrue(features_expected.equals(features_actual))
