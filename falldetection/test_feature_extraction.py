@@ -1,7 +1,5 @@
 from unittest import TestCase
 
-import pandas as pd
-
 from falldetection.feature_extraction import *
 
 
@@ -51,3 +49,21 @@ class FeatureExtractionTestCase(TestCase):
              'Acc_Y': [1.0, 30.0, 4.0],
              'Acc_Z': [1.0, 40.0, 5.0]})
         self.assertTrue(df_sliced_expected.equals(df_sliced_actual))
+
+    def test_extract_features(self):
+        df = pd.DataFrame(
+            {'Acc_X': [1.0, 2.0, 3.0],
+             'Gyr_X': [4.0, 5.0, 6.0]})
+        features_actual = extract_features(df)
+
+        features_expected = pd.DataFrame(index=['min', 'max', 'mean'], columns=['Acc_X', 'Gyr_X'], dtype=np.float64)
+        features_expected.at['min', 'Acc_X'] = 1.0
+        features_expected.at['min', 'Gyr_X'] = 4.0
+
+        features_expected.at['max', 'Acc_X'] = 3.0
+        features_expected.at['max', 'Gyr_X'] = 6.0
+
+        features_expected.at['mean', 'Acc_X'] = (1.0 + 2.0 + 3.0) / 3
+        features_expected.at['mean', 'Gyr_X'] = (4.0 + 5.0 + 6.0) / 3
+
+        self.assertTrue(features_expected.equals(features_actual))

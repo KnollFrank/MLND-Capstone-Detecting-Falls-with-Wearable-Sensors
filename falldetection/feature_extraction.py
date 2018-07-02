@@ -1,3 +1,7 @@
+import numpy as np
+import pandas as pd
+
+
 def slice_with_window(df, window_center_index, half_window_size):
     lower_bound_inclusive = window_center_index - half_window_size
     upper_bound_exclusive = window_center_index + half_window_size + 1
@@ -16,3 +20,15 @@ def get_window_around_maximum_total_acceleration(df, half_window_size):
         df,
         window_center_index=get_index_of_maximum_total_acceleration(df),
         half_window_size=half_window_size)
+
+
+def extract_features(df):
+    features = pd.DataFrame(index=['min', 'max', 'mean'], columns=df.columns, dtype=np.float64)
+
+    def asOrderedArray(series):
+        return series[features.columns].values
+
+    features.loc['min', :] = asOrderedArray(df.min())
+    features.loc['max', :] = asOrderedArray(df.max())
+    features.loc['mean', :] = asOrderedArray(df.mean())
+    return features
