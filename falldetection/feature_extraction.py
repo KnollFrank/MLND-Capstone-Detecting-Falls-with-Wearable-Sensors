@@ -3,7 +3,7 @@ def time_window(df, window_center_index, half_window_size):
     upper_bound_exclusive = window_center_index + half_window_size + 1
     if not (0 <= lower_bound_inclusive < len(df) and 0 <= upper_bound_exclusive <= len(df)):
         raise IndexError()
-    return df[lower_bound_inclusive:upper_bound_exclusive].reset_index(drop=True)
+    return df.iloc[lower_bound_inclusive:upper_bound_exclusive]
 
 
 def get_index_of_maximum_total_acceleration(df):
