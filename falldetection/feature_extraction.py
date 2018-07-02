@@ -28,10 +28,10 @@ def extract_features(df):
         columns=df.columns,
         dtype=np.float64)
 
-    def orderByColumn(series):
+    def order_by_column(series):
         return series[features.columns].values
 
-    features.loc['min', :] = orderByColumn(df.min())
-    features.loc['max', :] = orderByColumn(df.max())
-    features.loc['mean', :] = orderByColumn(df.mean())
+    features.loc['min', :] = order_by_column(df.min())
+    features.loc['max', :] = order_by_column(df.max())
+    features.loc['mean', :] = order_by_column(df.mean())
     return features
