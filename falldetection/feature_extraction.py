@@ -1,9 +1,10 @@
 import logging
-import os
 import re
 
 import numpy as np
 import pandas as pd
+
+from falldetection.sensor_files_provider import SensorFilesProvider
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -69,13 +70,6 @@ def default_feature_extractor(sensorFile):
                 index_error_msg=sensorFile)))
 
 
-def default_sensor_files_provider(baseDir, sensorFile):
-    for root, dirs, files in os.walk(baseDir):
-        for file in files:
-            if file == sensorFile:
-                yield os.path.join(root, file)
-
-
 def extract_all_features(sensorFiles, feature_extractor=default_feature_extractor):
     def asDataFrame(sensorFiles_features_falls):
         sensorFiles, features, falls = zip(*sensorFiles_features_falls)
@@ -92,18 +86,6 @@ def isFall(sensorFile):
 
 
 def extract_all_features_and_save():
-    def shall_exclude(sensor_file):
-        excluded_sensor_files = \
-            ('../data/FallDataSet/209/Testler Export/919/Test_5/340535.txt',
-             '../data/FallDataSet/203/Testler Export/813/Test_1/340535.txt',
-             '../data/FallDataSet/207/Testler Export/917/Test_1/340535.txt',
-             '../data/FallDataSet/109/Testler Export/901/Test_6/340535.txt')
-        return sensor_file in excluded_sensor_files or "Fail" in sensor_file
-
-    def sensor_files():
-        return [sensor_file for sensor_file in
-                default_sensor_files_provider(baseDir='../data/FallDataSet', sensorFile='340535.txt')
-                if not shall_exclude(sensor_file)]
-
-    all_features = extract_all_features(sensor_files())
+    sensor_files = SensorFilesProvider(baseDir='../data/FallDataSet', sensorFile='340535.txt').provide_sensor_files()
+    all_features = extract_all_features(sensor_files)
     all_features.to_csv('../data/all_features.csv')

@@ -2,6 +2,7 @@ import unittest as unittest
 from unittest import TestCase
 
 from falldetection.feature_extraction import *
+from falldetection.sensor_files_provider import SensorFilesProvider
 
 
 class FeatureExtractionTestCase(TestCase):
@@ -97,10 +98,9 @@ class FeatureExtractionTestCase(TestCase):
         print("\n", features)
 
     def test_extract_all_features1(self):
+        sensor_files_provider = SensorFilesProvider(baseDir='../data/FallDataSet-Test', sensorFile='340535.txt')
         all_features_actual = extract_all_features(
-            sensorFiles=default_sensor_files_provider(
-                baseDir='../data/FallDataSet-Test',
-                sensorFile='340535.txt'),
+            sensorFiles=sensor_files_provider.provide_sensor_files(),
             feature_extractor=lambda sensorFile: {
                 '../data/FallDataSet-Test/209/Testler Export/914/Test_1/340535.txt': [1.0],
                 '../data/FallDataSet-Test/209/Testler Export/914/Test_6/340535.txt': [2.0],
