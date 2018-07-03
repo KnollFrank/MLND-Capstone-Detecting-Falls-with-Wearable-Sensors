@@ -45,6 +45,6 @@ class ExtractFeaturesTestCase(TestCase):
         self.assertTrue(features_expected.equals(features_actual))
 
     def test_extract_features2(self):
-        df = read_sensor_file("../data/FallDataSet/101/Testler Export/901/Test_1/340535.txt")
+        df = read_sensor_file("../../data/FallDataSet/101/Testler Export/901/Test_1/340535.txt")
         features = extract_features(df)
         print("\n", features)
