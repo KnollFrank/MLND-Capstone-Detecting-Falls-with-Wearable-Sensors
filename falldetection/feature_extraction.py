@@ -1,9 +1,9 @@
 import logging
-import re
 
 import numpy as np
 import pandas as pd
 
+from falldetection.fall_predicate import isFall
 from falldetection.sensor_files_provider import SensorFilesProvider
 from falldetection.window_around_maximum_total_acceleration import get_window_around_maximum_total_acceleration
 
@@ -56,11 +56,6 @@ def extract_all_features(sensorFiles, feature_extractor=default_feature_extracto
     sensorFiles_features_falls = [(sensorFile, feature_extractor(sensorFile), isFall(sensorFile)) for sensorFile in
                                   sensorFiles]
     return asDataFrame(sensorFiles_features_falls)
-
-
-def isFall(sensorFile):
-    eight_or_nine = re.search('Testler Export/([89])', sensorFile).group(1)
-    return eight_or_nine == '9'
 
 
 def extract_all_features_and_save():

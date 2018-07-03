@@ -94,11 +94,3 @@ class FeatureExtractionTestCase(TestCase):
              'Mag_Z': [12.0, 13.0]})
         feature_array = features2array(features)
         self.assertEquals([10.0, 11.0, 12.0, 13.0], feature_array.tolist())
-
-    def test_is_fall1(self):
-        fall = isFall('../data/FallDataSet/209/Testler Export/916/Test_1/340535.txt')
-        self.assertEquals(fall, True)
-
-    def test_is_fall2(self):
-        fall = isFall('../data/FallDataSet/209/Testler Export/813/Test_6/340535.txt')
-        self.assertEquals(fall, False)
