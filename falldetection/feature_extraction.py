@@ -5,23 +5,10 @@ import numpy as np
 import pandas as pd
 
 from falldetection.sensor_files_provider import SensorFilesProvider
-from falldetection.slicer import slice_with_window
+from falldetection.window_around_maximum_total_acceleration import get_window_around_maximum_total_acceleration
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-
-def get_index_of_maximum_total_acceleration(df):
-    squared_total_acceleration = df['Acc_X'] ** 2 + df['Acc_Y'] ** 2 + df['Acc_Z'] ** 2
-    return squared_total_acceleration.idxmax()
-
-
-def get_window_around_maximum_total_acceleration(df, half_window_size, index_error_msg=""):
-    return slice_with_window(
-        df,
-        window_center_index=get_index_of_maximum_total_acceleration(df),
-        half_window_size=half_window_size,
-        index_error_msg=index_error_msg)
 
 
 def extract_features(df):
