@@ -1,5 +1,6 @@
 import logging
 import os
+import re
 
 import numpy as np
 import pandas as pd
@@ -82,3 +83,8 @@ def extract_all_features(sensorFiles, feature_extractor=default_feature_extracto
 
     sensorFiles_and_features = [(sensorFile, feature_extractor(sensorFile)) for sensorFile in sensorFiles]
     return asDataFrame(sensorFiles_and_features)
+
+
+def isFall(sensorFile):
+    eight_or_nine = re.search('Testler Export/(8|9)', sensorFile).group(1)
+    return eight_or_nine == '9'
