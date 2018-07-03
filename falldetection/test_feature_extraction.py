@@ -1,3 +1,4 @@
+import unittest as unittest
 from unittest import TestCase
 
 from falldetection.feature_extraction import *
@@ -97,8 +98,9 @@ class FeatureExtractionTestCase(TestCase):
 
     def test_extract_all_features1(self):
         all_features_actual = extract_all_features(
-            baseDir='../data/FallDataSet-Test',
-            sensorFile='340535.txt',
+            sensorFiles=default_sensor_files_provider(
+                baseDir='../data/FallDataSet-Test',
+                sensorFile='340535.txt'),
             feature_extractor=lambda sensorFile: {
                 '../data/FallDataSet-Test/209/Testler Export/914/Test_1/340535.txt': [1.0],
                 '../data/FallDataSet-Test/209/Testler Export/914/Test_6/340535.txt': [2.0],
@@ -126,14 +128,20 @@ class FeatureExtractionTestCase(TestCase):
                     [7.0]]})
         self.assertTrue(all_features_expected.equals(all_features_actual))
 
+    @unittest.SkipTest
     def test_extract_all_features2(self):
         pd.set_option('display.max_rows', 500)
         pd.set_option('display.max_columns', 500)
         pd.set_option('display.width', 10000)
         pd.set_option('display.max_colwidth', 1000)
-        all_features = extract_all_features(
-            baseDir='../data/FallDataSet-Test',
-            sensorFile='340535.txt')
+        excluded_sensorFiles = ('../data/FallDataSet/209/Testler Export/919/Test_5/340535.txt',
+                                '../data/FallDataSet/203/Testler Export/813/Test_1/340535.txt',
+                                '../data/FallDataSet/207/Testler Export/917/Test_1/340535.txt',
+                                '../data/FallDataSet/109/Testler Export/901/Test_6/340535.txt')
+        sensorFiles = [sensorFile for sensorFile in
+                       default_sensor_files_provider(baseDir='../data/FallDataSet', sensorFile='340535.txt') if
+                       sensorFile not in excluded_sensorFiles and "Fail" not in sensorFile]
+        all_features = extract_all_features(sensorFiles)
         print("\n", all_features)
         print("dtypes:", all_features.dtypes)
         all_features.to_csv('../data/all_features.csv')
