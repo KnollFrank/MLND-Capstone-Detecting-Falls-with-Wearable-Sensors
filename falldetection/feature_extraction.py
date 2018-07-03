@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 
 from falldetection.fall_predicate import isFall
+from falldetection.sensor_file_reader import read_sensor_file
 from falldetection.sensor_files_provider import SensorFilesProvider
 from falldetection.window_around_maximum_total_acceleration import get_window_around_maximum_total_acceleration
 
@@ -35,15 +36,10 @@ def features2array(features):
 
 def default_feature_extractor(sensorFile):
     logger.debug('default_feature_extractor(%s)', sensorFile)
-    df = pd.read_csv(
-        sensorFile,
-        skiprows=4,
-        sep='\t',
-        usecols=['Acc_X', 'Acc_Y', 'Acc_Z', 'Gyr_X', 'Gyr_Y', 'Gyr_Z', 'Mag_X', 'Mag_Y', 'Mag_Z'])
     return features2array(
         extract_features(
             get_window_around_maximum_total_acceleration(
-                df,
+                read_sensor_file(sensorFile),
                 half_window_size=50,
                 index_error_msg=sensorFile)))
 
