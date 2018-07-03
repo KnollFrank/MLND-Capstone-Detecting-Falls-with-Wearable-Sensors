@@ -77,14 +77,15 @@ def default_sensor_files_provider(baseDir, sensorFile):
 
 
 def extract_all_features(sensorFiles, feature_extractor=default_feature_extractor):
-    def asDataFrame(sensorFiles_and_features):
-        sensorFiles, features = zip(*sensorFiles_and_features)
-        return pd.DataFrame({'sensorFile': sensorFiles, 'feature': features})
+    def asDataFrame(sensorFiles_features_falls):
+        sensorFiles, features, falls = zip(*sensorFiles_features_falls)
+        return pd.DataFrame({'sensorFile': sensorFiles, 'fall': falls, 'feature': features})
 
-    sensorFiles_and_features = [(sensorFile, feature_extractor(sensorFile)) for sensorFile in sensorFiles]
-    return asDataFrame(sensorFiles_and_features)
+    sensorFiles_features_falls = [(sensorFile, feature_extractor(sensorFile), isFall(sensorFile)) for sensorFile in
+                                  sensorFiles]
+    return asDataFrame(sensorFiles_features_falls)
 
 
 def isFall(sensorFile):
-    eight_or_nine = re.search('Testler Export/(8|9)', sensorFile).group(1)
+    eight_or_nine = re.search('Testler Export/([89])', sensorFile).group(1)
     return eight_or_nine == '9'

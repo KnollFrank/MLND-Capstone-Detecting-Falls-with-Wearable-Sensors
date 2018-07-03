@@ -118,6 +118,7 @@ class FeatureExtractionTestCase(TestCase):
                 '../data/FallDataSet-Test/101/Testler Export/801/Test_1/340535.txt',
                 '../data/FallDataSet-Test/101/Testler Export/801/Test_2/340535.txt',
                 '../data/FallDataSet-Test/101/Testler Export/920/Test_1/340535.txt'],
+                'fall': [True, True, False, False, False, False, True],
                 'feature': [
                     [1.0],
                     [2.0],
