@@ -50,11 +50,12 @@ class FeatureExtractionTestCase(TestCase):
              'Acc_Z': [1.0, 40.0, 5.0]})
         self.assertTrue(df_sliced_expected.equals(df_sliced_actual))
 
-    def test_extract_features(self):
+    def test_extract_features1(self):
         df = pd.DataFrame(
             {'Acc_X': [1.0, 2.0, 3.0],
              'Gyr_X': [4.0, 5.0, 6.0]})
         features_actual = extract_features(df)
+        print(features_actual)
 
         features_expected = pd.DataFrame(
             index=['min', 'max', 'mean', 'var', 'skew', 'kurtosis'],
@@ -84,3 +85,19 @@ class FeatureExtractionTestCase(TestCase):
         features_expected.loc['kurtosis', :] = df.kurtosis()[features_expected.columns].values
 
         self.assertTrue(features_expected.equals(features_actual))
+
+    def test_extract_features2(self):
+        df = pd.read_csv(
+            "../data/FallDataSet/101/Testler Export/901/Test_1/340535.txt",
+            skiprows=4,
+            sep='\t',
+            usecols=['Acc_X', 'Acc_Y', 'Acc_Z', 'Gyr_X', 'Gyr_Y', 'Gyr_Z', 'Mag_X', 'Mag_Y', 'Mag_Z'])
+        features = extract_features(df)
+        print("\n", features)
+
+    def test_features2array(self):
+        features = pd.DataFrame(
+            {'Acc_X': [10.0, 11.0],
+             'Mag_Z': [12.0, 13.0]})
+        feature_array = features2array(features)
+        self.assertEquals([10.0, 11.0, 12.0, 13.0], feature_array.tolist())

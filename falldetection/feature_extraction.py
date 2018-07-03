@@ -38,3 +38,7 @@ def extract_features(df):
     features.loc['skew', :] = order_by_column(df.skew())
     features.loc['kurtosis', :] = order_by_column(df.kurtosis())
     return features
+
+
+def features2array(features):
+    return np.concatenate(features.T.values)
