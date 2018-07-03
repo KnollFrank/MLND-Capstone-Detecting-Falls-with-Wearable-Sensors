@@ -95,6 +95,37 @@ class FeatureExtractionTestCase(TestCase):
         features = extract_features(df)
         print("\n", features)
 
+    def test_extract_all_features(self):
+        all_features_actual = extract_all_features(
+            baseDir='../data/FallDataSet-Test',
+            sensorFile='340535.txt',
+            feature_extractor=lambda path: {
+                '../data/FallDataSet-Test/209/Testler Export/914/Test_1/340535.txt': [1.0],
+                '../data/FallDataSet-Test/209/Testler Export/914/Test_6/340535.txt': [2.0],
+                '../data/FallDataSet-Test/209/Testler Export/801/Test_1/340535.txt': [3.0],
+                '../data/FallDataSet-Test/209/Testler Export/801/Test_2/340535.txt': [4.0],
+                '../data/FallDataSet-Test/101/Testler Export/801/Test_1/340535.txt': [5.0],
+                '../data/FallDataSet-Test/101/Testler Export/801/Test_2/340535.txt': [6.0],
+                '../data/FallDataSet-Test/101/Testler Export/920/Test_1/340535.txt': [7.0]}[path])
+        all_features_expected = pd.DataFrame(
+            {'sensorFile': [
+                '../data/FallDataSet-Test/209/Testler Export/914/Test_1/340535.txt',
+                '../data/FallDataSet-Test/209/Testler Export/914/Test_6/340535.txt',
+                '../data/FallDataSet-Test/209/Testler Export/801/Test_1/340535.txt',
+                '../data/FallDataSet-Test/209/Testler Export/801/Test_2/340535.txt',
+                '../data/FallDataSet-Test/101/Testler Export/801/Test_1/340535.txt',
+                '../data/FallDataSet-Test/101/Testler Export/801/Test_2/340535.txt',
+                '../data/FallDataSet-Test/101/Testler Export/920/Test_1/340535.txt'],
+                'feature': [
+                    [1.0],
+                    [2.0],
+                    [3.0],
+                    [4.0],
+                    [5.0],
+                    [6.0],
+                    [7.0]]})
+        self.assertTrue(all_features_expected.equals(all_features_actual))
+
     def test_features2array(self):
         features = pd.DataFrame(
             {'Acc_X': [10.0, 11.0],

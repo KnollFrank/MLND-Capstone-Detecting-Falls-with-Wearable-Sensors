@@ -1,0 +1,7 @@
+
+
+Gender : Female
+
+Weight : 70 kg
+Height : 182 cm
+Age : 22

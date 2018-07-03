@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 import pandas as pd
 
@@ -42,3 +44,18 @@ def extract_features(df):
 
 def features2array(features):
     return np.concatenate(features.T.values)
+
+
+def extract_all_features(baseDir, sensorFile, feature_extractor):
+    def sensorFiles():
+        for root, dirs, files in os.walk(baseDir):
+            for file in files:
+                if file == sensorFile:
+                    yield os.path.join(root, file)
+
+    def asDataFrame(sensorFiles_and_features):
+        sensorFiles, features = zip(*sensorFiles_and_features)
+        return pd.DataFrame({'sensorFile': sensorFiles, 'feature': features})
+
+    sensorFiles_and_features = [(sensorFile, feature_extractor(sensorFile)) for sensorFile in sensorFiles()]
+    return asDataFrame(sensorFiles_and_features)

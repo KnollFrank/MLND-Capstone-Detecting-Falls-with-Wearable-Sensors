@@ -1,5 +1,5 @@
 __pycache__
 .ipynb_checkpoints
 papers/
-data/
+data/FallDataSet
 .pytest_cache
