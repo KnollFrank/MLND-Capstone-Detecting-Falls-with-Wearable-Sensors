@@ -20,8 +20,8 @@ class SensorFilesProvider:
 
     def __shall_exclude(self, sensor_file):
         excluded_sensor_files = \
-            ('../data/FallDataSet/209/Testler Export/919/Test_5/340535.txt',
-             '../data/FallDataSet/203/Testler Export/813/Test_1/340535.txt',
-             '../data/FallDataSet/207/Testler Export/917/Test_1/340535.txt',
-             '../data/FallDataSet/109/Testler Export/901/Test_6/340535.txt')
+            (self.baseDir + '/209/Testler Export/919/Test_5/340535.txt',
+             self.baseDir + '/203/Testler Export/813/Test_1/340535.txt',
+             self.baseDir + '/207/Testler Export/917/Test_1/340535.txt',
+             self.baseDir + '/109/Testler Export/901/Test_6/340535.txt')
         return sensor_file in excluded_sensor_files or "Fail" in sensor_file
