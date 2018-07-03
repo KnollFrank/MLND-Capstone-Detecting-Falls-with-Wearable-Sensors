@@ -95,18 +95,18 @@ class FeatureExtractionTestCase(TestCase):
         features = extract_features(df)
         print("\n", features)
 
-    def test_extract_all_features(self):
+    def test_extract_all_features1(self):
         all_features_actual = extract_all_features(
             baseDir='../data/FallDataSet-Test',
             sensorFile='340535.txt',
-            feature_extractor=lambda path: {
+            feature_extractor=lambda sensorFile: {
                 '../data/FallDataSet-Test/209/Testler Export/914/Test_1/340535.txt': [1.0],
                 '../data/FallDataSet-Test/209/Testler Export/914/Test_6/340535.txt': [2.0],
                 '../data/FallDataSet-Test/209/Testler Export/801/Test_1/340535.txt': [3.0],
                 '../data/FallDataSet-Test/209/Testler Export/801/Test_2/340535.txt': [4.0],
                 '../data/FallDataSet-Test/101/Testler Export/801/Test_1/340535.txt': [5.0],
                 '../data/FallDataSet-Test/101/Testler Export/801/Test_2/340535.txt': [6.0],
-                '../data/FallDataSet-Test/101/Testler Export/920/Test_1/340535.txt': [7.0]}[path])
+                '../data/FallDataSet-Test/101/Testler Export/920/Test_1/340535.txt': [7.0]}[sensorFile])
         all_features_expected = pd.DataFrame(
             {'sensorFile': [
                 '../data/FallDataSet-Test/209/Testler Export/914/Test_1/340535.txt',
@@ -125,6 +125,18 @@ class FeatureExtractionTestCase(TestCase):
                     [6.0],
                     [7.0]]})
         self.assertTrue(all_features_expected.equals(all_features_actual))
+
+    def test_extract_all_features2(self):
+        pd.set_option('display.max_rows', 500)
+        pd.set_option('display.max_columns', 500)
+        pd.set_option('display.width', 10000)
+        pd.set_option('display.max_colwidth', 1000)
+        all_features = extract_all_features(
+            baseDir='../data/FallDataSet-Test',
+            sensorFile='340535.txt')
+        print("\n", all_features)
+        print("dtypes:", all_features.dtypes)
+        all_features.to_csv('../data/all_features.csv')
 
     def test_features2array(self):
         features = pd.DataFrame(

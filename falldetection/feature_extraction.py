@@ -46,7 +46,16 @@ def features2array(features):
     return np.concatenate(features.T.values)
 
 
-def extract_all_features(baseDir, sensorFile, feature_extractor):
+def default_feature_extractor(sensorFile):
+    df = pd.read_csv(
+        sensorFile,
+        skiprows=4,
+        sep='\t',
+        usecols=['Acc_X', 'Acc_Y', 'Acc_Z', 'Gyr_X', 'Gyr_Y', 'Gyr_Z', 'Mag_X', 'Mag_Y', 'Mag_Z'])
+    return features2array(extract_features(df))
+
+
+def extract_all_features(baseDir, sensorFile, feature_extractor=default_feature_extractor):
     def sensorFiles():
         for root, dirs, files in os.walk(baseDir):
             for file in files:
