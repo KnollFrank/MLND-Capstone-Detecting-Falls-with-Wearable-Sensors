@@ -89,3 +89,21 @@ def extract_all_features(sensorFiles, feature_extractor=default_feature_extracto
 def isFall(sensorFile):
     eight_or_nine = re.search('Testler Export/([89])', sensorFile).group(1)
     return eight_or_nine == '9'
+
+
+def extract_all_features_and_save():
+    def shall_exclude(sensor_file):
+        excluded_sensor_files = \
+            ('../data/FallDataSet/209/Testler Export/919/Test_5/340535.txt',
+             '../data/FallDataSet/203/Testler Export/813/Test_1/340535.txt',
+             '../data/FallDataSet/207/Testler Export/917/Test_1/340535.txt',
+             '../data/FallDataSet/109/Testler Export/901/Test_6/340535.txt')
+        return sensor_file in excluded_sensor_files or "Fail" in sensor_file
+
+    def sensor_files():
+        return [sensor_file for sensor_file in
+                default_sensor_files_provider(baseDir='../data/FallDataSet', sensorFile='340535.txt')
+                if not shall_exclude(sensor_file)]
+
+    all_features = extract_all_features(sensor_files())
+    all_features.to_csv('../data/all_features.csv')

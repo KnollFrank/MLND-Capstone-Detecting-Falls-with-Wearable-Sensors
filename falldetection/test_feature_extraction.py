@@ -131,21 +131,7 @@ class FeatureExtractionTestCase(TestCase):
 
     @unittest.SkipTest
     def test_extract_all_features2(self):
-        pd.set_option('display.max_rows', 500)
-        pd.set_option('display.max_columns', 500)
-        pd.set_option('display.width', 10000)
-        pd.set_option('display.max_colwidth', 1000)
-        excluded_sensorFiles = ('../data/FallDataSet/209/Testler Export/919/Test_5/340535.txt',
-                                '../data/FallDataSet/203/Testler Export/813/Test_1/340535.txt',
-                                '../data/FallDataSet/207/Testler Export/917/Test_1/340535.txt',
-                                '../data/FallDataSet/109/Testler Export/901/Test_6/340535.txt')
-        sensorFiles = [sensorFile for sensorFile in
-                       default_sensor_files_provider(baseDir='../data/FallDataSet', sensorFile='340535.txt') if
-                       sensorFile not in excluded_sensorFiles and "Fail" not in sensorFile]
-        all_features = extract_all_features(sensorFiles)
-        print("\n", all_features)
-        print("dtypes:", all_features.dtypes)
-        all_features.to_csv('../data/all_features.csv')
+        extract_all_features_and_save()
 
     def test_features2array(self):
         features = pd.DataFrame(
