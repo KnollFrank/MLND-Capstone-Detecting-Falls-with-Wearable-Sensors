@@ -2,6 +2,7 @@ import unittest as unittest
 from unittest import TestCase
 
 from falldetection.feature_extractor_workflow import *
+from falldetection.sensor import Sensor
 from falldetection.sensor_files_provider import SensorFilesProvider
 
 
@@ -19,7 +20,7 @@ class FeatureExtractionTestCase(TestCase):
             '../../data/FallDataSet-Test/101/Testler Export/920/Test_1/340535.txt': [7.0]}[sensorFile])
 
         sensor_files = SensorFilesProvider(baseDir='../../data/FallDataSet-Test',
-                                           sensorFile='340535.txt').provide_sensor_files()
+                                           sensor=Sensor.WAIST).provide_sensor_files()
         features_expected = pd.DataFrame(
             {'sensorFile': [
                 '../../data/FallDataSet-Test/209/Testler Export/914/Test_1/340535.txt',

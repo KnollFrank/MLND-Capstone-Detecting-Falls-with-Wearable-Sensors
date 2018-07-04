@@ -2,6 +2,7 @@ import pandas as pd
 
 from falldetection.fall_predicate import isFall
 from falldetection.feature_extractor import FeatureExtractor
+from falldetection.sensor import Sensor
 from falldetection.sensor_files_provider import SensorFilesProvider
 
 
@@ -24,6 +25,6 @@ class FeatureExtractorWorkflow:
 
 
 def extract_features_and_save():
-    sensor_files = SensorFilesProvider(baseDir='../../data/FallDataSet', sensorFile='340535.txt').provide_sensor_files()
+    sensor_files = SensorFilesProvider(baseDir='../../data/FallDataSet', sensor=Sensor.WAIST).provide_sensor_files()
     all_features = FeatureExtractorWorkflow(FeatureExtractor().extract_features).extract_features(sensor_files)
     all_features.to_csv('../../data/all_features.csv')
