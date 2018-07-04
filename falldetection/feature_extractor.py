@@ -1,6 +1,6 @@
 import logging
 
-import numpy as np
+import pandas as pd
 
 from falldetection.extract_features import extract_features
 from falldetection.sensor_file_reader import read_sensor_file
@@ -14,7 +14,7 @@ class FeatureExtractor:
 
     def extract_features(self, sensorFile):
         logger.debug('default_feature_extractor(%s)', sensorFile)
-        return self.features2array(
+        return self.flatten_data_frame(
             extract_features(
                 get_window_around_maximum_total_acceleration(
                     read_sensor_file(sensorFile),
@@ -22,5 +22,11 @@ class FeatureExtractor:
                     index_error_msg=sensorFile)))
 
     @staticmethod
-    def features2array(features):
-        return np.concatenate(features.T.values)
+    def flatten_data_frame(df):
+        df_flattened = df.T.stack()
+        index_flattened = FeatureExtractor.__flatten_2level_index(df_flattened.index)
+        return pd.DataFrame(data=df_flattened.values, index=index_flattened).T
+
+    @staticmethod
+    def __flatten_2level_index(index):
+        return pd.Index(['_'.join(levels) for levels in index.tolist()])

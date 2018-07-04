@@ -12,16 +12,16 @@ class FeatureExtractorWorkflow:
         self.feature_extractor = feature_extractor
 
     def extract_features(self, sensorFiles):
-        sensorFiles_features_falls = [(sensorFile, self.feature_extractor(sensorFile), isFall(sensorFile)) for
-                                      sensorFile in sensorFiles]
-        return self.__asDataFrame(sensorFiles_features_falls)
+        return pd.concat(self.__create_dataFrames(sensorFiles), ignore_index=True, axis='index')
 
-    def __asDataFrame(self, sensorFiles_features_falls):
-        sensorFiles, features, falls = zip(*sensorFiles_features_falls)
-        return pd.DataFrame(
-            {'sensorFile': sensorFiles,
-             'fall': falls,
-             'feature': features})
+    def __create_dataFrames(self, sensorFiles):
+        return [self.__create_dataFrame(sensorFile) for sensorFile in sensorFiles]
+
+    def __create_dataFrame(self, sensorFile):
+        return pd.concat((self.sensorFile_and_fall_df(sensorFile), self.feature_extractor(sensorFile)), axis='columns')
+
+    def sensorFile_and_fall_df(self, sensorFile):
+        return pd.DataFrame(data={'sensorFile': [sensorFile], 'fall': isFall(sensorFile)})
 
 
 def extract_features_and_save(baseDir, csv_file):
