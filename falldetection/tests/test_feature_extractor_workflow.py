@@ -1,7 +1,9 @@
 import unittest as unittest
 from unittest import TestCase
 
-from falldetection.feature_extractor_workflow import *
+import pandas as pd
+
+from falldetection.feature_extractor_workflow import FeatureExtractorWorkflow, extract_features_and_save
 from falldetection.sensor import Sensor
 from falldetection.sensor_files_provider import SensorFilesProvider
 
