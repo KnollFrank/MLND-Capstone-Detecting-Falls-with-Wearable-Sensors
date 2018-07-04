@@ -50,4 +50,4 @@ class FeatureExtractionTestCase(TestCase):
 
     @unittest.SkipTest
     def test_extract_all_features2(self):
-        extract_features_and_save()
+        extract_features_and_save(baseDir='../../data/FallDataSet', csv_file='../../data/all_features.csv')

@@ -24,7 +24,7 @@ class FeatureExtractorWorkflow:
              'feature': features})
 
 
-def extract_features_and_save():
-    sensor_files = SensorFilesProvider(baseDir='../../data/FallDataSet', sensor=Sensor.WAIST).provide_sensor_files()
+def extract_features_and_save(baseDir, csv_file):
+    sensor_files = SensorFilesProvider(baseDir, sensor=Sensor.WAIST).provide_sensor_files()
     all_features = FeatureExtractorWorkflow(FeatureExtractor().extract_features).extract_features(sensor_files)
-    all_features.to_csv('../../data/all_features.csv')
+    all_features.to_csv(csv_file)
