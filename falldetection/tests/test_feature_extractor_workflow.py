@@ -65,5 +65,28 @@ class FeatureExtractionTestCase(TestCase):
 
 
     @unittest.SkipTest
-    def test_extract_features_and_save(self):
-        extract_features_and_save(baseDir='../../data/FallDataSet', csv_file='../../data/all_features.csv')
+    def test_extract_features_and_save_WAIST(self):
+        sensor_files_to_exclude = \
+            ['209/Testler Export/919/Test_5/340535.txt',
+             '203/Testler Export/813/Test_1/340535.txt',
+             '207/Testler Export/917/Test_1/340535.txt',
+             '109/Testler Export/901/Test_6/340535.txt']
+        extract_features_and_save(
+            sensor=Sensor.WAIST,
+            baseDir='../../data/FallDataSet',
+            sensor_files_to_exclude=sensor_files_to_exclude,
+            csv_file='../../data/all_features_waist.csv')
+
+    @unittest.SkipTest
+    def test_extract_features_and_save_RIGHT_THIGH(self):
+        sensor_files_to_exclude = \
+            ['208/Testler Export/805/Test_1/340539.txt',
+             '203/Testler Export/813/Test_1/340539.txt',
+             '103/Testler Export/911/Test_5/340539.txt',
+             '109/Testler Export/901/Test_6/340539.txt',
+             '108/Testler Export/918/Test_5/340539.txt']
+        extract_features_and_save(
+            sensor=Sensor.RIGHT_THIGH,
+            baseDir='../../data/FallDataSet',
+            sensor_files_to_exclude=sensor_files_to_exclude,
+            csv_file='../../data/all_features_right_thigh.csv')

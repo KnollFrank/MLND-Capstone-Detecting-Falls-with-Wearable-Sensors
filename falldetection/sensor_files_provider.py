@@ -5,9 +5,11 @@ from falldetection.sensor import Sensor
 
 class SensorFilesProvider:
 
-    def __init__(self, baseDir, sensor):
+    def __init__(self, baseDir, sensor, sensor_files_to_exclude=()):
         self.baseDir = baseDir
         self.sensor = sensor
+        self.sensor_files_to_exclude = [baseDir + '/' + sensor_file_to_exclude for sensor_file_to_exclude in
+                                        sensor_files_to_exclude]
 
     def provide_sensor_files(self):
         return [sensor_file for sensor_file in
@@ -21,9 +23,4 @@ class SensorFilesProvider:
                     yield os.path.join(root, file)
 
     def __shall_exclude(self, sensor_file):
-        sensor_files_to_exclude = \
-            (self.baseDir + '/209/Testler Export/919/Test_5/340535.txt',
-             self.baseDir + '/203/Testler Export/813/Test_1/340535.txt',
-             self.baseDir + '/207/Testler Export/917/Test_1/340535.txt',
-             self.baseDir + '/109/Testler Export/901/Test_6/340535.txt')
-        return sensor_file in sensor_files_to_exclude or "Fail" in sensor_file
+        return sensor_file in self.sensor_files_to_exclude or "Fail" in sensor_file
