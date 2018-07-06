@@ -72,7 +72,8 @@ class FeatureExtractionTestCase(TestCase):
                                      '203/Testler Export/813/Test_1/340535.txt',
                                      '207/Testler Export/917/Test_1/340535.txt',
                                      '109/Testler Export/901/Test_6/340535.txt'],
-            csv_file='../../data/all_features_waist.csv')
+            csv_file='../../data/all_features_waist.csv',
+            autocorr_num=11)
 
     @unittest.SkipTest
     def test_extract_features_and_save_RIGHT_THIGH(self):
@@ -84,4 +85,5 @@ class FeatureExtractionTestCase(TestCase):
                                      '103/Testler Export/911/Test_5/340539.txt',
                                      '109/Testler Export/901/Test_6/340539.txt',
                                      '108/Testler Export/918/Test_5/340539.txt'],
-            csv_file='../../data/all_features_right_thigh.csv')
+            csv_file='../../data/all_features_right_thigh.csv',
+            autocorr_num=11)

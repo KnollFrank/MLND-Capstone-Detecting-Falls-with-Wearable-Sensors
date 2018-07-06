@@ -23,10 +23,11 @@ class FeatureExtractorWorkflow:
         return pd.DataFrame(data={'sensorFile': [sensorFile], 'fall': isFall(sensorFile)})
 
 
-def extract_features_and_save(sensor, baseDir, sensor_files_to_exclude, csv_file):
+def extract_features_and_save(sensor, baseDir, sensor_files_to_exclude, csv_file, autocorr_num):
     sensor_files = SensorFilesProvider(baseDir, sensor, sensor_files_to_exclude).provide_sensor_files()
-    all_features = FeatureExtractorWorkflow(FeatureExtractor().extract_features).extract_features(sensor_files)
+    all_features = FeatureExtractorWorkflow(FeatureExtractor(autocorr_num).extract_features).extract_features(
+        sensor_files)
     all_features.to_csv(csv_file)
 
-# TODO: als Benchmark zusätzlich zu den im proposal definierten noch einen Schwellwert-Algorithmus z.B. für die totale Beschleunigung implementieren
-# TODO: alle features (autocorrelation und DFT) implementieren.
+# TODO: als Benchmark zusätzlich zu den im proposal definierten noch einen Schwellwert-Algorithmus z.B. für die totale Beschleunigung implementieren oder besser einen machine learning Algorithmus (z.B. SVM), der nur die totale Beschleunigung verwendet.
+# TODO: PCA aus Interesse anwenden, um herauszufinden, welche Features am wichtigsten sind.
