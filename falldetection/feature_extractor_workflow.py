@@ -27,3 +27,6 @@ def extract_features_and_save(sensor, baseDir, sensor_files_to_exclude, csv_file
     sensor_files = SensorFilesProvider(baseDir, sensor, sensor_files_to_exclude).provide_sensor_files()
     all_features = FeatureExtractorWorkflow(FeatureExtractor().extract_features).extract_features(sensor_files)
     all_features.to_csv(csv_file)
+
+# TODO: als Benchmark zusätzlich zu den im proposal definierten noch einen Schwellwert-Algorithmus z.B. für die totale Beschleunigung implementieren
+# TODO: alle features (autocorrelation und DFT) implementieren.
