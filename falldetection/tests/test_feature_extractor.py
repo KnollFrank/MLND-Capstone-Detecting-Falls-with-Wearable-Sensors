@@ -18,10 +18,13 @@ class FeatureExtractorTestCase(TestCase):
                   'Acc_X_max': [11.0],
                   'Mag_Z_min': [12.0],
                   'Mag_Z_max': [13.0]})
-        # TODO: DRY with similar print statements of actual and expected dataframes
-        pd.set_option('display.max_rows', 500)
-        pd.set_option('display.max_columns', 500)
-        pd.set_option('display.width', 1000)
+        set_display_options()
         print('\ndf_flattened_expected:\n', df_flattened_expected)
         print('df_flattened_actual:\n', df_flattened_actual)
         self.assertTrue(df_flattened_expected.equals(df_flattened_actual))
+
+
+def set_display_options():
+    pd.set_option('display.max_rows', 500)
+    pd.set_option('display.max_columns', 500)
+    pd.set_option('display.width', 1000)

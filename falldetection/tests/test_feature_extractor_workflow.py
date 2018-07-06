@@ -6,6 +6,7 @@ import pandas as pd
 from falldetection.feature_extractor_workflow import FeatureExtractorWorkflow, extract_features_and_save
 from falldetection.sensor import Sensor
 from falldetection.sensor_files_provider import SensorFilesProvider
+from falldetection.tests.test_feature_extractor import set_display_options
 
 
 class FeatureExtractionTestCase(TestCase):
@@ -56,9 +57,7 @@ class FeatureExtractionTestCase(TestCase):
         features_actual = feature_extractor.extract_features(sensor_files)
 
         # test
-        pd.set_option('display.max_rows', 500)
-        pd.set_option('display.max_columns', 500)
-        pd.set_option('display.width', 1000)
+        set_display_options()
         print('features_expected:\n', features_expected)
         print('features_actual:\n', features_actual)
         self.assertTrue(features_expected.equals(features_actual))
