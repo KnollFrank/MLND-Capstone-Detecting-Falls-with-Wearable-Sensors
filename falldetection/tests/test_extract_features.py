@@ -1,12 +1,15 @@
 from unittest import TestCase
 
 import pandas as pd
+from statsmodels.tsa.stattools import acovf
 
 from falldetection.extract_features import extract_features
 from falldetection.sensor_file_reader import read_sensor_file
 
 
 # TODO: alle features (autocorrelation und DFT) implementieren.
+
+
 class ExtractFeaturesTestCase(TestCase):
 
     # TODO: DRY with test_extract_features2
@@ -15,7 +18,7 @@ class ExtractFeaturesTestCase(TestCase):
             {'Acc_X': [1.0, 2.0, 3.0],
              'Gyr_X': [4.0, 5.0, 6.0]})
         features_actual = extract_features(df, autocorr_num=1)
-        print(features_actual)
+        print("features_actual:\n", features_actual)
 
         features_expected = pd.DataFrame(
             index=['min', 'max', 'mean', 'var', 'skew', 'kurtosis'],
@@ -44,8 +47,9 @@ class ExtractFeaturesTestCase(TestCase):
 
         features_expected.loc['kurtosis', :] = df.kurtosis()[features_expected.columns].values
 
-        features_expected.at['autocorr_lag_1', 'Acc_X'] = df['Acc_X'].autocorr(lag=1)
-        features_expected.at['autocorr_lag_1', 'Gyr_X'] = df['Gyr_X'].autocorr(lag=1)
+        features_expected.at['autocorr_lag_1', 'Acc_X'] = acovf(df['Acc_X'])[1]
+        features_expected.at['autocorr_lag_1', 'Gyr_X'] = acovf(df['Gyr_X'])[1]
+        print("features_expected:\n", features_expected)
 
         self.assertTrue(features_expected.equals(features_actual))
 
@@ -83,10 +87,10 @@ class ExtractFeaturesTestCase(TestCase):
 
         features_expected.loc['kurtosis', :] = df.kurtosis()[features_expected.columns].values
 
-        features_expected.at['autocorr_lag_1', 'Acc_X'] = df['Acc_X'].autocorr(lag=1)
-        features_expected.at['autocorr_lag_2', 'Acc_X'] = df['Acc_X'].autocorr(lag=2)
-        features_expected.at['autocorr_lag_1', 'Gyr_X'] = df['Gyr_X'].autocorr(lag=1)
-        features_expected.at['autocorr_lag_2', 'Gyr_X'] = df['Gyr_X'].autocorr(lag=2)
+        features_expected.at['autocorr_lag_1', 'Acc_X'] = acovf(df['Acc_X'])[1]
+        features_expected.at['autocorr_lag_2', 'Acc_X'] = acovf(df['Acc_X'])[2]
+        features_expected.at['autocorr_lag_1', 'Gyr_X'] = acovf(df['Gyr_X'])[1]
+        features_expected.at['autocorr_lag_2', 'Gyr_X'] = acovf(df['Gyr_X'])[2]
 
         self.assertTrue(features_expected.equals(features_actual))
 

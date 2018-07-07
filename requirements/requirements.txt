@@ -5,3 +5,4 @@ pandas
 ipykernel
 pytest
 scipy
+statsmodels
