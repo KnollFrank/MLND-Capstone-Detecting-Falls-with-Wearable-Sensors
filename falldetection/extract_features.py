@@ -4,32 +4,26 @@ from statsmodels.tsa.stattools import acovf
 
 
 def extract_features(df, autocorr_num):
-    features = pd.DataFrame(
-        columns=df.columns,
-        dtype=np.float64)
+    features = pd.DataFrame(columns=df.columns, dtype=np.float64)
 
-    def order_by_column(series):
-        return series[features.columns].values
+    def add_2_features(index, df):
+        def order_by_column(series):
+            return series[features.columns].values
 
-    def autocovariance(df, lag):
-        return df.apply(lambda col: acovf(col)[lag], axis='index')
+        features.loc[index, :] = order_by_column(df)
 
-    features.loc['min', :] = order_by_column(df.min())
-    features.loc['max', :] = order_by_column(df.max())
-    features.loc['mean', :] = order_by_column(df.mean())
-    features.loc['var', :] = order_by_column(df.var(ddof=0))
-    features.loc['skew', :] = order_by_column(df.skew())
-    features.loc['kurtosis', :] = order_by_column(df.kurtosis())
-    # TODO: refactor
-    for lag in range(1, autocorr_num + 1):
-        features.loc[create_autocorr_index(lag), :] = order_by_column(autocovariance(df, lag=lag))
+    def add_autocovariance_of_df_2_features():
+        def autocovariance_of_df(lag):
+            return df.apply(lambda col: acovf(col)[lag], axis='index')
+
+        for lag in range(1, autocorr_num + 1):
+            add_2_features('autocorr_lag_' + str(lag), autocovariance_of_df(lag=lag))
+
+    add_2_features('min', df.min())
+    add_2_features('max', df.max())
+    add_2_features('mean', df.mean())
+    add_2_features('var', df.var(ddof=0))
+    add_2_features('skew', df.skew())
+    add_2_features('kurtosis', df.kurtosis())
+    add_autocovariance_of_df_2_features()
     return features
-
-
-# TODO: refactor
-def create_autocorr_indices(autocorr_num):
-    return [create_autocorr_index(lag) for lag in range(1, autocorr_num + 1)]
-
-
-def create_autocorr_index(lag):
-    return 'autocorr_lag_' + str(lag)
