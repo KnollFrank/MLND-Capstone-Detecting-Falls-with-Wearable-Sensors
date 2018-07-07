@@ -77,7 +77,7 @@ class FeatureExtractionTestCase(TestCase):
                                      '103/Testler Export/917/Test_4/340535.txt',
                                      '205/Testler Export/917/Test_5/340535.txt',
                                      '107/Testler Export/917/Test_3/340535.txt'],
-            csv_file='../../data/all_features_waist.csv',
+            csv_file='../../data/features_waist.csv',
             autocorr_num=11)
 
     @unittest.SkipTest
@@ -90,5 +90,5 @@ class FeatureExtractionTestCase(TestCase):
                                      '103/Testler Export/911/Test_5/340539.txt',
                                      '109/Testler Export/901/Test_6/340539.txt',
                                      '108/Testler Export/918/Test_5/340539.txt'],
-            csv_file='../../data/all_features_right_thigh.csv',
+            csv_file='../../data/features_right_thigh.csv',
             autocorr_num=11)
