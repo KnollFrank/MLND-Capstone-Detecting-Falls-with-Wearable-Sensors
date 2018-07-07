@@ -78,7 +78,8 @@ class FeatureExtractionTestCase(TestCase):
                                      '205/Testler Export/917/Test_5/340535.txt',
                                      '107/Testler Export/917/Test_3/340535.txt'],
             csv_file='../../data/features_waist.csv',
-            autocorr_num=11)
+            autocorr_num=11,
+            dft_amplitudes_num=5)
 
     @unittest.SkipTest
     def test_extract_features_and_save_RIGHT_THIGH(self):
@@ -93,4 +94,5 @@ class FeatureExtractionTestCase(TestCase):
                                      '208/Testler Export/904/Test_6/340539.txt',
                                      '207/Testler Export/904/Test_4/340539.txt'],
             csv_file='../../data/features_right_thigh.csv',
-            autocorr_num=11)
+            autocorr_num=11,
+            dft_amplitudes_num=5)

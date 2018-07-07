@@ -12,8 +12,9 @@ logger = logging.getLogger(__name__)
 
 class FeatureExtractor:
 
-    def __init__(self, autocorr_num) -> None:
+    def __init__(self, autocorr_num, dft_amplitudes_num) -> None:
         self.autocorr_num = autocorr_num
+        self.dft_amplitudes_num = dft_amplitudes_num
 
     def extract_features(self, sensorFile):
         logger.debug('default_feature_extractor(%s)', sensorFile)
@@ -23,7 +24,8 @@ class FeatureExtractor:
                     read_sensor_file(sensorFile),
                     half_window_size=50,
                     index_error_msg=sensorFile),
-                autocorr_num=self.autocorr_num))
+                autocorr_num=self.autocorr_num,
+                dft_amplitudes_num=self.dft_amplitudes_num))
 
     @staticmethod
     def flatten_data_frame(df):

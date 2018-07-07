@@ -23,9 +23,10 @@ class FeatureExtractorWorkflow:
         return pd.DataFrame(data={'sensorFile': [sensorFile], 'fall': isFall(sensorFile)})
 
 
-def extract_features_and_save(sensor, baseDir, sensor_files_to_exclude, csv_file, autocorr_num):
+def extract_features_and_save(sensor, baseDir, sensor_files_to_exclude, csv_file, autocorr_num, dft_amplitudes_num):
     sensor_files = SensorFilesProvider(baseDir, sensor, sensor_files_to_exclude).provide_sensor_files()
-    features = FeatureExtractorWorkflow(FeatureExtractor(autocorr_num).extract_features).extract_features(sensor_files)
+    feature_extractor = FeatureExtractor(autocorr_num=autocorr_num, dft_amplitudes_num=dft_amplitudes_num)
+    features = FeatureExtractorWorkflow(feature_extractor.extract_features).extract_features(sensor_files)
     features.to_csv(csv_file)
 
 # TODO: als Benchmark zusätzlich zu den im proposal definierten noch einen Schwellwert-Algorithmus z.B. für die totale Beschleunigung implementieren oder besser einen machine learning Algorithmus (z.B. SVM), der nur die totale Beschleunigung verwendet.
