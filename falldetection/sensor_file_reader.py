@@ -1,7 +1,6 @@
 import pandas as pd
 
 
-# maybe-TODO: verwende comment-Parameter statt skiprows?
 def read_sensor_file(sensorFile):
     df = pd.read_csv(sensorFile,
                      skiprows=4,
