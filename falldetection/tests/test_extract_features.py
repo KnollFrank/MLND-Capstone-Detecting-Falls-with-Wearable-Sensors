@@ -21,7 +21,6 @@ class ExtractFeaturesTestCase(TestCase):
         print("features_actual:\n", features_actual)
 
         features_expected = pd.DataFrame(
-            index=['min', 'max', 'mean', 'var', 'skew', 'kurtosis'],
             columns=['Acc_X', 'Gyr_X'],
             dtype=pd.np.float64)
         features_expected.at['min', 'Acc_X'] = 1.0
@@ -61,7 +60,6 @@ class ExtractFeaturesTestCase(TestCase):
         print(features_actual)
 
         features_expected = pd.DataFrame(
-            index=['min', 'max', 'mean', 'var', 'skew', 'kurtosis'],
             columns=['Acc_X', 'Gyr_X'],
             dtype=pd.np.float64)
         features_expected.at['min', 'Acc_X'] = 1.0

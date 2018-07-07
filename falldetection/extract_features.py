@@ -5,7 +5,6 @@ from statsmodels.tsa.stattools import acovf
 
 def extract_features(df, autocorr_num):
     features = pd.DataFrame(
-        index=['min', 'max', 'mean', 'var', 'skew', 'kurtosis'] + create_autocorr_indices(autocorr_num),
         columns=df.columns,
         dtype=np.float64)
 
