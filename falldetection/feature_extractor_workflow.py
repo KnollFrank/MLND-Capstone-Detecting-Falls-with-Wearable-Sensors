@@ -31,4 +31,4 @@ def extract_features_and_save(sensor, baseDir, sensor_files_to_exclude, csv_file
 
 # TODO: als Benchmark zusätzlich zu den im proposal definierten noch einen Schwellwert-Algorithmus z.B. für die totale Beschleunigung implementieren oder besser einen machine learning Algorithmus (z.B. SVM), der nur die totale Beschleunigung verwendet.
 # TODO: PCA aus Interesse anwenden, um herauszufinden, welche Features am wichtigsten sind.
-# TODO: teste neuronales Netz, das ohne die Features auskommt, sondern direkt mit den Rohdaten (Time Series) arbeitet.
+# TODO: teste neuronales Netz, das ohne die Features auskommt, sondern direkt mit den Rohdaten (Time Series) arbeitet. Lese dazu das Paper "Time Series Classification from Scratch with Deep Neural Networks: A Strong Baseline"
