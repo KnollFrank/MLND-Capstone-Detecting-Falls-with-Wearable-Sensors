@@ -1,3 +1,4 @@
+# adapted from finding_donors project
 ###########################################
 # Suppress matplotlib user warnings
 # Necessary for newer version of matplotlib
