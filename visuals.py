@@ -117,24 +117,25 @@ def evaluate(results, accuracy, f1):
     pl.show()
 
 
-def feature_plot(importances, X_train):
+def feature_plot(importances, X_train, num_features):
     # Display the five most important features
     indices = np.argsort(importances)[::-1]
-    columns = X_train.columns.values[indices[:5]]
-    values = importances[indices][:5]
+    columns = X_train.columns.values[indices[:num_features]]
+    values = importances[indices][:num_features]
 
     # Creat the plot
     fig = pl.figure(figsize=(9, 5))
-    pl.title("Normalized Weights for First Five Most Predictive Features", fontsize=16)
-    pl.bar(np.arange(5), values, width=0.6, align="center", color='#00A000', \
+    pl.title("Normalized Weights for First " + str(num_features) + " Most Predictive Features", fontsize=16)
+    pl.bar(np.arange(num_features), values, width=0.6, align="center", color='#00A000', \
            label="Feature Weight")
-    pl.bar(np.arange(5) - 0.3, np.cumsum(values), width=0.2, align="center", color='#00A0A0', \
+    pl.bar(np.arange(num_features) - 0.3, np.cumsum(values), width=0.2, align="center", color='#00A0A0', \
            label="Cumulative Feature Weight")
-    pl.xticks(np.arange(5), columns)
-    pl.xlim((-0.5, 4.5))
+    pl.xticks(np.arange(num_features), columns)
+    pl.xlim((-0.5, num_features - .5))
     pl.ylabel("Weight", fontsize=12)
     pl.xlabel("Feature", fontsize=12)
 
     pl.legend(loc='upper center')
     pl.tight_layout()
     pl.show()
+    return columns
