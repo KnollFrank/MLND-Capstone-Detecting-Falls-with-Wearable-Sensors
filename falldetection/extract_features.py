@@ -35,5 +35,5 @@ def extract_features(df, autocorr_num, dft_amplitudes_num):
     add_2_features('skew', df.skew())
     add_2_features('kurtosis', df.kurtosis())
     add_autocovariance_of_df_2_features()
-    # add_dft_amplitudes_of_df_2_features()
+    add_dft_amplitudes_of_df_2_features()
     return features
