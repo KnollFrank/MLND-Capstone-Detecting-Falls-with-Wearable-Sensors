@@ -117,7 +117,7 @@ def evaluate(results, accuracy, f1):
     pl.show()
 
 
-def feature_plot(importances, X_train, y_train):
+def feature_plot(importances, X_train):
     # Display the five most important features
     indices = np.argsort(importances)[::-1]
     columns = X_train.columns.values[indices[:5]]
