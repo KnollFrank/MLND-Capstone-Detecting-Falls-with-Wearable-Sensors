@@ -1,6 +1,7 @@
 import pandas as pd
 
 
+# TODO: verwende bei read_csv index_col
 def read_sensor_file(sensorFile):
     df = pd.read_csv(sensorFile,
                      skiprows=4,
