@@ -30,12 +30,12 @@ class FeatureExtractorWorkflow4LSTM:
 def extract_features_4_LSTM(sensor, baseDir, sensor_files_to_exclude, columns):
     sensor_files = SensorFilesProvider(baseDir, sensor, sensor_files_to_exclude).provide_sensor_files()
 
+    # TODO: DRY with feature_extractor.py
     def sensor_file_2_df(sensorFile):
         return get_window_around_maximum_total_acceleration(
             read_sensor_file(sensorFile),
             half_window_size=50,
             index_error_msg=sensorFile)
 
-    feature_extractor = FeatureExtractor4LSTM(sensor_file_2_df, columns)
     features = FeatureExtractorWorkflow4LSTM(sensor_file_2_df, columns).extract_features(sensor_files)
     return features
