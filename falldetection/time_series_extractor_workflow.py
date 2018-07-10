@@ -27,6 +27,6 @@ class TimeSeriesExtractorWorkflow:
 def extract_time_series(sensor, baseDir, columns):
     sensor_files = SensorFilesProvider(baseDir, sensor, get_sensor_files_to_exclude_for(sensor)).provide_sensor_files()
     time_series = TimeSeriesExtractorWorkflow(
-        TimeSeriesExtractor(FeatureExtractor.sensor_file_2_df, columns)).extract_time_series(
-        sensor_files)
+        sensor_file_2_df=TimeSeriesExtractor(FeatureExtractor.sensor_file_2_df, columns)).extract_time_series(
+        columns=sensor_files)
     return time_series

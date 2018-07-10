@@ -13,8 +13,9 @@ class TimeSeriesExtractorTestCase(TestCase):
         # GIVEN
         sensorFile = '../data/FallDataSet/209/Testler Export/916/Test_1/340535.txt'
         df = pd.DataFrame({'Acc_X': [1.0, 2.0, 3.0], 'Acc_Y': [4.0, 5.0, 6.0]})
-        time_series_extractor = TimeSeriesExtractor(lambda sensor_file: {sensorFile: df}[sensor_file],
-                                                    ['Acc_X', 'Acc_Y'])
+        time_series_extractor = TimeSeriesExtractor(
+            sensor_file_2_df=lambda sensor_file: {sensorFile: df}[sensor_file],
+            columns=['Acc_X', 'Acc_Y'])
 
         # WHEN
         X_actual, y_actual = time_series_extractor.extract_time_series(sensorFile)

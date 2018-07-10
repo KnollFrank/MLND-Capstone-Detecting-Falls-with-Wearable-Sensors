@@ -20,7 +20,7 @@ class FeatureExtractor:
         logger.debug('default_feature_extractor(%s)', sensorFile)
         return self.flatten_data_frame(
             extract_features(
-                self.sensor_file_2_df(sensorFile),
+                df=self.sensor_file_2_df(sensorFile),
                 autocorr_num=self.autocorr_num,
                 dft_amplitudes_num=self.dft_amplitudes_num))
 
