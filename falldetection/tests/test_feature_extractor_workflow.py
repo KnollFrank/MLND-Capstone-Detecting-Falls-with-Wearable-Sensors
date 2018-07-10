@@ -11,7 +11,7 @@ from falldetection.tests.test_feature_extractor import set_display_options
 
 class FeatureExtractorWorkflowTestCase(TestCase):
 
-    def test_extract_features1(self):
+    def test_extract_features(self):
         # GIVEN
         feature_extractor = FeatureExtractorWorkflow(
             lambda sensorFile: {
