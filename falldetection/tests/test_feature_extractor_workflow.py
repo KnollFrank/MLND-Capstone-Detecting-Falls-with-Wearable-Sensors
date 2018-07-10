@@ -9,10 +9,10 @@ from falldetection.sensor_files_provider import SensorFilesProvider
 from falldetection.tests.test_feature_extractor import set_display_options
 
 
-class FeatureExtractionTestCase(TestCase):
+class FeatureExtractorWorkflowTestCase(TestCase):
 
     def test_extract_features1(self):
-        # build
+        # GIVEN
         feature_extractor = FeatureExtractorWorkflow(lambda sensorFile: {
             '../../data/FallDataSet-Test/209/Testler Export/914/Test_1/340535.txt': pd.DataFrame(data=[[1.0, 1.1]],
                                                                                                  columns=['feature_0',
@@ -53,10 +53,10 @@ class FeatureExtractionTestCase(TestCase):
                 'feature_1': [1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7]
             })
 
-        # execute
+        # WHEN
         features_actual = feature_extractor.extract_features(sensor_files)
 
-        # test
+        # THEN
         set_display_options()
         print('features_expected:\n', features_expected)
         print('features_actual:\n', features_actual)
