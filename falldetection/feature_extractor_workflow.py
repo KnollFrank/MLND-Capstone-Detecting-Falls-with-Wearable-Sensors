@@ -25,6 +25,7 @@ class FeatureExtractorWorkflow:
 
 
 def extract_features_and_save(sensor, baseDir, csv_file, autocorr_num, dft_amplitudes_num):
+    # TODO: refactor by extract method
     sensor_files = SensorFilesProvider(baseDir, sensor, get_sensor_files_to_exclude_for(sensor)).provide_sensor_files()
     feature_extractor = FeatureExtractor(autocorr_num=autocorr_num, dft_amplitudes_num=dft_amplitudes_num)
     features = FeatureExtractorWorkflow(feature_extractor.extract_features).extract_features(sensor_files)
