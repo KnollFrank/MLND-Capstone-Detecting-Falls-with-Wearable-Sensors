@@ -4,15 +4,15 @@ from unittest import TestCase
 import numpy as np
 import pandas as pd
 
-from falldetection.feature_extractor_4_LSTM import FeatureExtractor4LSTM
-from falldetection.feature_extractor_workflow_4_LSTM import FeatureExtractorWorkflow4LSTM, extract_features_4_LSTM
 from falldetection.sensor import Sensor
+from falldetection.time_series_extractor import TimeSeriesExtractor
+from falldetection.time_series_extractor_workflow import TimeSeriesExtractorWorkflow, extract_time_series
 
 
-class FeatureExtractorWorkflow4LSTMTestCase(TestCase):
+class TimeSeriesExtractorWorkflowTestCase(TestCase):
 
-    def test_extract_features1(self):
-        self.__test_extract_features(
+    def test_extract_time_series1(self):
+        self.__test_extract_time_series(
             df_by_sensor_file={
                 '../../data/FallDataSet-Test/209/Testler Export/914/Test_1/340535.txt':
                     pd.DataFrame({'Acc_X': [1.0, 2.0, 3.0], 'Acc_Y': [4.0, 5.0, 6.0]}),
@@ -29,8 +29,8 @@ class FeatureExtractorWorkflow4LSTMTestCase(TestCase):
                                   [30.0, 60.0]]]),
             y_expected=np.array([[True], [False]]))
 
-    def test_extract_features2(self):
-        self.__test_extract_features(
+    def test_extract_time_series2(self):
+        self.__test_extract_time_series(
             df_by_sensor_file={
                 '../../data/FallDataSet-Test/209/Testler Export/814/Test_1/340535.txt':
                     pd.DataFrame({'Acc_X': [1.0], 'Mag_X': [4.0]}),
@@ -41,34 +41,34 @@ class FeatureExtractorWorkflow4LSTMTestCase(TestCase):
             X_expected=np.array([[[4.0, 1.0]], [[40.0, 10.0]]]),
             y_expected=np.array([[False], [False]]))
 
-    def __test_extract_features(self, df_by_sensor_file, columns, X_expected, y_expected):
+    def __test_extract_time_series(self, df_by_sensor_file, columns, X_expected, y_expected):
         # GIVEN
-        feature_extractor_4_lstm = \
-            FeatureExtractorWorkflow4LSTM(
-                FeatureExtractor4LSTM(
+        time_series_extractor_workflow = \
+            TimeSeriesExtractorWorkflow(
+                TimeSeriesExtractor(
                     sensor_file_2_df=df_by_sensor_file.get,
                     columns=columns))
 
         sensor_files = df_by_sensor_file.keys()
 
         # WHEN
-        X_actual, y_actual = feature_extractor_4_lstm.extract_features(sensor_files)
+        X_actual, y_actual = time_series_extractor_workflow.extract_time_series(sensor_files)
 
         # THEN
         self.assertEquals(X_expected.tolist(), X_actual.tolist())
         self.assertEquals(y_expected.tolist(), y_actual.tolist())
 
     @unittest.SkipTest
-    def test_extract_features_4_LSTM_RIGHT_THIGH(self):
-        features = extract_features_4_LSTM(
+    def test_extract_time_series_RIGHT_THIGH(self):
+        features = extract_time_series(
             sensor=Sensor.RIGHT_THIGH,
             baseDir='../../data/FallDataSet',
             columns=['Acc_X', 'Acc_Y', 'Acc_Z', 'Gyr_X', 'Gyr_Y', 'Gyr_Z', 'Mag_X', 'Mag_Y', 'Mag_Z'])
         print("features: ", features)
 
     @unittest.SkipTest
-    def test_extract_features_4_LSTM_WAIST(self):
-        features = extract_features_4_LSTM(
+    def test_extract_time_series_WAIST(self):
+        features = extract_time_series(
             sensor=Sensor.WAIST,
             baseDir='../../data/FallDataSet',
             columns=['Acc_X', 'Acc_Y', 'Acc_Z', 'Gyr_X', 'Gyr_Y', 'Gyr_Z', 'Mag_X', 'Mag_Y', 'Mag_Z'])
