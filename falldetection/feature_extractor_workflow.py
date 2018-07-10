@@ -25,10 +25,22 @@ class FeatureExtractorWorkflow:
 
 
 def extract_features_and_save(sensor, baseDir, csv_file, autocorr_num, dft_amplitudes_num):
-    # TODO: refactor by extract method
-    sensor_files = SensorFilesProvider(baseDir, sensor, get_sensor_files_to_exclude_for(sensor)).provide_sensor_files()
-    feature_extractor = FeatureExtractor(autocorr_num=autocorr_num, dft_amplitudes_num=dft_amplitudes_num)
-    features = FeatureExtractorWorkflow(feature_extractor.extract_features).extract_features(sensor_files)
+    def extract_features():
+        def get_sensor_files():
+            return createSensorFilesProvider().provide_sensor_files()
+
+        def createSensorFilesProvider():
+            return SensorFilesProvider(baseDir, sensor, get_sensor_files_to_exclude_for(sensor))
+
+        def createFeatureExtractorWorkflow():
+            return FeatureExtractorWorkflow(create_feature_extractor())
+
+        def create_feature_extractor():
+            return FeatureExtractor(autocorr_num, dft_amplitudes_num).extract_features
+
+        return createFeatureExtractorWorkflow().extract_features(get_sensor_files())
+
+    features = extract_features()
     features.to_csv(csv_file)
 
 # TODO: als Benchmark zusätzlich zu den im proposal definierten noch einen Schwellwert-Algorithmus z.B. für die totale Beschleunigung implementieren oder besser einen machine learning Algorithmus (z.B. SVM), der nur die totale Beschleunigung verwendet.
