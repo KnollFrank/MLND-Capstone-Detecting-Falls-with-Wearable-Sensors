@@ -10,13 +10,6 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def sensor_file_2_df(sensorFile):
-    return get_window_around_maximum_total_acceleration(
-        read_sensor_file(sensorFile),
-        half_window_size=50,
-        index_error_msg=sensorFile)
-
-
 class FeatureExtractor:
 
     def __init__(self, autocorr_num, dft_amplitudes_num) -> None:
@@ -27,12 +20,16 @@ class FeatureExtractor:
         logger.debug('default_feature_extractor(%s)', sensorFile)
         return self.flatten_data_frame(
             extract_features(
-                get_window_around_maximum_total_acceleration(
-                    read_sensor_file(sensorFile),
-                    half_window_size=50,
-                    index_error_msg=sensorFile),
+                self.sensor_file_2_df(sensorFile),
                 autocorr_num=self.autocorr_num,
                 dft_amplitudes_num=self.dft_amplitudes_num))
+
+    @staticmethod
+    def sensor_file_2_df(sensorFile):
+        return get_window_around_maximum_total_acceleration(
+            read_sensor_file(sensorFile),
+            half_window_size=50,
+            index_error_msg=sensorFile)
 
     @staticmethod
     def flatten_data_frame(df):
