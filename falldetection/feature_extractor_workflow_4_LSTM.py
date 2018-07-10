@@ -3,6 +3,7 @@ import numpy as np
 from falldetection.feature_extractor import FeatureExtractor
 from falldetection.feature_extractor_4_LSTM import FeatureExtractor4LSTM
 from falldetection.sensor_files_provider import SensorFilesProvider
+from falldetection.sensor_files_to_exclude import get_sensor_files_to_exclude_for
 
 
 class FeatureExtractorWorkflow4LSTM:
@@ -23,8 +24,8 @@ class FeatureExtractorWorkflow4LSTM:
         return X, y
 
 
-def extract_features_4_LSTM(sensor, baseDir, sensor_files_to_exclude, columns):
-    sensor_files = SensorFilesProvider(baseDir, sensor, sensor_files_to_exclude).provide_sensor_files()
+def extract_features_4_LSTM(sensor, baseDir, columns):
+    sensor_files = SensorFilesProvider(baseDir, sensor, get_sensor_files_to_exclude_for(sensor)).provide_sensor_files()
     features = FeatureExtractorWorkflow4LSTM(
         FeatureExtractor4LSTM(FeatureExtractor.sensor_file_2_df, columns)).extract_features(
         sensor_files)

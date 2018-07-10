@@ -7,7 +7,6 @@ import pandas as pd
 from falldetection.feature_extractor_4_LSTM import FeatureExtractor4LSTM
 from falldetection.feature_extractor_workflow_4_LSTM import FeatureExtractorWorkflow4LSTM, extract_features_4_LSTM
 from falldetection.sensor import Sensor
-from falldetection.sensor_files_to_exclude import get_sensor_files_to_exclude_for
 
 
 class FeatureExtractorWorkflow4LSTMTestCase(TestCase):
@@ -61,20 +60,16 @@ class FeatureExtractorWorkflow4LSTMTestCase(TestCase):
 
     @unittest.SkipTest
     def test_extract_features_4_LSTM_RIGHT_THIGH(self):
-        sensor = Sensor.RIGHT_THIGH
         features = extract_features_4_LSTM(
-            sensor=sensor,
+            sensor=Sensor.RIGHT_THIGH,
             baseDir='../../data/FallDataSet',
-            sensor_files_to_exclude=get_sensor_files_to_exclude_for(sensor),
             columns=['Acc_X', 'Acc_Y', 'Acc_Z', 'Gyr_X', 'Gyr_Y', 'Gyr_Z', 'Mag_X', 'Mag_Y', 'Mag_Z'])
         print("features: ", features)
 
     @unittest.SkipTest
     def test_extract_features_4_LSTM_WAIST(self):
-        sensor = Sensor.WAIST
         features = extract_features_4_LSTM(
-            sensor=sensor,
+            sensor=Sensor.WAIST,
             baseDir='../../data/FallDataSet',
-            sensor_files_to_exclude=get_sensor_files_to_exclude_for(sensor),
             columns=['Acc_X', 'Acc_Y', 'Acc_Z', 'Gyr_X', 'Gyr_Y', 'Gyr_Z', 'Mag_X', 'Mag_Y', 'Mag_Z'])
         print("features: ", features)

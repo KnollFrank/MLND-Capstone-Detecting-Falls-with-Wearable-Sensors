@@ -3,6 +3,7 @@ import pandas as pd
 from falldetection.fall_predicate import isFall
 from falldetection.feature_extractor import FeatureExtractor
 from falldetection.sensor_files_provider import SensorFilesProvider
+from falldetection.sensor_files_to_exclude import get_sensor_files_to_exclude_for
 
 
 class FeatureExtractorWorkflow:
@@ -23,8 +24,8 @@ class FeatureExtractorWorkflow:
         return pd.DataFrame(data={'sensorFile': [sensorFile], 'fall': isFall(sensorFile)})
 
 
-def extract_features_and_save(sensor, baseDir, sensor_files_to_exclude, csv_file, autocorr_num, dft_amplitudes_num):
-    sensor_files = SensorFilesProvider(baseDir, sensor, sensor_files_to_exclude).provide_sensor_files()
+def extract_features_and_save(sensor, baseDir, csv_file, autocorr_num, dft_amplitudes_num):
+    sensor_files = SensorFilesProvider(baseDir, sensor, get_sensor_files_to_exclude_for(sensor)).provide_sensor_files()
     feature_extractor = FeatureExtractor(autocorr_num=autocorr_num, dft_amplitudes_num=dft_amplitudes_num)
     features = FeatureExtractorWorkflow(feature_extractor.extract_features).extract_features(sensor_files)
     features.to_csv(csv_file)

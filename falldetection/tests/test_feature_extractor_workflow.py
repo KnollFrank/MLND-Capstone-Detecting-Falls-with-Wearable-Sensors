@@ -6,7 +6,6 @@ import pandas as pd
 from falldetection.feature_extractor_workflow import FeatureExtractorWorkflow, extract_features_and_save
 from falldetection.sensor import Sensor
 from falldetection.sensor_files_provider import SensorFilesProvider
-from falldetection.sensor_files_to_exclude import get_sensor_files_to_exclude_for
 from falldetection.tests.test_feature_extractor import set_display_options
 
 
@@ -66,22 +65,18 @@ class FeatureExtractorWorkflowTestCase(TestCase):
 
     @unittest.SkipTest
     def test_extract_features_and_save_WAIST(self):
-        sensor = Sensor.WAIST
         extract_features_and_save(
-            sensor=sensor,
+            sensor=Sensor.WAIST,
             baseDir='../../data/FallDataSet',
-            sensor_files_to_exclude=get_sensor_files_to_exclude_for(sensor),
             csv_file='../../data/features_waist.csv',
             autocorr_num=11,
             dft_amplitudes_num=0)
 
     @unittest.SkipTest
     def test_extract_features_and_save_RIGHT_THIGH(self):
-        sensor = Sensor.RIGHT_THIGH
         extract_features_and_save(
-            sensor=sensor,
+            sensor=Sensor.RIGHT_THIGH,
             baseDir='../../data/FallDataSet',
-            sensor_files_to_exclude=get_sensor_files_to_exclude_for(sensor),
             csv_file='../../data/features_right_thigh.csv',
             autocorr_num=11,
             dft_amplitudes_num=0)
