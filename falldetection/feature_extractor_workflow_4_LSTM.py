@@ -10,8 +10,7 @@ class FeatureExtractorWorkflow4LSTM:
         self.columns = columns
 
     def extract_features(self, sensorFiles):
-        # TODO: als lambda-Ausdruck schreiben mit apply
-        X, y = self.__unzip([self.__extract_features_4_sensorFile(sensorFile) for sensorFile in sensorFiles])
+        X, y = self.__unzip(map(self.__extract_features_4_sensorFile, sensorFiles))
         return np.array(X), np.array(y)
 
     def __extract_features_4_sensorFile(self, sensorFile):
