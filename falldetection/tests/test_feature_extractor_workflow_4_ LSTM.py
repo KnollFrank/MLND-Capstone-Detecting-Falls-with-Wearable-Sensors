@@ -1,9 +1,11 @@
+import unittest
 from unittest import TestCase
 
 import numpy as np
 import pandas as pd
 
-from falldetection.feature_extractor_workflow_4_LSTM import FeatureExtractorWorkflow4LSTM
+from falldetection.feature_extractor_workflow_4_LSTM import FeatureExtractorWorkflow4LSTM, extract_features_4_LSTM
+from falldetection.sensor import Sensor
 
 
 class FeatureExtractorWorkflow4LSTMTestCase(TestCase):
@@ -15,7 +17,7 @@ class FeatureExtractorWorkflow4LSTMTestCase(TestCase):
                         '../../data/FallDataSet-Test/209/Testler Export/814/Test_6/340535.txt']
 
         feature_extractor_4_lstm = FeatureExtractorWorkflow4LSTM(
-            feature_extractor=lambda sensorFile: {
+            sensor_file_2_df=lambda sensorFile: {
                 sensor_files[0]:
                     pd.DataFrame({'Acc_X': [1.0, 2.0, 3.0], 'Acc_Y': [4.0, 5.0, 6.0]}),
 
@@ -45,7 +47,7 @@ class FeatureExtractorWorkflow4LSTMTestCase(TestCase):
                         '../../data/FallDataSet-Test/209/Testler Export/814/Test_6/340535.txt']
 
         feature_extractor_4_lstm = FeatureExtractorWorkflow4LSTM(
-            feature_extractor=lambda sensorFile: {
+            sensor_file_2_df=lambda sensorFile: {
                 sensor_files[0]:
                     pd.DataFrame({'Acc_X': [1.0], 'Mag_X': [4.0]}),
 
@@ -62,3 +64,18 @@ class FeatureExtractorWorkflow4LSTMTestCase(TestCase):
         y_expected = np.array([[False], [False]])
         self.assertEquals(X_expected.tolist(), X_actual.tolist())
         self.assertEquals(y_expected.tolist(), y_actual.tolist())
+
+    @unittest.SkipTest
+    def test_extract_features_and_save_RIGHT_THIGH(self):
+        features = extract_features_4_LSTM(
+            sensor=Sensor.RIGHT_THIGH,
+            baseDir='../../data/FallDataSet',
+            sensor_files_to_exclude=['208/Testler Export/805/Test_1/340539.txt',
+                                     '203/Testler Export/813/Test_1/340539.txt',
+                                     '103/Testler Export/911/Test_5/340539.txt',
+                                     '109/Testler Export/901/Test_6/340539.txt',
+                                     '108/Testler Export/918/Test_5/340539.txt',
+                                     '208/Testler Export/904/Test_6/340539.txt',
+                                     '207/Testler Export/904/Test_4/340539.txt'],
+            columns=['Acc_X'])
+        print("features: ", features)
