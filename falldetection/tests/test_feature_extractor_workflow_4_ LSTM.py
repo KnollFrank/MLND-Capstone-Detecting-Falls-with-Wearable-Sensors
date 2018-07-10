@@ -7,6 +7,7 @@ import pandas as pd
 from falldetection.feature_extractor_4_LSTM import FeatureExtractor4LSTM
 from falldetection.feature_extractor_workflow_4_LSTM import FeatureExtractorWorkflow4LSTM, extract_features_4_LSTM
 from falldetection.sensor import Sensor
+from falldetection.sensor_files_to_exclude import get_sensor_files_to_exclude_for
 
 
 class FeatureExtractorWorkflow4LSTMTestCase(TestCase):
@@ -59,17 +60,13 @@ class FeatureExtractorWorkflow4LSTMTestCase(TestCase):
         self.assertEquals(y_expected.tolist(), y_actual.tolist())
 
     @unittest.SkipTest
-    def test_extract_features_and_save_RIGHT_THIGH(self):
+    def test_extract_features_4_LSTM_RIGHT_THIGH(self):
+        sensor = Sensor.RIGHT_THIGH
         features = extract_features_4_LSTM(
-            sensor=Sensor.RIGHT_THIGH,
+            sensor=sensor,
             baseDir='../../data/FallDataSet',
-            # TODO: DRY: genau dieselben sensor_files_to_exclude gibt es auch in test_feature_extractor_workflow.py und im Jupyter Notebook
-            sensor_files_to_exclude=['208/Testler Export/805/Test_1/340539.txt',
-                                     '203/Testler Export/813/Test_1/340539.txt',
-                                     '103/Testler Export/911/Test_5/340539.txt',
-                                     '109/Testler Export/901/Test_6/340539.txt',
-                                     '108/Testler Export/918/Test_5/340539.txt',
-                                     '208/Testler Export/904/Test_6/340539.txt',
-                                     '207/Testler Export/904/Test_4/340539.txt'],
-            columns=['Acc_X'])
+            sensor_files_to_exclude=get_sensor_files_to_exclude_for(sensor),
+            columns=['Acc_X', 'Acc_Y', 'Acc_Z', 'Gyr_X', 'Gyr_Y', 'Gyr_Z', 'Mag_X', 'Mag_Y', 'Mag_Z'])
         print("features: ", features)
+
+# maybe-TODO: add function test_extract_features_4_LSTM_WAIST
