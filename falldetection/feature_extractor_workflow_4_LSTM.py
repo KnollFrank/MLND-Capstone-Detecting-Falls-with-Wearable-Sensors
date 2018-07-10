@@ -23,7 +23,6 @@ class FeatureExtractorWorkflow4LSTM:
         return X, y
 
 
-# TODO: FeatureExtractor4LSTM hat columns und FeatureExtractorWorkflow4LSTM auch. Das ist einer zu viel, oder?
 def extract_features_4_LSTM(sensor, baseDir, sensor_files_to_exclude, columns):
     sensor_files = SensorFilesProvider(baseDir, sensor, sensor_files_to_exclude).provide_sensor_files()
     features = FeatureExtractorWorkflow4LSTM(
