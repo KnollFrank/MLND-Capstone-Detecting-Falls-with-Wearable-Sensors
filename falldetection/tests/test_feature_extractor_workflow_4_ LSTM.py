@@ -4,6 +4,7 @@ from unittest import TestCase
 import numpy as np
 import pandas as pd
 
+from falldetection.feature_extractor_4_LSTM import FeatureExtractor4LSTM
 from falldetection.feature_extractor_workflow_4_LSTM import FeatureExtractorWorkflow4LSTM, extract_features_4_LSTM
 from falldetection.sensor import Sensor
 
@@ -42,9 +43,11 @@ class FeatureExtractorWorkflow4LSTMTestCase(TestCase):
 
     def __test_extract_features(self, df_by_sensor_file, columns, X_expected, y_expected):
         # GIVEN
-        feature_extractor_4_lstm = FeatureExtractorWorkflow4LSTM(
-            sensor_file_2_df=df_by_sensor_file.get,
-            columns=columns)
+        feature_extractor_4_lstm = \
+            FeatureExtractorWorkflow4LSTM(
+                FeatureExtractor4LSTM(
+                    sensor_file_2_df=df_by_sensor_file.get,
+                    columns=columns))
 
         sensor_files = df_by_sensor_file.keys()
 
