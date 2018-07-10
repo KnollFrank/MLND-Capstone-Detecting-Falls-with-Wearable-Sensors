@@ -66,18 +66,11 @@ class FeatureExtractorWorkflowTestCase(TestCase):
 
     @unittest.SkipTest
     def test_extract_features_and_save_WAIST(self):
+        sensor = Sensor.WAIST
         extract_features_and_save(
-            sensor=Sensor.WAIST,
+            sensor=sensor,
             baseDir='../../data/FallDataSet',
-            sensor_files_to_exclude=['209/Testler Export/919/Test_5/340535.txt',
-                                     '203/Testler Export/813/Test_1/340535.txt',
-                                     '207/Testler Export/917/Test_1/340535.txt',
-                                     '109/Testler Export/901/Test_6/340535.txt',
-                                     '208/Testler Export/917/Test_5/340535.txt',
-                                     '103/Testler Export/917/Test_5/340535.txt',
-                                     '103/Testler Export/917/Test_4/340535.txt',
-                                     '205/Testler Export/917/Test_5/340535.txt',
-                                     '107/Testler Export/917/Test_3/340535.txt'],
+            sensor_files_to_exclude=get_sensor_files_to_exclude_for(sensor),
             csv_file='../../data/features_waist.csv',
             autocorr_num=11,
             dft_amplitudes_num=0)

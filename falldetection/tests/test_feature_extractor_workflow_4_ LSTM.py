@@ -69,4 +69,12 @@ class FeatureExtractorWorkflow4LSTMTestCase(TestCase):
             columns=['Acc_X', 'Acc_Y', 'Acc_Z', 'Gyr_X', 'Gyr_Y', 'Gyr_Z', 'Mag_X', 'Mag_Y', 'Mag_Z'])
         print("features: ", features)
 
-# maybe-TODO: add function test_extract_features_4_LSTM_WAIST
+    @unittest.SkipTest
+    def test_extract_features_4_LSTM_WAIST(self):
+        sensor = Sensor.WAIST
+        features = extract_features_4_LSTM(
+            sensor=sensor,
+            baseDir='../../data/FallDataSet',
+            sensor_files_to_exclude=get_sensor_files_to_exclude_for(sensor),
+            columns=['Acc_X', 'Acc_Y', 'Acc_Z', 'Gyr_X', 'Gyr_Y', 'Gyr_Z', 'Mag_X', 'Mag_Y', 'Mag_Z'])
+        print("features: ", features)

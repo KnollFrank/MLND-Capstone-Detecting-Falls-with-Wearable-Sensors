@@ -2,8 +2,8 @@ from falldetection.sensor import Sensor
 
 
 def get_sensor_files_to_exclude_for(sensor):
-    return {Sensor.RIGHT_THIGH:
-        [
+    return {
+        Sensor.RIGHT_THIGH: [
             # IndexError: ../../data/FallDataSet/208/Testler Export/805/Test_1/340539.txt: not (0 <= -48 < 427 and 0 <= 53 <= 427)
             '208/Testler Export/805/Test_1/340539.txt',
             # IndexError: ../../data/FallDataSet/203/Testler Export/813/Test_1/340539.txt: not (0 <= -44 < 391 and 0 <= 57 <= 391)
@@ -18,4 +18,14 @@ def get_sensor_files_to_exclude_for(sensor):
             '208/Testler Export/904/Test_6/340539.txt',
             # IndexError: ../../data/FallDataSet/207/Testler Export/904/Test_4/340539.txt: not (0 <= 146 < 223 and 0 <= 247 <= 223)
             '207/Testler Export/904/Test_4/340539.txt'
-        ]}[sensor]
+        ],
+
+        Sensor.WAIST: ['209/Testler Export/919/Test_5/340535.txt',
+                       '203/Testler Export/813/Test_1/340535.txt',
+                       '207/Testler Export/917/Test_1/340535.txt',
+                       '109/Testler Export/901/Test_6/340535.txt',
+                       '208/Testler Export/917/Test_5/340535.txt',
+                       '103/Testler Export/917/Test_5/340535.txt',
+                       '103/Testler Export/917/Test_4/340535.txt',
+                       '205/Testler Export/917/Test_5/340535.txt',
+                       '107/Testler Export/917/Test_3/340535.txt']}[sensor]
