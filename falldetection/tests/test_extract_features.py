@@ -11,15 +11,15 @@ class ExtractFeaturesTestCase(TestCase):
 
     def __test_extract_features(self, autocorr_num, dft_amplitudes_num, add_expected_autocorr_of_df_2_features,
                                 add_expected_dft_amplitudes_of_df_2_features):
-        # build
+        # GIVEN
         df = pd.DataFrame(
             {'Acc_X': [1.0, 2.0, 3.0],
              'Gyr_X': [4.0, 5.0, 6.0]})
 
-        # execute
+        # WHEN
         features_actual = extract_features(df, autocorr_num, dft_amplitudes_num)
 
-        # test
+        # THEN
         print("features_actual:\n", features_actual)
 
         features_expected = pd.DataFrame(columns=['Acc_X', 'Gyr_X'], dtype=pd.np.float64)
