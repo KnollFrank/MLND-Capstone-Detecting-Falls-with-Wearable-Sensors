@@ -33,10 +33,13 @@ def extract_time_series(sensor, baseDir, columns):
     def createTimeSeriesExtractorWorkflow():
         return TimeSeriesExtractorWorkflow(createTimeSeriesExtractor())
 
-    def get_sensor_files():
+    def createSensorFilesProvider():
         return SensorFilesProvider(
             baseDir,
             sensor,
-            get_sensor_files_to_exclude_for(sensor)).provide_sensor_files()
+            get_sensor_files_to_exclude_for(sensor))
+
+    def get_sensor_files():
+        return createSensorFilesProvider().provide_sensor_files()
 
     return createTimeSeriesExtractorWorkflow().extract_time_series(get_sensor_files())
