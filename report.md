@@ -110,7 +110,7 @@ TODO:
 - (+) describe type of data: siehe Beschreibung unten
 - calculate and report basic statistics, discuss relevant results of statistics calculation:
   - Statistik (Mean, Min, Max, Varianz, ...) für einen einzelnen Datensatz anzeigen?
-  - Diagramm anzeigen: x-Achse: Zeit, y-Achse: z.B. Acc_X oder total acceleration (siehe Paper)
+  - (+) Diagramm anzeigen: x-Achse: Zeit, y-Achse: z.B. Acc_X oder total acceleration (siehe Paper)
   - (+) Verteilung der Falls und ADLs beschreiben: ungefähr fifty-fifty.
   - vielleicht PCA mit Diagramm anzeigen, und dass nur wenige der Features Min, Max, Mean, Kurtosis, ... notwendig sind um die Varianz in den Daten zu erklären.
 - outliers, missing values:
@@ -130,6 +130,10 @@ Ten males and seven females participated in a study. A wireless sensor unit was 
 | 9.745           | 1.111           | 0.999           | 0.001       | 0.005       | -0.004      | -0.821        | 0.515         | 0.009         |
 | 9.725           | 1.100           | 1.019           | -0.005      | 0.006       | -0.008      | -0.821        | 0.517         | 0.000         |
 | $\vdots$        | $\vdots$        | $\vdots$        | $\vdots$    | $\vdots$    | $\vdots$    | $\vdots$      | $\vdots$      | $\vdots$      |
+
+The total acceleration $\sqrt{\text{Acc_X}^2 + \text{Acc_Y}^2 + \text{Acc_Z}^2}$ of this fall plotted over a two second time interval around it's peak at time 0 looks like this:
+
+![](images/101_901_Test_1_340535.png)
 
 The total number of records consisting of falls and ADLs is 3296. Among them are 55.28% falls and 44.72% ADLs.
 
