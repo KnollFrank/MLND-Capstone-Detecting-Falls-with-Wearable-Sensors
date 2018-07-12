@@ -4,7 +4,7 @@
 
 ## Capstone Project
 Frank Knoll  
-July 22, 2018
+July 19, 2018
 
 ## I. Definition
 _(approx. 1-2 pages)_
@@ -26,9 +26,10 @@ TODO:
 - define the **problem**:
 - strategy (outline of tasks) to achieve the desired **solution**:
 
-
 The problem to be solved is to distinguish falls from activities of daily living using a wireless sensor unit fitted to a person's waist or thigh.
 There are numerous types of falls and activities of daily living as can be seen in the following tables, but the task is just to binary classify actions in falls and non-falls. A challenge in this classification task is not to confuse some of the non-fall actions, which are high-impact events, with falls.
+
+The intendet solution is to train several machine learning classifier on the FallDataSet in order to distinguish falls from activities of daily living.
 
 #### Fall Actions:
 
