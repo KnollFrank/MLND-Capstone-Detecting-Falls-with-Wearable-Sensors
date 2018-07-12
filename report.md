@@ -107,20 +107,20 @@ In this section, you will be expected to analyze the data you are using for the 
 - _Are there any abnormalities or characteristics about the input space or dataset that need to be addressed? (categorical variables, missing values, outliers, etc.)_
 
 TODO:
-- describe type of data: siehe Beschreibung unten
+- (+) describe type of data: siehe Beschreibung unten
 - calculate and report basic statistics, discuss relevant results of statistics calculation:
   - Statistik (Mean, Min, Max, Varianz, ...) für einen einzelnen Datensatz anzeigen?
   - Diagramm anzeigen: x-Achse: Zeit, y-Achse: z.B. Acc_X oder total acceleration (siehe Paper)
-  - Verteilung der Falls und ADLs beschreiben: ungefähr fifty-fifty.
+  - (+) Verteilung der Falls und ADLs beschreiben: ungefähr fifty-fifty.
   - vielleicht PCA mit Diagramm anzeigen, und dass nur wenige der Features Min, Max, Mean, Kurtosis, ... notwendig sind um die Varianz in den Daten zu erklären.
 - outliers, missing values:
-  - missing values, weil manchmal zu wenig Werte vorhanden sind, um um den Peak ein Fenster der Breite 100 zu legen.
-  - missing values auch, weil manchmal NaN in den CSV-Dateien steht => drop this rows
-- data sample: siehe Tabelle unten
+  - (+) missing values, weil manchmal zu wenig Werte vorhanden sind, um um den Peak ein Fenster der Breite 100 zu legen.
+  - (+) missing values auch, weil manchmal NaN in den CSV-Dateien steht => drop this rows
+- (+) data sample: siehe Tabelle unten
 
 ![sensors](images/sensors.png)
 
-Ten males and seven females participated in a study. A wireless sensor unit was fitted to the subject's waist among other body parts as can be seen in the figure. The sensor unit comprises three tri-axial devices: accelerometer, gyroscope, and  magnetometer/compass. Raw motion data was recorded along three perpendicular axes (x, y, z) from the unit with a sampling frequency of 25 Hz. A set of trials consists of 20 fall actions (see table 'Fall Actions' above) and 16 ADLs (see table 'Non-Fall Actions' above). Each trial lasted about 15s on average. The 17 volunteers repeated each test for five times. Then the peak of the total acceleration vector was detected, and two seconds of the sequence before and after the peak acceleration were kept. As an example, the first five records of the file `FallDataSet/101/Testler Export/901/Test_1/340535.txt` which contains the recorded data from the waist sensor attached to a male while he was falling from vertical forward to the floor, look like this:
+Ten males and seven females participated in a study. A wireless sensor unit was fitted to the subject's waist among other body parts as can be seen in the figure. The sensor unit comprises three tri-axial devices: accelerometer, gyroscope, and  magnetometer/compass. Raw motion data was recorded along three perpendicular axes (x, y, z) from the unit with a sampling frequency of 25 Hz. A set of trials consists of 20 fall actions (see table 'Fall Actions' above) and 16 ADLs (see table 'Non-Fall Actions' above). Each trial lasted about 15s on average. The 17 volunteers repeated each test for five times. Then the peak of the total acceleration vector was detected, and two seconds of the sequence before and after the peak acceleration were kept. About ten trials of the dataset have recording times that are too short in order to set the time window of four seconds around the data. These trials were dropped. Within a single trial sometimes the sensor data for a specific point in time is missing (NaN). Records containing NaNs have been dropped. As an example, the first five records of the file `FallDataSet/101/Testler Export/901/Test_1/340535.txt` which contains the recorded data from the waist sensor attached to a male while he was falling from vertical forward to the floor, look like this:
 
 | Acc_X ($m/s^2$) | Acc_Y ($m/s^2$) | Acc_Z ($m/s^2$) | Gyr_X (°/s) | Gyr_Y (°/s) | Gyr_Z (°/s) | Mag_X (Gauss) | Mag_Y (Gauss) | Mag_Z (Gauss) |
 |-----------------|-----------------|-----------------|-------------|-------------|-------------|---------------|---------------|---------------|
