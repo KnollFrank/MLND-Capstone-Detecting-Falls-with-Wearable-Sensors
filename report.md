@@ -131,7 +131,7 @@ Ten males and seven females participated in a study. A wireless sensor unit was 
 | 9.725           | 1.100           | 1.019           | -0.005      | 0.006       | -0.008      | -0.821        | 0.517         | 0.000         |
 | $\vdots$        | $\vdots$        | $\vdots$        | $\vdots$    | $\vdots$    | $\vdots$    | $\vdots$      | $\vdots$      | $\vdots$      |
 
-The total acceleration $\sqrt{\text{Acc_X}^2 + \text{Acc_Y}^2 + \text{Acc_Z}^2}$ of this fall plotted over a two second time interval around it's peak at time 0 looks like this:
+The total acceleration $\sqrt{\text{Acc_X}^2 + \text{Acc_Y}^2 + \text{Acc_Z}^2}$ of this fall plotted over a four second time interval around it's peak at time 0 looks like this:
 
 ![](images/101_901_Test_1_340535.png)
 
