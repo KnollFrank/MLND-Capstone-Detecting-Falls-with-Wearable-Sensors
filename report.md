@@ -132,9 +132,9 @@ Ten males and seven females participated in a study. A wireless sensor unit was 
 | $\vdots$        | $\vdots$        | $\vdots$        | $\vdots$    | $\vdots$    | $\vdots$    | $\vdots$      | $\vdots$      | $\vdots$      |
 
 
-The total number of records consisting of falls and ADLs is 3296. Among them are 55.28% falls and 44.72% ADLs.
+The dataset consists of 1822 (55.28%) falls and 1474 (44.72%) ADLs.
 
-The mean total acceleration $\sqrt{\text{Acc_X}^2 + \text{Acc_Y}^2 + \text{Acc_Z}^2}$ of all 3296 falls plotted over a four second time interval around their peak at time 0 looks like this:
+The mean total acceleration $\sqrt{\text{Acc_X}^2 + \text{Acc_Y}^2 + \text{Acc_Z}^2}$ of all 1822 falls plotted over a four second time interval around their peak at time 0 looks like this:
 
 ![](images/101_901_Test_1_340535.png)
 
