@@ -29,8 +29,6 @@ TODO:
 The problem to be solved is to distinguish falls from activities of daily living using a wireless sensor unit fitted to a person's waist or thigh.
 There are numerous types of falls and activities of daily living as can be seen in the following tables, but the task is just to binary classify actions in falls and non-falls. A challenge in this classification task is not to confuse some of the non-fall actions, which are high-impact events, with falls.
 
-The intendet solution is to train several machine learning classifier on the FallDataSet in order to distinguish falls from activities of daily living.
-
 #### Fall Actions:
 
 TODO: soll der Leser wirklich die vollständigen folgenden beiden Tabellen präsentiert bekommen?
@@ -78,6 +76,8 @@ TODO: soll der Leser wirklich die vollständigen folgenden beiden Tabellen präs
 34 | squatting-down    | squatting, then standing up
 35 | trip-over         | bending while walking and then continuing walking
 36 | coughing-sneezing | coughing or sneezing
+
+The intendet solution is to train several machine learning classifiers like SVC, DecisionTreeClassifier, RandomForestClassifier, KNeighborsClassifier and a deep neural network on the FallDataSet in order to distinguish falls from activities of daily living.
 
 ### Metrics
 In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
