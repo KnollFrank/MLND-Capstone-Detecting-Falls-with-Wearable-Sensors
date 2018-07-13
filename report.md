@@ -178,14 +178,13 @@ In this section, you will need to provide a clearly defined benchmark result or 
 - _Has some result or value been provided that acts as a benchmark for measuring performance?_
 - _Is it clear how this result or value was obtained (whether by data or by hypothesis)?_
 
-TODO:
-- clearly defined benchmark: unten sind drei Benchmarks angegeben, besser nur einen einzigen verwenden. Es gibt noch weitere: Schwellwert classifier und den besten aus dem Paper (= SVC).
+As candidates for a benchmark model the following classifiers were tested:
 
-As a benchmark model the following classsifiers are used:
+- classifier which classifies every action as a fall yielding an accuracy of about 56%
+- classifier which classifies every action as an activity of daily living yielding an accuracy of about 43.6%
+- a GaussianNB classifier fitted to a training set consisting solely of the feature Acc_Z_var (variance of the acceleration in z direction) yielding an accuracy of about 67% on the test set. (TODO: den Weg erklären - siehe Notebook - der zu diesem einen Feature Acc_Z_var via PCA geführt hat.)
 
-- classifier which classifies every action as a fall
-- classifier which classifies every action as an activity of daily living
-- classifier obtained from PCA auf ein oder zwei Komponenten reduziert -> dann einen Classifier aus sklearn.linear_model auf reduzierte Daten anwenden.
+The best accuracy among these three classifiers is obtained by the GaussianNB classifier which will be the benchmark model.
 
 ## III. Methodology
 _(approx. 3-5 pages)_
