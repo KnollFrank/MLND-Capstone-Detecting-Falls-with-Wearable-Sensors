@@ -1,4 +1,4 @@
-# adapted from finding_donors project
+# adapted from projects finding_donors and customer_segments
 ###########################################
 # Suppress matplotlib user warnings
 # Necessary for newer version of matplotlib

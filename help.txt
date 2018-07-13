@@ -1,0 +1,2 @@
+pip install -r requirements/requirements.txt
+pandoc report.md -V geometry:a4paper -s -o report.pdf

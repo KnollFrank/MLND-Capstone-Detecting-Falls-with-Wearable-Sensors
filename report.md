@@ -109,7 +109,7 @@ In this section, you will be expected to analyze the data you are using for the 
 TODO:
 - (+) describe type of data: siehe Beschreibung unten
 - calculate and report basic statistics, discuss relevant results of statistics calculation:
-  - Statistik (Mean, Min, Max, Varianz, ...) für einen einzelnen Datensatz anzeigen?
+  - (+) Statistik (Mean, Min, Max, Varianz, ...) für alle Datensätze anzeigen.
   - (+) Diagramm anzeigen: x-Achse: Zeit, y-Achse: z.B. Acc_X oder total acceleration (siehe Paper)
   - (+) Verteilung der Falls und ADLs beschreiben: ungefähr fifty-fifty.
   - vielleicht PCA mit Diagramm anzeigen, und dass nur wenige der Features Min, Max, Mean, Kurtosis, ... notwendig sind um die Varianz in den Daten zu erklären.
@@ -135,6 +135,12 @@ Ten males and seven females participated in a study. A wireless sensor unit was 
 The dataset consists of 1822 (55.28%) falls and 1474 (44.72%) ADLs.
 
 The mean total acceleration $\sqrt{\text{Acc_X}^2 + \text{Acc_Y}^2 + \text{Acc_Z}^2}$ of all 1822 falls plotted over a four second time interval around their peak at time 0 looks like this:
+[TODO: Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html]
+
+![](images/101_901_Test_1_340535.png)
+
+The mean total acceleration of all 1474 falls plotted over a four second time interval around their peak at time 0 looks like this:
+[TODO: Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html]
 
 ![](images/101_901_Test_1_340535.png)
 
@@ -151,6 +157,7 @@ In this section, you will need to provide some form of visualization that summar
 TODO:
 - visualize relevant characteristic or feature:
   - vielleicht hier statt oben PCA anzeigen.
+  - https://seaborn.pydata.org/generated/seaborn.pairplot.html oder pandas scatter_matrix, um die Korrelation der Features Min, Max, Mean, ... anzuzeigen (https://pandas.pydata.org/pandas-docs/stable/visualization.html).
 - why this visualization was chosen and how it is relevant:
   - PCA erklärt hier, dass wir nur wenige der Features den classifiern übergeben müssen.
 
@@ -176,9 +183,9 @@ TODO:
 
 As a benchmark model the following classsifiers are used:
 
-- random classifier
 - classifier which classifies every action as a fall
 - classifier which classifies every action as an activity of daily living
+- classifier obtained from PCA auf ein oder zwei Komponenten reduziert -> dann einen Classifier aus sklearn.linear_model auf reduzierte Daten anwenden.
 
 ## III. Methodology
 _(approx. 3-5 pages)_
