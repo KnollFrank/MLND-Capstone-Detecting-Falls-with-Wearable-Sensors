@@ -55,8 +55,8 @@ class ExtractFeaturesTestCase(TestCase):
 
     def test_extract_features1(self):
         def add_expected_autocorr_of_df_2_features(df, features):
-            features.at['autocorr_lag_1', 'Acc_X'] = acovf(df['Acc_X'])[1]
-            features.at['autocorr_lag_1', 'Gyr_X'] = acovf(df['Gyr_X'])[1]
+            features.at['autocov_lag_1', 'Acc_X'] = acovf(df['Acc_X'])[1]
+            features.at['autocov_lag_1', 'Gyr_X'] = acovf(df['Gyr_X'])[1]
 
         def add_expected_dft_amplitudes_of_df_2_features(df, features):
             features.at['dft_amplitude_1', 'Acc_X'] = np.abs(np.fft.fft(df['Acc_X'])[0])
@@ -70,10 +70,10 @@ class ExtractFeaturesTestCase(TestCase):
 
     def test_extract_features2(self):
         def add_expected_autocorr_of_df_2_features(df, features):
-            features.at['autocorr_lag_1', 'Acc_X'] = acovf(df['Acc_X'])[1]
-            features.at['autocorr_lag_2', 'Acc_X'] = acovf(df['Acc_X'])[2]
-            features.at['autocorr_lag_1', 'Gyr_X'] = acovf(df['Gyr_X'])[1]
-            features.at['autocorr_lag_2', 'Gyr_X'] = acovf(df['Gyr_X'])[2]
+            features.at['autocov_lag_1', 'Acc_X'] = acovf(df['Acc_X'])[1]
+            features.at['autocov_lag_2', 'Acc_X'] = acovf(df['Acc_X'])[2]
+            features.at['autocov_lag_1', 'Gyr_X'] = acovf(df['Gyr_X'])[1]
+            features.at['autocov_lag_2', 'Gyr_X'] = acovf(df['Gyr_X'])[2]
 
         def add_expected_dft_amplitudes_of_df_2_features(df, features):
             features.at['dft_amplitude_1', 'Acc_X'] = np.abs(np.fft.fft(df['Acc_X'])[0])
