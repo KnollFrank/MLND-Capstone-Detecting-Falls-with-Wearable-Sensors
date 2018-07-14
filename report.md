@@ -87,6 +87,7 @@ In this section, you will need to clearly define the metrics or calculations you
 TODO:
 - define metrics and clearly discuss them:
   - vielleicht doch besser Accuracy und F-beta-score nehmen wie in finding_donors? Oder accuaracy, sensitivity und specificity und ROC curves wie im Paper?
+  - oder weil die Klassen fall und ADLs ausgewogen sind kann man auch Accuracy nehmen?
 - justification for the metrics:
 
 In distinguishing falls from ADLs, the following conditions must be met:
@@ -173,12 +174,18 @@ TODO:
   - deep learning: CNN with LSTM arbeitet direkt auf den Rohdaten.
 - techniques?
 
+The following standard machine learning classifiers are applied to the data set (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') using 3-fold cross validation: Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine.
+
+Then by using the raw sensor data in contrast to the feature extracted data, LSTM recurrent neural networks are applied to the raw FallDataSet following  https://machinelearningmastery.com/sequence-classification-lstm-recurrent-neural-networks-python-keras/.
+
+The classifier having the best accuracy will be taken as the solution to the problem.
+
 ### Benchmark
 In this section, you will need to provide a clearly defined benchmark result or threshold for comparing across performances obtained by your solution. The reasoning behind the benchmark (in the case where it is not an established result) should be discussed. Questions to ask yourself when writing this section:
 - _Has some result or value been provided that acts as a benchmark for measuring performance?_
 - _Is it clear how this result or value was obtained (whether by data or by hypothesis)?_
 
-As can be seen in the accompanying jupyter notebook `DetectingFalls.ipynb`, a principal component analysis shows, that 98% variance in the data is explained by the first principal component. Furthermore the first principal component points mainly (0.9974) in the direction of the feature `Acc_Z_var`, which is the variance of the acceleration in the z direction. So a classifier fitted to a training dataset consisting solely of the feature `Acc_Z_var` should have enough information to distinguish falls from ADLs. A Gaussian Naive Bayes (GaussianNB) fitted to these training set yields an accuracy of 67% on the testing set, which is better than 56% accuracy for a classifier which classifies every action as a fall and better than 44% accuracy for a classifier which classifies every action as an activity of daily living. So the GaussianNB classifier will be the benchmark model.
+As can be seen in the accompanying jupyter notebook `DetectingFalls.ipynb`, a principal component analysis shows, that 98% variance in the data obtained by feature extraction (see section 'Data Preprocessing') is explained by the first principal component. Furthermore the first principal component points mainly (0.9974) in the direction of the feature `Acc_Z_var`, which is the variance of the acceleration in the z direction. So a classifier fitted to a training dataset consisting solely of the feature `Acc_Z_var` should have enough information to distinguish falls from ADLs. A Gaussian Naive Bayes (GaussianNB) fitted to this training set yields an accuracy of 67% on the testing set, which is better than 56% accuracy for a classifier which classifies every action as a fall and better than 44% accuracy for a classifier which classifies every action as an activity of daily living. So the GaussianNB classifier will be the benchmark model.
 
 ## III. Methodology
 _(approx. 3-5 pages)_
@@ -193,7 +200,7 @@ TODO:
 - clearly document all preprocessing steps (feature selection): Min, Max, Mean, Kurtosis, Autovariance, ... (siehe unten)
 - address and correct abnormalities
 
-Following [2] the first task is to perform feature extraction. From the raw data Acc_X, Acc_Y, Acc_Z, Gyr_X, Gyr_Y, Gyr_Z, Mag_X, Mag_Y and Mag_Z of the FallDataSet the following features are extracted: minimum, maximum, mean, skewness, kurtosis, the first 11 values of the autocorrelation sequence and the first five frequencies with maximum magnitude of the discrete Fourier transform (DFT) along with the five corresponding amplitudes, resulting in a feature vector of dimensionality 234 (26 features for each one of the nine measured signals) for each test.
+Following [2] the first task is to perform feature extraction. From the raw data Acc_X, Acc_Y, Acc_Z, Gyr_X, Gyr_Y, Gyr_Z, Mag_X, Mag_Y and Mag_Z of the FallDataSet the following features are extracted: minimum, maximum, mean, skewness, kurtosis and the first 11 values of the autocovariance sequence, resulting in a feature vector of dimensionality (TODO: correct number) 234 (26 features for each one of the nine measured signals) for each test.
 
 To be more specific, let $s = [s_1, s_2,\dots, s_N]^T$ be the raw data of a signal (e.g. the column Acc_X in the table above). Then the extracted features for this signal are defined as follows:
 
@@ -201,12 +208,7 @@ To be more specific, let $s = [s_1, s_2,\dots, s_N]^T$ be the raw data of a sign
 - $\operatorname{variance}(s) = \sigma^2 = \frac{1}{N} \sum_{n=1}^{N} (s_n-\mu)^2$
 - $\operatorname{skewness}(s) = \frac{1}{N \sigma^3} \sum_{n=1}^{N} (s_n-\mu)^3$
 - $\operatorname{kurtosis}(s) = \frac{1}{N \sigma^4} \sum_{n=1}^{N} (s_n-\mu)^4$
-- $\operatorname{autocorrelation}(s) = \frac{1}{N - \Delta} \sum_{n=0}^{N - \Delta - 1} (s_n-\mu)(s_{n - \Delta} - \mu)$. where $\Delta = 0, 1, \dots, N-1$
-- $\operatorname{DFT}_q(s) = \sum_{n=0}^{N-1} s_n e^{- \frac{j 2 \pi q n}{N}}$, where $q = 0, 1, \dots, N-1$
-
-$\operatorname{DFT}_q(s)$ is the $q$th element of the 1-D $N$-point DFT.
-
-Then the following classsifiers are applied to the feature data set using 10-fold cross validation: Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine. The classifier having the best $F_2$-score will be taken as the solution to the problem.
+- TODO: correct to autcov: $\operatorname{autocorrelation}(s) = \frac{1}{N - \Delta} \sum_{n=0}^{N - \Delta - 1} (s_n-\mu)(s_{n - \Delta} - \mu)$. where $\Delta = 0, 1, \dots, N-1$
 
 ### Implementation
 In this section, the process for which metrics, algorithms, and techniques that you implemented for the given data will need to be clearly documented. It should be abundantly clear how the implementation was carried out, and discussion should be made regarding any complications that occurred during this process. Questions to ask yourself when writing this section:
