@@ -24,7 +24,7 @@ class FeatureExtractorWorkflow:
         return pd.DataFrame(data={'sensorFile': [sensorFile], 'fall': isFall(sensorFile)})
 
 
-def extract_features_and_save(sensor, baseDir, csv_file, autovar_num, dft_amplitudes_num):
+def extract_features_and_save(sensor, baseDir, csv_file, autocovar_num, dft_amplitudes_num):
     def extract_features():
         def get_sensor_files():
             return createSensorFilesProvider().provide_sensor_files()
@@ -36,7 +36,7 @@ def extract_features_and_save(sensor, baseDir, csv_file, autovar_num, dft_amplit
             return FeatureExtractorWorkflow(create_feature_extractor())
 
         def create_feature_extractor():
-            return FeatureExtractor(autovar_num, dft_amplitudes_num).extract_features
+            return FeatureExtractor(autocovar_num, dft_amplitudes_num).extract_features
 
         return createFeatureExtractorWorkflow().extract_features(get_sensor_files())
 

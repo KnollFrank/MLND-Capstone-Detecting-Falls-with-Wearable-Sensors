@@ -12,8 +12,8 @@ logger = logging.getLogger(__name__)
 
 class FeatureExtractor:
 
-    def __init__(self, autovar_num, dft_amplitudes_num) -> None:
-        self.autovar_num = autovar_num
+    def __init__(self, autocovar_num, dft_amplitudes_num) -> None:
+        self.autocovar_num = autocovar_num
         self.dft_amplitudes_num = dft_amplitudes_num
 
     def extract_features(self, sensorFile):
@@ -21,7 +21,7 @@ class FeatureExtractor:
         return self.flatten_data_frame(
             extract_features(
                 df=self.sensor_file_2_df(sensorFile),
-                autovar_num=self.autovar_num,
+                autocovar_num=self.autocovar_num,
                 dft_amplitudes_num=self.dft_amplitudes_num))
 
     @staticmethod
