@@ -178,13 +178,7 @@ In this section, you will need to provide a clearly defined benchmark result or 
 - _Has some result or value been provided that acts as a benchmark for measuring performance?_
 - _Is it clear how this result or value was obtained (whether by data or by hypothesis)?_
 
-As candidates for a benchmark model the following classifiers were tested:
-
-- classifier which classifies every action as a fall yielding an accuracy of about 56%
-- classifier which classifies every action as an activity of daily living yielding an accuracy of about 43.6%
-- a GaussianNB classifier fitted to a training set consisting solely of the feature Acc_Z_var (variance of the acceleration in z direction) yielding an accuracy of about 67% on the test set. (TODO: den Weg erklären - siehe Notebook - der zu diesem einen Feature Acc_Z_var via PCA geführt hat.)
-
-The best accuracy among these three classifiers is obtained by the GaussianNB classifier which will be the benchmark model.
+As can be seen in the accompanying jupyter notebook `DetectingFalls.ipynb`, a principal component analysis shows, that 98% variance in the data is explained by the first principal component. Furthermore the first principal component points mainly (0.9974) in the direction of the feature `Acc_Z_var`, which is the variance of the acceleration in the z direction. So a classifier fitted to a training dataset consisting solely of the feature `Acc_Z_var` should have enough information to distinguish falls from ADLs. A Gaussian Naive Bayes (GaussianNB) fitted to these training set yields an accuracy of 67% on the testing set, which is better than 56% accuracy for a classifier which classifies every action as a fall and better than 44% accuracy for a classifier which classifies every action as an activity of daily living. So the GaussianNB classifier will be the benchmark model.
 
 ## III. Methodology
 _(approx. 3-5 pages)_
