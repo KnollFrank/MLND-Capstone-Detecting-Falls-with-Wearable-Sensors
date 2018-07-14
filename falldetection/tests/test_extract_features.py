@@ -9,7 +9,7 @@ from falldetection.extract_features import extract_features
 
 class ExtractFeaturesTestCase(TestCase):
 
-    def __test_extract_features(self, autocorr_num, dft_amplitudes_num, add_expected_autocorr_of_df_2_features,
+    def __test_extract_features(self, autocov_num, dft_amplitudes_num, add_expected_autocovar_of_df_2_features,
                                 add_expected_dft_amplitudes_of_df_2_features):
         # GIVEN
         df = pd.DataFrame(
@@ -17,7 +17,7 @@ class ExtractFeaturesTestCase(TestCase):
              'Gyr_X': [4.0, 5.0, 6.0]})
 
         # WHEN
-        features_actual = extract_features(df, autocorr_num, dft_amplitudes_num)
+        features_actual = extract_features(df, autocov_num, dft_amplitudes_num)
 
         # THEN
         print("features_actual:\n", features_actual)
@@ -46,7 +46,7 @@ class ExtractFeaturesTestCase(TestCase):
 
         features_expected.loc['kurtosis', :] = df.kurtosis()[features_expected.columns].values
 
-        add_expected_autocorr_of_df_2_features(df=df, features=features_expected)
+        add_expected_autocovar_of_df_2_features(df=df, features=features_expected)
 
         add_expected_dft_amplitudes_of_df_2_features(df=df, features=features_expected)
         print("features_expected:\n", features_expected)
@@ -54,26 +54,26 @@ class ExtractFeaturesTestCase(TestCase):
         self.assertTrue(features_expected.equals(features_actual))
 
     def test_extract_features1(self):
-        def add_expected_autocorr_of_df_2_features(df, features):
-            features.at['autocov_lag_1', 'Acc_X'] = acovf(df['Acc_X'])[1]
-            features.at['autocov_lag_1', 'Gyr_X'] = acovf(df['Gyr_X'])[1]
+        def add_expected_autocovar_of_df_2_features(df, features):
+            features.at['autocovar_lag_1', 'Acc_X'] = acovf(df['Acc_X'])[1]
+            features.at['autocovar_lag_1', 'Gyr_X'] = acovf(df['Gyr_X'])[1]
 
         def add_expected_dft_amplitudes_of_df_2_features(df, features):
             features.at['dft_amplitude_1', 'Acc_X'] = np.abs(np.fft.fft(df['Acc_X'])[0])
             features.at['dft_amplitude_1', 'Gyr_X'] = np.abs(np.fft.fft(df['Gyr_X'])[0])
 
         self.__test_extract_features(
-            autocorr_num=1,
+            autocov_num=1,
             dft_amplitudes_num=1,
-            add_expected_autocorr_of_df_2_features=add_expected_autocorr_of_df_2_features,
+            add_expected_autocovar_of_df_2_features=add_expected_autocovar_of_df_2_features,
             add_expected_dft_amplitudes_of_df_2_features=add_expected_dft_amplitudes_of_df_2_features)
 
     def test_extract_features2(self):
-        def add_expected_autocorr_of_df_2_features(df, features):
-            features.at['autocov_lag_1', 'Acc_X'] = acovf(df['Acc_X'])[1]
-            features.at['autocov_lag_2', 'Acc_X'] = acovf(df['Acc_X'])[2]
-            features.at['autocov_lag_1', 'Gyr_X'] = acovf(df['Gyr_X'])[1]
-            features.at['autocov_lag_2', 'Gyr_X'] = acovf(df['Gyr_X'])[2]
+        def add_expected_autocovar_of_df_2_features(df, features):
+            features.at['autocovar_lag_1', 'Acc_X'] = acovf(df['Acc_X'])[1]
+            features.at['autocovar_lag_2', 'Acc_X'] = acovf(df['Acc_X'])[2]
+            features.at['autocovar_lag_1', 'Gyr_X'] = acovf(df['Gyr_X'])[1]
+            features.at['autocovar_lag_2', 'Gyr_X'] = acovf(df['Gyr_X'])[2]
 
         def add_expected_dft_amplitudes_of_df_2_features(df, features):
             features.at['dft_amplitude_1', 'Acc_X'] = np.abs(np.fft.fft(df['Acc_X'])[0])
@@ -82,7 +82,7 @@ class ExtractFeaturesTestCase(TestCase):
             features.at['dft_amplitude_2', 'Gyr_X'] = np.abs(np.fft.fft(df['Gyr_X'])[1])
 
         self.__test_extract_features(
-            autocorr_num=2,
+            autocov_num=2,
             dft_amplitudes_num=2,
-            add_expected_autocorr_of_df_2_features=add_expected_autocorr_of_df_2_features,
+            add_expected_autocovar_of_df_2_features=add_expected_autocovar_of_df_2_features,
             add_expected_dft_amplitudes_of_df_2_features=add_expected_dft_amplitudes_of_df_2_features)

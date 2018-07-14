@@ -68,7 +68,7 @@ class FeatureExtractorWorkflowTestCase(TestCase):
             sensor=Sensor.WAIST,
             baseDir='../../data/FallDataSet',
             csv_file='../../data/features_waist.csv',
-            autocorr_num=11,
+            autovar_num=11,
             dft_amplitudes_num=0)
 
     @unittest.SkipTest
