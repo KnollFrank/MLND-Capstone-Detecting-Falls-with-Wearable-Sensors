@@ -176,7 +176,7 @@ TODO:
 
 The following standard machine learning classifiers are applied to the data set (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') using 3-fold cross validation: Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine.
 
-Then by using the raw sensor data in contrast to the feature extracted data, LSTM recurrent neural networks are applied to the raw FallDataSet following  https://machinelearningmastery.com/sequence-classification-lstm-recurrent-neural-networks-python-keras/.
+Then by using the raw sensor data in contrast to the feature extracted data, LSTM recurrent neural networks are applied to the raw FallDataSet following [4].
 
 The classifier having the best accuracy will be taken as the solution to the problem.
 
@@ -265,12 +265,14 @@ In this section, you will need to provide discussion as to how one aspect of the
 - _Were there algorithms or techniques you researched that you did not know how to implement, but would consider using if you knew how?_
 - _If you used your final solution as the new benchmark, do you think an even better solution exists?_
 
-------
+### References
 
 - [1] World Health Organization: Global report on falls prevention in older age.
 http://www.who.int/ageing/publications/Falls_prevention7March.pdf
 - [2] Özdemir, Ahmet Turan, and Billur Barshan. “Detecting Falls with Wearable Sensors Using Machine Learning Techniques.” Sensors (Basel, Switzerland) 14.6 (2014): 10691–10708. PMC. Web. 23 Apr. 2017. http://www.mdpi.com/1424-8220/14/6/10691/pdf
 - [3] Ntanasis P., Pippa E., Özdemir A.T., Barshan B., Megalooikonomou V., "Investigation of sensor placement for accurate fall detection", 6th EAI International Conference on Wireless Mobile Communication and Healthcare (MobiHealth), Milan, Italy, 14-16 Nov. 2016, pp.1-6. https://www.researchgate.net/profile/Billur_Barshan/publication/318146579_Investigation_of_Sensor_Placement_for_Accurate_Fall_Detection/links/5999a8a745851564432dbdf7/Investigation-of-Sensor-Placement-for-Accurate-Fall-Detection.pdf?origin=publication_detail
+- [4]
+Sequence Classification with LSTM Recurrent Neural Networks in Python with Keras. https://machinelearningmastery.com/sequence-classification-lstm-recurrent-neural-networks-python-keras/
 
 -----------
 
