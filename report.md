@@ -221,6 +221,11 @@ TODO:
 - clarify how the implementation was carried out.
 
 #### Standard Machine Learning Classifiers
+The implementation was carried out in _python_ using the machine learning library _sklearn_.
+
+Each of the classifiers Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine was fitted to the training data set (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') and the resulting accuracy scores were obtained.
+
+TODO: Bild einfügen mit accuracy_scored auf den Trainingdaten aller Classifier.
 
 #### LSTM Recurrent Neural Networks
 
