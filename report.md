@@ -251,9 +251,9 @@ TODO:
 - discuss process of improvement (adjusting parameters): GridSearch, Auswahl der Features via PCA
 - report initial and final solutions (vorher vs. nachher)
 
-In order to improv the K-Nearest Neighbors classifier (which yielded an accuracy score of 99.7%) I used grid search on the classifiers hyper parameters 'n_neighbors' using values 5, 6 and 7, 'weights' using values 'uniform' and 'distance' and the 'p' parameter using values 1 and 2. The improved classifier yields an accuracy score of 99.85%.
+In order to improve the K-Nearest Neighbors classifier (which yielded an accuracy score of 99.7%) I used grid search on the classifiers hyper parameters 'n_neighbors' using values 5, 6 and 7, 'weights' using values 'uniform' and 'distance' and the 'p' parameter using values 1 and 2. The improved classifier yields an accuracy score of 99.85%.
 
-In a further attempt to reduce the number of features (153) I fitted a Decision Tree to the training feature data set to obtain the top 85 most important features. Then I fitted the optimized K-Nearest Neighbors classifier from the last step to this reduced data set having only 85 features. The accuracy score on the testing set was 99.85% which is the same accuracy the K-Nearest Neighbors classifier yielded on the full feature data set having 153 features. So a reduction of the feature space from 153 to 85 features without any loss of accuracy is a succesful simplification.
+In a further attempt to reduce the number of features (153) I performed a Principal Component Analysis on the training feature data set to obtain 54 dimensions which explain most of the variance in the training data. Then I fitted the optimized K-Nearest Neighbors classifier from the last step to this reduced data set having only 54 dimensions. The accuracy score on the testing set was 99.85% which is the same accuracy the K-Nearest Neighbors classifier yielded on the full feature data set having 153 features. So a dimensionality reduction of the feature space from 153 to 85 dimensions without any loss of accuracy is a succesful simplification.
 
 ## IV. Results
 _(approx. 2-3 pages)_
