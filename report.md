@@ -27,55 +27,49 @@ TODO:
 - strategy (outline of tasks) to achieve the desired **solution**:
 
 The problem to be solved is to distinguish falls from activities of daily living using a wireless sensor unit fitted to a person's waist or thigh.
-There are numerous types of falls and activities of daily living as can be seen in the following tables, but the task is just to binary classify actions in falls and non-falls. A challenge in this classification task is not to confuse some of the non-fall actions, which are high-impact events, with falls.
+There are numerous types of falls and activities of daily living as can be seen in the following lists, but the task is just to binary classify actions in falls and non-falls. A challenge in this classification task is not to confuse some of the non-fall actions, which are high-impact events, with falls.
 
 #### Fall Actions:
 
-TODO: soll der Leser wirklich die vollständigen folgenden beiden Tabellen präsentiert bekommen?
-
-\#  | Label                  | Description
----|------------------------|---------------------------------------------------------------------------
-1  | front-lying            | from vertical falling forward to the floor
-2  | front-protecting-lying | from vertical falling forward to the floor with arm protection
-3  | front-knees            | from vertical falling down on the knees
-4  | front-knees-lying      | from vertical falling down on the knees and then lying on the floor
-5  | front-right            | from vertical falling down on the floor, ending in right lateral position
-6  | front-left             | from vertical falling down on the floor, ending in left lateral position
-7  | front-quick-recovery   | from vertical falling on the floor and quick recovery
-8  | front-slow-recovery    | from vertical falling on the floor and slow recovery
-9  | back-sitting           | from vertical falling on the floor, ending sitting
-10 | back-lying             | from vertical falling on the floor, ending lying
-11 | back-right             | from vertical falling on the floor, ending lying in right lateral position
-12 | back-left              | from vertical falling on the floor, ending lying in left lateral position
-13 | right-sideway          | from vertical falling on the floor, ending lying
-14 | right-recovery         | from vertical falling on the floor with subsequent recovery
-15 | left-sideway           | from vertical falling on the floor, ending lying
-16 | left-recovery          | from vertical falling on the floor with subsequent recovery
-17 | syncope                | from standing falling on the floor following a vertical trajectory
-18 | syncope-wall           | from standing falling down slowly slipping on a wall
-19 | podium                 | from vertical standing on a podium going on the floor
-20 | rolling-out-bed        | from lying, rolling out of bed and going on the floor
+- from vertical falling forward to the floor
+- from vertical falling forward to the floor with arm protection
+- from vertical falling down on the knees
+- from vertical falling down on the knees and then lying on the floor
+- from vertical falling down on the floor, ending in right lateral position
+- from vertical falling down on the floor, ending in left lateral position
+- from vertical falling on the floor and quick recovery
+- from vertical falling on the floor and slow recovery
+- from vertical falling on the floor, ending sitting
+- from vertical falling on the floor, ending lying
+- from vertical falling on the floor, ending lying in right lateral position
+- from vertical falling on the floor, ending lying in left lateral position
+- from vertical falling on the floor, ending lying
+- from vertical falling on the floor with subsequent recovery
+- from vertical falling on the floor, ending lying
+- from vertical falling on the floor with subsequent recovery
+- from standing falling on the floor following a vertical trajectory
+- from standing falling down slowly slipping on a wall
+- from vertical standing on a podium going on the floor
+- from lying, rolling out of bed and going on the floor
 
 #### Non-Fall Actions (ADLs):
 
-\#  | Label             | Description
----|-------------------|---------------------------------------------------------------------------------
-21 | lying-bed         | from vertical lying on the bed
-22 | rising-bed        | from lying to sitting
-23 | sit-bed           | from vertical to sitting with a certain acceleration onto a bed (soft surface)
-24 | sit-chair         | from vertical to sitting with a certain acceleration onto a chair (hard surface)
-25 | sit-sofa          | from vertical to sitting with a certain acceleration onto a sofa (soft surface)
-26 | sit-air           | from vertical to sitting in the air exploiting the muscles of legs
-27 | walking-fw        | walking forward
-28 | jogging           | running
-29 | walking-bw        | walking backward
-30 | bending           | bending about 90 degrees
-31 | bending-pick-up   | bending to pick up an object on the floor
-32 | stumble           | stumbling with recovery
-33 | limp              | walking with a limp
-34 | squatting-down    | squatting, then standing up
-35 | trip-over         | bending while walking and then continuing walking
-36 | coughing-sneezing | coughing or sneezing
+- from vertical lying on the bed
+- from lying to sitting
+- from vertical to sitting with a certain acceleration onto a bed (soft surface)
+- from vertical to sitting with a certain acceleration onto a chair (hard surface)
+- from vertical to sitting with a certain acceleration onto a sofa (soft surface)
+- from vertical to sitting in the air exploiting the muscles of legs
+- walking forward
+- running
+- walking backward
+- bending about 90 degrees
+- bending to pick up an object on the floor
+- stumbling with recovery
+- walking with a limp
+- squatting, then standing up
+- bending while walking and then continuing walking
+- coughing-sneezing | coughing or sneezing
 
 The intendet solution is to train several machine learning classifiers like SVC, DecisionTreeClassifier, RandomForestClassifier, KNeighborsClassifier and a deep neural network on the FallDataSet in order to distinguish falls from activities of daily living.
 
@@ -229,7 +223,7 @@ Each of the classifiers Decision Tree, K-Nearest Neighbors, Random Forest and Su
 
 The dashed line in the figure above is the score of the benchmark model.
 
-The best performing classifier is the K-Nearest Neighbors classifier yielding an accuracy score of 0.996970.
+The best performing classifier is the K-Nearest Neighbors classifier yielding an accuracy score of 99.7%.
 
 #### LSTM Recurrent Neural Networks
 
@@ -265,12 +259,30 @@ In this section, the final model and any supporting qualities should be evaluate
 - _Is the model robust enough for the problem? Do small perturbations (changes) in training data or the input space greatly affect the results?_
 - _Can results found from the model be trusted?_
 
+TODO:
+- how the final model was derived:
+- why this model was chosen:
+- model generalizes well to unseen data?
+
+Model                                                                            | Accuracy on test data
+---------------------------------------------------------------------------------|----------------------
+K-Nearest Neighbors classifier operating on 54 (out of 153) principal components | 99.85%
+LSTM Recurrent Neural Network operating on raw sensor data                       | 99.70%
+
 ### Justification
 In this section, your model’s final solution and its results should be compared to the benchmark you established earlier in the project using some type of statistical analysis. You should also justify whether these results and the solution are significant enough to have solved the problem posed in the project. Questions to ask yourself when writing this section:
 - _Are the final results found stronger than the benchmark result reported earlier?_
 - _Have you thoroughly analyzed and discussed the final solution?_
 - _Is the final solution significant enough to have solved the problem?_
 
+TODO:
+- compare final model to benchmark:
+
+Model                                                                             | Accuracy on test data
+----------------------------------------------------------------------------------|----------------------
+benchmark model (GaussianNB) operating on single (out of 153) feature `Acc_Z_var` | 67%
+K-Nearest Neighbors classifier operating on 54 (out of 153) principal components  | 99.85%
+LSTM Recurrent Neural Network operating on raw sensor data                        | 99.70%
 
 ## V. Conclusion
 _(approx. 1-2 pages)_
