@@ -135,7 +135,7 @@ Ten males and seven females participated in a study. A wireless sensor unit was 
 
 The dataset consists of 1822 (55.28%) falls and 1474 (44.72%) ADLs.
 
-The mean total acceleration $\sqrt{\text{Acc_X}^2 + \text{Acc_Y}^2 + \text{Acc_Z}^2}$ of all 1822 falls plotted over a four second time interval around their peak at time 0 looks like this:
+The mean total acceleration $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ of all 1822 falls plotted over a four second time interval around their peak at time 0 looks like this:
 [TODO: Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html]
 
 ![](images/101_901_Test_1_340535.png)
@@ -229,6 +229,7 @@ Each of the classifiers Decision Tree, K-Nearest Neighbors, Random Forest and Su
 
 #### LSTM Recurrent Neural Networks
 
+![LSTM model](images/LSTM_model.png)
 ### Refinement
 In this section, you will need to discuss the process of improvement you made upon the algorithms and techniques you used in your implementation. For example, adjusting parameters for certain models to acquire improved solutions would fall under the refinement category. Your initial and final solutions should be reported, as well as any significant intermediate results as necessary. Questions to ask yourself when writing this section:
 - _Has an initial solution been found and clearly reported?_
