@@ -252,7 +252,7 @@ TODO:
 
 #### Standard Machine Learning Classifiers
 
-#### LSTM Recurrent Neural Networks
+I tried to improve the K-Nearest Neighbors classifier (which yielded an accuracy score of 99.7%) using grid search on the classifiers hyper parameters 'n_neighbors' using values 5, 6 and 7, 'weights' using values 'uniform' and 'distance' and the 'p' parameter using values 1 and 2. The improved classifier yields an accuracy score of 99.85%.
 
 ## IV. Results
 _(approx. 2-3 pages)_
