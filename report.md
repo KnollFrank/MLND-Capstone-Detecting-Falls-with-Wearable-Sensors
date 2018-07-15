@@ -261,8 +261,11 @@ In this section, the final model and any supporting qualities should be evaluate
 
 TODO:
 - how the final model was derived:
+  - K-Nearest Neighbors und LSTM, beide haben fast gleiche Generalisierungsleistung (über 99% Accuracy)
+  - Vorteil LSTM: arbeitet direkt auf Rohdaten, ohne dass man sich schlaue Features überlegen muß, was man jedoch bei K-Nearest Neighbors tun mußte.
 - why this model was chosen:
 - model generalizes well to unseen data?
+  - Ja, wie der hohe Accuracy Score auf den **Testdaten** (= unseen data) zeigt.
 
 Model                                                                            | Accuracy on test data
 ---------------------------------------------------------------------------------|----------------------
@@ -276,13 +279,16 @@ In this section, your model’s final solution and its results should be compare
 - _Is the final solution significant enough to have solved the problem?_
 
 TODO:
-- compare final model to benchmark:
+- compare final model to benchmark using statistical analysis (here: accuracy score): siehe Tabelle unten.
+- does final solution solve problem? Ja, mit einer Accuracy von über 99%
+- sogar besser als Ergebnis in [3], vielleicht weil mehr Daten zur Verfügung stehen als in [3]? (In [3]: seven males and seven females = 14 persons, hier: ten males and seven females = 17 persons)
 
 Model                                                                             | Accuracy on test data
 ----------------------------------------------------------------------------------|----------------------
-benchmark model (GaussianNB) operating on single (out of 153) feature `Acc_Z_var` | 67%
 K-Nearest Neighbors classifier operating on 54 (out of 153) principal components  | 99.85%
 LSTM Recurrent Neural Network operating on raw sensor data                        | 99.70%
+Support Vector Machine applited to thigh sensor data, reported in [3]             | 99.48%
+benchmark model (GaussianNB) operating on single (out of 153) feature `Acc_Z_var` | 67%
 
 ## V. Conclusion
 _(approx. 1-2 pages)_
@@ -292,6 +298,12 @@ In this section, you will need to provide some form of visualization that emphas
 - _Have you visualized a relevant or important quality about the problem, dataset, input data, or results?_
 - _Is the visualization thoroughly analyzed and discussed?_
 - _If a plot is provided, are the axes, title, and datum clearly defined?_
+
+TODO:
+- Bild (snapshot) einfügen, wie jemand hinfällt (mit Nummer 9xx und Beschreibung aus Tabelle im Paper).
+- Timeseries-diagramm für genau dieses Hinfallen einfügen
+- Bild einfügen einer ADL und deren Timeseries, die fast genau so aussieht wie die Hinfallen-Timeseries.
+- Sagen, dass einem da spontan kein (Schwellwert-)Algorithmus einfällt um das Hinfallen und die ADL zu unterscheiden.
 
 ### Reflection
 In this section, you will summarize the entire end-to-end problem solution and discuss one or two particular aspects of the project you found interesting or difficult. You are expected to reflect on the project as a whole to show that you have a firm understanding of the entire process employed in your work. Questions to ask yourself when writing this section:
@@ -305,6 +317,10 @@ In this section, you will need to provide discussion as to how one aspect of the
 - _Are there further improvements that could be made on the algorithms or techniques you used in this project?_
 - _Were there algorithms or techniques you researched that you did not know how to implement, but would consider using if you knew how?_
 - _If you used your final solution as the new benchmark, do you think an even better solution exists?_
+
+TODO:
+- Sagen, dass LSTM model noch verbessert werden kann.
+- Daten sammeln, wo jemand wirklich - und nicht künstlich im Labor - hingefallen ist.
 
 ### References
 
