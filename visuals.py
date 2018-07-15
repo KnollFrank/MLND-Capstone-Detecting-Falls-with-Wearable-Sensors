@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
+
 def distribution(data, transformed=False):
     """
     Visualization code for displaying skewed distributions of features
@@ -116,7 +117,7 @@ def evaluate(results, accuracy, f1):
 
     # Aesthetics
     pl.suptitle("Performance Metrics for Three Supervised Learning Models", fontsize=16, y=1.10)
-    pl.tight_layout()
+    # pl.tight_layout()
     pl.show()
 
 
@@ -143,37 +144,81 @@ def feature_plot(importances, X_train, num_features):
     pl.show()
     return columns
 
+
 def pca_results(good_data, pca):
-	'''
-	Create a DataFrame of the PCA results
-	Includes dimension feature weights and explained variance
-	Visualizes the PCA results
-	'''
+    '''
+    Create a DataFrame of the PCA results
+    Includes dimension feature weights and explained variance
+    Visualizes the PCA results
+    '''
 
-	# Dimension indexing
-	dimensions = dimensions = ['Dimension {}'.format(i) for i in range(1,len(pca.components_)+1)]
+    # Dimension indexing
+    dimensions = dimensions = ['Dimension {}'.format(i) for i in range(1, len(pca.components_) + 1)]
 
-	# PCA components
-	components = pd.DataFrame(np.round(pca.components_, 4), columns = list(good_data.keys()))
-	components.index = dimensions
+    # PCA components
+    components = pd.DataFrame(np.round(pca.components_, 4), columns=list(good_data.keys()))
+    components.index = dimensions
 
-	# PCA explained variance
-	ratios = pca.explained_variance_ratio_.reshape(len(pca.components_), 1)
-	variance_ratios = pd.DataFrame(np.round(ratios, 4), columns = ['Explained Variance'])
-	variance_ratios.index = dimensions
+    # PCA explained variance
+    ratios = pca.explained_variance_ratio_.reshape(len(pca.components_), 1)
+    variance_ratios = pd.DataFrame(np.round(ratios, 4), columns=['Explained Variance'])
+    variance_ratios.index = dimensions
 
-	# Create a bar plot visualization
-	fig, ax = plt.subplots(figsize = (14,8))
+    # Create a bar plot visualization
+    fig, ax = plt.subplots(figsize=(14, 8))
 
-	# Plot the feature weights as a function of the components
-	components.plot(ax = ax, kind = 'bar');
-	ax.set_ylabel("Feature Weights")
-	ax.set_xticklabels(dimensions, rotation=0)
+    # Plot the feature weights as a function of the components
+    components.plot(ax=ax, kind='bar');
+    ax.set_ylabel("Feature Weights")
+    ax.set_xticklabels(dimensions, rotation=0)
+
+    # Display the explained variance ratios
+    for i, ev in enumerate(pca.explained_variance_ratio_):
+        ax.text(i - 0.40, ax.get_ylim()[1] + 0.05, "Explained Variance\n          %.4f" % (ev))
+
+    # Return a concatenated DataFrame
+    return pd.concat([variance_ratios, components], axis=1)
 
 
-	# Display the explained variance ratios
-	for i, ev in enumerate(pca.explained_variance_ratio_):
-		ax.text(i-0.40, ax.get_ylim()[1] + 0.05, "Explained Variance\n          %.4f"%(ev))
+from sklearn.metrics import fbeta_score
+from sklearn.metrics import accuracy_score
+from time import time
 
-	# Return a concatenated DataFrame
-	return pd.concat([variance_ratios, components], axis = 1)
+
+def train_predict(learner, sample_size, X_train, y_train, X_test, y_test, beta):
+    '''
+    inputs:
+       - learner: the learning algorithm to be trained and predicted on
+       - sample_size: the size of samples (number) to be drawn from training set
+       - X_train: features training set
+       - y_train: income training set
+       - X_test: features testing set
+       - y_test: income testing set
+    '''
+
+    results = {}
+
+    start = time()
+    learner = learner.fit(X_train[:sample_size], y_train[:sample_size])
+    end = time()
+
+    results['train_time'] = end - start
+
+    start = time()
+    predictions_test = learner.predict(X_test)
+    predictions_train = learner.predict(X_train[:300])
+    end = time()
+
+    results['pred_time'] = end - start
+
+    results['acc_train'] = accuracy_score(y_train[:300], predictions_train)
+
+    results['acc_test'] = accuracy_score(y_test, predictions_test)
+
+    results['f_train'] = fbeta_score(y_train[:300], predictions_train, beta=beta)
+
+    results['f_test'] = fbeta_score(y_test, predictions_test, beta=beta)
+
+    print("{} trained on {} samples.".format(learner.__class__.__name__, sample_size))
+
+    return results
