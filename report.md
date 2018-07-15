@@ -305,6 +305,11 @@ TODO:
 - Bild einfügen einer ADL und deren Timeseries, die fast genau so aussieht wie die Hinfallen-Timeseries.
 - Sagen, dass einem da spontan kein (Schwellwert-)Algorithmus einfällt um das Hinfallen und die ADL zu unterscheiden.
 
+Action                                                      | Snapshot                                             | Timeseries
+------------------------------------------------------------|------------------------------------------------------|-----------------------------------------
+fall: from vertical standing on a podium going on the floor | ![918-snapshot](images/918-2018-07-16-00h46m40s002-small.png) | ![918-timeseries](images/101_918_Test_1_340539.png)
+ADL: from vertical lying on the bed                         | ![815-snapshot](images/815-2018-07-16-01h01m56s830-small.png) | ![815-timeseries](images/101_815_Test_1_340539.png)
+
 ### Reflection
 In this section, you will summarize the entire end-to-end problem solution and discuss one or two particular aspects of the project you found interesting or difficult. You are expected to reflect on the project as a whole to show that you have a firm understanding of the entire process employed in your work. Questions to ask yourself when writing this section:
 - _Have you thoroughly summarized the entire process you used for this project?_
