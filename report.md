@@ -223,13 +223,23 @@ TODO:
 #### Standard Machine Learning Classifiers
 The implementation was carried out in _python_ using the machine learning library _sklearn_.
 
-Each of the classifiers Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine was fitted to the training data set (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') and the resulting accuracy scores on the test data set were obtained.
+Each of the classifiers Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine was fitted to the training data set (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') and the resulting accuracy scores on the test data set were reported:
 
 ![scores by classifier](images/scoresByClassifier.png)
 
+The dashed line in the figure above is the score of the benchmark model.
+
+The best performing classifier is the K-Nearest Neighbors classifier yielding an accuracy score of 0.996970.
+
 #### LSTM Recurrent Neural Networks
 
+The implementation was carried out in _python_ using the neural networks API _keras_ and the _TensorFlow_ backend.
+
+The network architecture is taken from [4]:
 ![LSTM model](images/LSTM_model.png)
+
+The network is directly applied to the raw sensor training data yielding an accuracy score above 99% on the test data.
+
 ### Refinement
 In this section, you will need to discuss the process of improvement you made upon the algorithms and techniques you used in your implementation. For example, adjusting parameters for certain models to acquire improved solutions would fall under the refinement category. Your initial and final solutions should be reported, as well as any significant intermediate results as necessary. Questions to ask yourself when writing this section:
 - _Has an initial solution been found and clearly reported?_
@@ -239,6 +249,10 @@ In this section, you will need to discuss the process of improvement you made up
 TODO:
 - discuss process of improvement (adjusting parameters): GridSearch, Auswahl der Features via PCA
 - report initial and final solutions (vorher vs. nachher)
+
+#### Standard Machine Learning Classifiers
+
+#### LSTM Recurrent Neural Networks
 
 ## IV. Results
 _(approx. 2-3 pages)_
