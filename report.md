@@ -126,22 +126,12 @@ The mean of the total acceleration of all 1474 falls plotted over a four second 
 ![](images/101_901_Test_1_340535.png)
 
 ### Algorithms and Techniques
-In this section, you will need to discuss the algorithms and techniques you intend to use for solving the problem. You should justify the use of each one based on the characteristics of the problem and the problem domain. Questions to ask yourself when writing this section:
-- _Are the algorithms you will use, including any default variables/parameters in the project clearly defined?_
-- _Are the techniques to be used thoroughly discussed and justified?_
-- _Is it made clear how the input data or datasets will be handled by the algorithms and techniques chosen?_
 
-TODO:
-- algorithms:
-  - standard classifiers: SVC, DecisionTreeClassifier, RandomForestClassifier, KNeighborsClassifier arbeiten auf den extrahierten Features Min, Max, Mean, Var, Kurtotis, Autovarianz, ...
-  - deep learning: CNN with LSTM arbeitet direkt auf den Rohdaten.
-- techniques?
+The following standard machine learning classifiers are applied to the dataset (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing'): Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine. These classifiers are described as promising candidates in [2].
 
-The following standard machine learning classifiers are applied to the dataset (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') using 3-fold cross validation: Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine.
+Then by using the raw sensor data in contrast to the feature extracted data, a LSTM recurrent neural network is applied to the raw FallDataSet following [4].
 
-Then by using the raw sensor data in contrast to the feature extracted data, LSTM recurrent neural networks are applied to the raw FallDataSet following [4].
-
-The classifier having the best accuracy will be taken as the solution to the problem.
+The classifiers having the highest accuracies will be taken as solutions to the problem.
 
 ### Benchmark
 In this section, you will need to provide a clearly defined benchmark result or threshold for comparing across performances obtained by your solution. The reasoning behind the benchmark (in the case where it is not an established result) should be discussed. Questions to ask yourself when writing this section:
