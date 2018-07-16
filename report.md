@@ -317,8 +317,17 @@ In this section, you will summarize the entire end-to-end problem solution and d
 - _Does the final model and solution fit your expectations for the problem, and should it be used in a general setting to solve these types of problems?_
 
 TODO:
-- summarize the entire end-to-end problem solution (the entire process):
 - discuss one or two particular aspects of the project you found interesting or difficult:
+
+The problem to solve is to distinguish falls from activities of daily living using sensor data. Two machine learning classifiers -- K-Nearest Neighbors classifier and LSTM Recurrent Neural Network -- were tested as potential solutions to this problem. In order to make them work, the following steps have been performed:
+
+Steps                                                       | apply step on K-Nearest Neighbors classifier?                                           | apply step on LSTM Recurrent Neural Network?
+------------------------------------------------------------|-----------------------------------------------------------------------------------------|---------------------------------------------
+get FallDataSet with time series data obtained from sensors | yes                                                                                     | yes
+extract features from FallDataSet                           | yes, extract features Min, Max, Mean, Variance, Kurtosis, Autocovariance, ... (see [2]) | no, operate on raw data instead
+train and improve classifier                                | yes, improve by applying grid search                                                    | yes
+
+The main difference between these two classifiers is that the LSTM Recurrent Neural Network directly operates on raw sensor data whereas the K-Nearest Neighbors classifier has to be provided with features extracted from the raw sensor data in a preprocessing step.
 
 ### Improvement
 In this section, you will need to provide discussion as to how one aspect of the implementation you designed could be improved. As an example, consider ways your implementation can be made more general, and what would need to be modified. You do not need to make this improvement, but the potential solutions resulting from these changes are considered and compared/contrasted to your current solution. Questions to ask yourself when writing this section:
