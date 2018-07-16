@@ -7,29 +7,17 @@ Frank Knoll
 July 19, 2018
 
 ## I. Definition
-_(approx. 1-2 pages)_
 
 ### Project Overview
-In this section, look to provide a high-level overview of the project in layman’s terms. Questions to ask yourself when writing this section:
-- _Has an overview of the project been provided, such as the problem domain, project origin, and related datasets or input data?_
-- _Has enough background information been given so that an uninformed reader would understand the problem domain and following problem statement?_
 
 One day you will be 65 years old. Then according to the World Health Organization ([1]) your chance of falling once a year is 28–35% with serious consequences such as heavy injuries. Imagine carrying a sensor or smartphone near your waist or thigh which recognizes your fall and immediately alerts a person to help you, that would be great. But imagine further the sensor would confuse one of your Activities of Daily Living (ADLs) such as sitting, standing or walking with a fall, then the person to help you would have been alarmed without reason. Therefore such a sensor based fall detection system should not miss any falls and should also trigger no false alarms when performing ADLs.
 
 ### Problem Statement
-In this section, you will want to clearly define the problem that you are trying to solve, including the strategy (outline of tasks) you will use to achieve the desired solution. You should also thoroughly discuss what the intended solution will be for this problem. Questions to ask yourself when writing this section:
-- _Is the problem statement clearly defined? Will the reader understand what you are expecting to solve?_
-- _Have you thoroughly discussed how you will attempt to solve the problem?_
-- _Is an anticipated solution clearly defined? Will the reader understand what results you are looking for?_
-
-TODO:
-- define the **problem**:
-- strategy (outline of tasks) to achieve the desired **solution**:
 
 The problem to be solved is to distinguish falls from activities of daily living using a wireless sensor unit fitted to a person's waist or thigh.
 There are numerous types of falls and activities of daily living as can be seen in the following lists, but the task is just to binary classify actions in falls and non-falls. A challenge in this classification task is not to confuse some of the non-fall actions, which are high-impact events, with falls.
 
-#### Fall Actions:
+Fall Actions:
 
 - from vertical falling forward to the floor
 - from vertical falling forward to the floor with arm protection
@@ -52,7 +40,7 @@ There are numerous types of falls and activities of daily living as can be seen 
 - from vertical standing on a podium going on the floor
 - from lying, rolling out of bed and going on the floor
 
-#### Non-Fall Actions (ADLs):
+Non-Fall Actions (ADLs):
 
 - from vertical lying on the bed
 - from lying to sitting
@@ -71,7 +59,7 @@ There are numerous types of falls and activities of daily living as can be seen 
 - bending while walking and then continuing walking
 - coughing-sneezing | coughing or sneezing
 
-The intendet solution is to train several machine learning classifiers like SVC, DecisionTreeClassifier, RandomForestClassifier, KNeighborsClassifier and a deep neural network on the FallDataSet in order to distinguish falls from activities of daily living.
+The intendet solution is to train several machine learning classifiers like Decision Tree, K-Nearest Neighbors, Random Forest, Support Vector Machine and a deep neural network on a data set containing falls and ADLs in order to learn to distinguish falls from activities of daily living.
 
 ### Metrics
 In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
@@ -244,6 +232,7 @@ In this section, you will need to discuss the process of improvement you made up
 TODO:
 - discuss process of improvement (adjusting parameters): GridSearch, Auswahl der Features via PCA
 - report initial and final solutions (vorher vs. nachher)
+- improve LSTM model
 
 In order to improve the K-Nearest Neighbors classifier (which yielded an accuracy score of 99.7%) I used grid search on the classifiers hyper parameters 'n_neighbors' using values 5, 6 and 7, 'weights' using values 'uniform' and 'distance' and the 'p' parameter using values 1 and 2. The improved classifier yields an accuracy score of 99.85%.
 
@@ -334,11 +323,6 @@ In this section, you will need to provide discussion as to how one aspect of the
 - _Are there further improvements that could be made on the algorithms or techniques you used in this project?_
 - _Were there algorithms or techniques you researched that you did not know how to implement, but would consider using if you knew how?_
 - _If you used your final solution as the new benchmark, do you think an even better solution exists?_
-
-TODO:
-- how one aspect of the implementation could be improved:
-  - Sagen, dass LSTM model noch verbessert werden kann, z.B. tiefer werden (das kann ich aber auch ausprobieren im Abschnitt Refinement).
-- Potential solutions resulting from these improvements are considered and compared/contrasted to the current solution.
 
 The FallDataSet was recorded under laboratory conditions performing voluntary falls. One possible improvement in detecting falls with wearable sensors is to obtain more realistic data by incorporating _involuntary_ falls, which are not that easy to get.
 
