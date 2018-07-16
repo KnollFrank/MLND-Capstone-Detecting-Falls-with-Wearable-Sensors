@@ -199,10 +199,6 @@ One advantage of the LSTM Recurrent Neural Network is that it directly operates 
 It looks as if neither model is much better than the other, so both models -- K-Nearest Neighbors classifier and LSTM Recurrent Neural Network -- can be used as final models.
 
 ### Justification
-In this section, your model’s final solution and its results should be compared to the benchmark you established earlier in the project using some type of statistical analysis. You should also justify whether these results and the solution are significant enough to have solved the problem posed in the project. Questions to ask yourself when writing this section:
-- _Are the final results found stronger than the benchmark result reported earlier?_
-- _Have you thoroughly analyzed and discussed the final solution?_
-- _Is the final solution significant enough to have solved the problem?_
 
 Both final models -- K-Nearest Neighbors classifier and LSTM Recurrent Neural Network -- have much higher accuracy than the GaussianNB benchark model as shown in the table below:
 
@@ -213,7 +209,7 @@ LSTM Recurrent Neural Network operating on raw sensor data                      
 Support Vector Machine applied to thigh sensor data, reported in [3]             | benchmark   | 99.48%
 benchmark model (GaussianNB) operating on single (out of 153) feature `Acc_Z_var` | benchmark   | 67%
 
-Another model reported in [3] is a Support Vector Machine applied to thigh sesor data. It has an accuracy almost as high as the accuracies of the final models.
+Another model reported in [3] is a Support Vector Machine applied to data obtained from a sensor attached to a test person's right thigh. It has an accuracy almost as high as the accuracies of the final models.
 
 Having high accuracies of above 99% the final models are significant enough to have adequately solved the problem.
 
