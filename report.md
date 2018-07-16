@@ -338,10 +338,11 @@ In this section, you will need to provide discussion as to how one aspect of the
 TODO:
 - how one aspect of the implementation could be improved:
   - Sagen, dass LSTM model noch verbessert werden kann, z.B. tiefer werden (das kann ich aber auch ausprobieren im Abschnitt Refinement).
-  - Daten sammeln, wo jemand wirklich - und nicht künstlich im Labor - hingefallen ist.
-  - noch mehr Daten sammeln, denn wir kriegen schon bessere Ergebnisse als [3], wahrscheinlich weil wir mehr Daten haben.
-  Ja, mit einer Accuracy von über 99%. sogar besser als Ergebnis in [3], vielleicht weil mehr Daten zur Verfügung stehen als in [3]? (In [3]: seven males and seven females = 14 persons, hier: ten males and seven females = 17 persons)
 - Potential solutions resulting from these improvements are considered and compared/contrasted to the current solution.
+
+The FallDataSet was recorded under laboratory conditions performing voluntary falls. One possible improvement in detecting falls with wearable sensors is to obtain more realistic data by incorporating _involuntary_ falls, which are not that easy to get.
+
+The final models developed here have higher accuracies than the Support Vector Machine reported in [3] despite they operate on the same kind of data. The reason for this could be that in [3] 14 persons (seven males and seven females) participated in the study but meanwhile the data set has grown to 17 persons (ten males and seven females). Maybe even higher accuracies can be obtained by further incorporating more falls and ADLs of more persons into the data set.
 
 ### References
 
