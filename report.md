@@ -63,17 +63,7 @@ The intendet solution is to train several machine learning classifiers like Deci
 
 ### Metrics
 
-TODO:
-- define metrics and clearly discuss them:
-  - verwende ausschließlich Accuracy, weil die Klassen fall und activities of daily living ausgewogen sind.
-- justification for the metrics:
-
-In distinguishing falls from activities of daily living, the following conditions must be met:
-
-- "False negatives, which indicate missed falls, must be avoided by all means, since user manipulation may not be possible if a fall results in physical and/or mental impairment." ([2])
-- "False alarms (false positives) caused by misclassified activities of daily living, although a nuisance, can be canceled by the user." ([2])
-
-So an evaluation metric should be chosen which punishes false negatives more than false positives. As can be seen from the formula of the $F_\beta$-score (https://en.wikipedia.org/wiki/F1_score) $F_\beta = \frac {(1 + \beta^2) \cdot \mathrm{true\ positive} }{(1 + \beta^2) \cdot \mathrm{true\ positive} + \beta^2 \cdot \mathrm{false\ negative} + \mathrm{false\ positive}}\,$ this can be achieved by setting $\beta>1$, e.g. $\beta = 2$. So the chosen evaluation metric is the $F_2$-score.
+As will be described in the section 'Data Exploration', the dataset consists of about 55% falls and about 45% activities of daily living, which means that the dataset is nearly balanced. In presence of such a balanced dataset, accuracy, which is the proportion of true results (both true positives and true negatives) among the total number of cases examined ([5]), is a good metric. So accuracy will be the metric used to measure model performance.
 
 ## II. Analysis
 
@@ -258,3 +248,4 @@ http://www.who.int/ageing/publications/Falls_prevention7March.pdf
 - [3] Ntanasis P., Pippa E., Özdemir A.T., Barshan B., Megalooikonomou V., "Investigation of sensor placement for accurate fall detection", 6th EAI International Conference on Wireless Mobile Communication and Healthcare (MobiHealth), Milan, Italy, 14-16 Nov. 2016, pp.1-6. https://www.researchgate.net/profile/Billur_Barshan/publication/318146579_Investigation_of_Sensor_Placement_for_Accurate_Fall_Detection/links/5999a8a745851564432dbdf7/Investigation-of-Sensor-Placement-for-Accurate-Fall-Detection.pdf?origin=publication_detail
 - [4]
 Sequence Classification with LSTM Recurrent Neural Networks in Python with Keras. https://machinelearningmastery.com/sequence-classification-lstm-recurrent-neural-networks-python-keras/
+- [5] https://en.wikipedia.org/wiki/Accuracy_and_precision
