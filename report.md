@@ -214,17 +214,12 @@ Another model reported in [3] is a Support Vector Machine applied to data obtain
 Having high accuracies of above 99% the final models are significant enough to have adequately solved the problem.
 
 ## V. Conclusion
-_(approx. 1-2 pages)_
 
 ### Free-Form Visualization
-In this section, you will need to provide some form of visualization that emphasizes an important quality about the project. It is much more free-form, but should reasonably support a significant result or characteristic about the problem that you want to discuss. Questions to ask yourself when writing this section:
-- _Have you visualized a relevant or important quality about the problem, dataset, input data, or results?_
-- _Is the visualization thoroughly analyzed and discussed?_
-- _If a plot is provided, are the axes, title, and datum clearly defined?_
 
 The table below shows a fall (from a podium falling on the floor) and an activity of daily living (lying on the bed) which are both high-impact events having high total acceleration peaks in their time series diagrams:
 
-Action                                                | Type | Snapshot                                                      | Time Series
+Action                                                | Type | Video Snapshot                                                | Time Series
 ------------------------------------------------------|------|---------------------------------------------------------------|----------------------------------------------------
 from vertical standing on a podium going on the floor | fall | ![918-snapshot](images/918-2018-07-16-00h46m40s002-small.png) | ![918-timeseries](images/101_918_Test_1_340539.png)
 from vertical lying on the bed                        | ADL  | ![815-snapshot](images/815-2018-07-16-01h01m56s830-small.png) | ![815-timeseries](images/101_815_Test_1_340539.png)
