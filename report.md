@@ -59,7 +59,7 @@ Non-Fall Actions (activities of daily living):
 - bending while walking and then continuing walking
 - coughing-sneezing | coughing or sneezing
 
-The intendet solution is to train several machine learning classifiers like Decision Tree, K-Nearest Neighbors, Random Forest, Support Vector Machine and a deep neural network on a dataset containing falls and activities of daily living in order to learn to distinguish falls from activities of daily living.
+The intendet solution is to train several machine learning classifiers like Decision Tree, K-Nearest Neighbors, Random Forest, Support Vector Machine and a deep neural network on a dataset containing falls and activities of daily living in order to learn to distinguish falls from non-falls.
 
 ### Metrics
 
@@ -99,7 +99,7 @@ As an example, the first five records of the file `FallDataSet/101/Testler Expor
 
 The dataset consists of 1822 (55.28%) falls and 1474 (44.72%) activities of daily living.
 
-The FallDataSet kann be downloaded from
+The dataset (from now on denoted as FallDataSet) can be downloaded from
 
 https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t.
 
@@ -129,13 +129,13 @@ The mean of the total acceleration of all 1474 falls plotted over a four second 
 
 The following standard machine learning classifiers are applied to the dataset (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing'): Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine. These classifiers are described as promising candidates in [2].
 
-Then by using the raw sensor data in contrast to the feature extracted data, a LSTM recurrent neural network is applied to the raw FallDataSet following [4].
+By using the raw sensor data in contrast to the feature extracted data, a LSTM Recurrent Neural Network is applied to the raw FallDataSet following [4].
 
 The classifiers having the highest accuracies will be taken as solutions to the problem.
 
 ### Benchmark
 
-As can be seen in the accompanying jupyter notebook `DetectingFalls.ipynb`, a principal component analysis shows, that 98% variance in the data obtained by feature extraction (see section 'Data Preprocessing') is explained by the first principal component. Furthermore the first principal component points mainly (0.9974) in the direction of the feature `Acc_Z_var`, which is the variance of the acceleration in the z direction. So a classifier fitted to a training dataset consisting solely of the feature `Acc_Z_var` should have enough information to distinguish falls from activities of daily living. A Gaussian Naive Bayes (GaussianNB) classifier fitted to this training set yields an accuracy of 67% on the testing set, which is better than 56% accuracy for a classifier which classifies every action as a fall and better than 44% accuracy for a classifier which classifies every action as an activity of daily living. So the GaussianNB classifier will be the benchmark model.
+As can be seen in the accompanying jupyter notebook `DetectingFalls.ipynb`, a principal component analysis shows, that 98% variance in the data obtained by feature extraction (see section 'Data Preprocessing') is explained by the first principal component. Furthermore the first principal component points mainly (0.9974) in the direction of the feature `Acc_Z_var`, which is the variance of the acceleration in the z direction. So a classifier fitted to a training dataset consisting solely of the feature `Acc_Z_var` should have enough information to distinguish falls from activities of daily living. A Gaussian Naive Bayes classifier fitted to this training set yields an accuracy of 67% on the testing set, which is better than 56% accuracy for a classifier which classifies every action as a fall and better than 44% accuracy for a classifier which classifies every action as an activity of daily living. So the Gaussian Naive Bayes classifier will be the benchmark model.
 
 ## III. Methodology
 
@@ -156,11 +156,11 @@ To be more specific, let $s = [s_1, s_2,\dots, s_N]^T$ be the raw data of a sign
 #### Standard Machine Learning Classifiers
 The implementation was carried out in _python_ using the machine learning library _sklearn_.
 
-Each of the classifiers Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine was fitted to the training dataset (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') and the resulting accuracy scores on the test dataset were reported:
+Each of the classifiers Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine was fitted to the training dataset (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') and the resulting accuracy scores on the test dataset were reported (see figure below).
 
 ![scores by classifier](images/scoresByClassifier.png)
 
-The dashed line in the figure above is the score of the benchmark model.
+The dashed line in this figure is the score of the benchmark model.
 
 The best performing classifier is the K-Nearest Neighbors classifier yielding an accuracy score of 99.7%.
 
@@ -168,7 +168,7 @@ The best performing classifier is the K-Nearest Neighbors classifier yielding an
 
 The implementation was carried out in _python_ using the neural networks API _keras_ and the _TensorFlow_ backend.
 
-The network architecture is taken from [4] an is shown in the figure below.
+The network architecture is taken from [4] and is shown in the figure below.
 
 ![LSTM model](images/LSTM_model.png)
 
@@ -181,7 +181,7 @@ TODO:
 
 In order to improve the K-Nearest Neighbors classifier (which yielded an accuracy of 99.7%) I used grid search on the classifiers hyper parameters 'n_neighbors' using values 5, 6 and 7, 'weights' using values 'uniform' and 'distance' and the 'p' parameter using values 1 and 2. The resulting classifier yields an improved accuracy of 99.85%.
 
-In a attempt to reduce the number of features (153) I performed a Principal Component Analysis on the training feature dataset to obtain 54 dimensions which explain most of the variance in the training data. Then I fitted the optimized K-Nearest Neighbors classifier from the last step to this reduced dataset having only 54 dimensions. The accuracy score on the testing set was 99.85% which is the same accuracy the K-Nearest Neighbors classifier yielded on the full feature dataset having 153 features. So a dimensionality reduction of the feature space from 153 to 85 dimensions without any loss of accuracy is a succesful simplification.
+In an attempt to reduce the number of features (153) I performed a Principal Component Analysis on the training feature dataset to obtain 54 dimensions which explain most of the variance in the training data. Then I fitted the optimized K-Nearest Neighbors classifier from the last step to this reduced dataset having only 54 dimensions. The accuracy score on the testing set was 99.85% which is the same accuracy the K-Nearest Neighbors classifier yielded on the full feature dataset having 153 features. So a dimensionality reduction of the feature space from 153 to 54 dimensions without any loss of accuracy is a succesful simplification.
 
 ## IV. Results
 
@@ -200,14 +200,14 @@ It looks as if neither model is much better than the other, so both models -- K-
 
 ### Justification
 
-Both final models -- K-Nearest Neighbors classifier and LSTM Recurrent Neural Network -- have much higher accuracy than the GaussianNB benchark model as shown in the table below:
+Both final models -- K-Nearest Neighbors classifier and LSTM Recurrent Neural Network -- have much higher accuracy than the Gaussian Naive Bayes classifier benchmark model as shown in the table below:
 
 Model                                                                             | Type        | Accuracy on test data
 ----------------------------------------------------------------------------------|-------------|----------------------
 K-Nearest Neighbors classifier operating on 54 (out of 153) principal components  | final model | 99.85%
 LSTM Recurrent Neural Network operating on raw sensor data                        | final model | 99.70%
 Support Vector Machine applied to thigh sensor data, reported in [3]             | benchmark   | 99.48%
-benchmark model (GaussianNB) operating on single (out of 153) feature `Acc_Z_var` | benchmark   | 67%
+benchmark model (Gaussian Naive Bayes classifier) operating on a single (out of 153) feature `Acc_Z_var` | benchmark   | 67%
 
 Another model reported in [3] is a Support Vector Machine applied to data obtained from a sensor attached to a test person's right thigh. It has an accuracy almost as high as the accuracies of the final models.
 
