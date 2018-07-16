@@ -268,7 +268,7 @@ LSTM Recurrent Neural Network operating on raw sensor data                      
 
 One advantage of the LSTM Recurrent Neural Network is that it directly operates on _raw_ sensor data extracting features on it's own in it's convolutional layer whereas the K-Nearest Neighbors classifier has to be provided with features extracted from the raw sensor data in a preprocessing step.
 
-It looks as if neither model is much better than the other, so both -- K-Nearest Neighbors classifier and LSTM Recurrent Neural Network -- can be final models.
+It looks as if neither model is much better than the other, so both models -- K-Nearest Neighbors classifier and LSTM Recurrent Neural Network -- can be used as final models.
 
 ### Justification
 In this section, your model’s final solution and its results should be compared to the benchmark you established earlier in the project using some type of statistical analysis. You should also justify whether these results and the solution are significant enough to have solved the problem posed in the project. Questions to ask yourself when writing this section:
