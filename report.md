@@ -10,7 +10,7 @@ July 19, 2018
 
 ### Project Overview
 
-One day you will be 65 years old. Then according to the World Health Organization ([1]) your chance of falling once a year is 28–35% with serious consequences such as heavy injuries. Imagine carrying a sensor or smartphone near your waist or thigh which recognizes your fall and immediately alerts a person to help you, that would be great. But imagine further the sensor would confuse one of your Activities of Daily Living (ADLs) such as sitting, standing or walking with a fall, then the person to help you would have been alarmed without reason. Therefore such a sensor based fall detection system should not miss any falls and should also trigger no false alarms when performing ADLs.
+One day you will be 65 years old. Then according to the World Health Organization ([1]) your chance of falling once a year is 28–35% with serious consequences such as heavy injuries. Imagine carrying a sensor or smartphone near your waist or thigh which recognizes your fall and immediately alerts a person to help you, that would be great. But imagine further the sensor would confuse one of your activities of daily living such as sitting, standing or walking with a fall, then the person to help you would have been alarmed without reason. Therefore such a sensor based fall detection system should not miss any falls and should also trigger no false alarms when performing activities of daily living.
 
 ### Problem Statement
 
@@ -40,7 +40,7 @@ Fall Actions:
 - from vertical standing on a podium going on the floor
 - from lying, rolling out of bed and going on the floor
 
-Non-Fall Actions (ADLs):
+Non-Fall Actions (activities of daily living):
 
 - from vertical lying on the bed
 - from lying to sitting
@@ -59,19 +59,19 @@ Non-Fall Actions (ADLs):
 - bending while walking and then continuing walking
 - coughing-sneezing | coughing or sneezing
 
-The intendet solution is to train several machine learning classifiers like Decision Tree, K-Nearest Neighbors, Random Forest, Support Vector Machine and a deep neural network on a dataset containing falls and ADLs in order to learn to distinguish falls from activities of daily living.
+The intendet solution is to train several machine learning classifiers like Decision Tree, K-Nearest Neighbors, Random Forest, Support Vector Machine and a deep neural network on a dataset containing falls and activities of daily living in order to learn to distinguish falls from activities of daily living.
 
 ### Metrics
 
 TODO:
 - define metrics and clearly discuss them:
-  - verwende ausschließlich Accuracy, weil die Klassen fall und ADLs ausgewogen sind.
+  - verwende ausschließlich Accuracy, weil die Klassen fall und activities of daily living ausgewogen sind.
 - justification for the metrics:
 
-In distinguishing falls from ADLs, the following conditions must be met:
+In distinguishing falls from activities of daily living, the following conditions must be met:
 
 - "False negatives, which indicate missed falls, must be avoided by all means, since user manipulation may not be possible if a fall results in physical and/or mental impairment." ([2])
-- "False alarms (false positives) caused by misclassified ADLs, although a nuisance, can be canceled by the user." ([2])
+- "False alarms (false positives) caused by misclassified activities of daily living, although a nuisance, can be canceled by the user." ([2])
 
 So an evaluation metric should be chosen which punishes false negatives more than false positives. As can be seen from the formula of the $F_\beta$-score (https://en.wikipedia.org/wiki/F1_score) $F_\beta = \frac {(1 + \beta^2) \cdot \mathrm{true\ positive} }{(1 + \beta^2) \cdot \mathrm{true\ positive} + \beta^2 \cdot \mathrm{false\ negative} + \mathrm{false\ positive}}\,$ this can be achieved by setting $\beta>1$, e.g. $\beta = 2$. So the chosen evaluation metric is the $F_2$-score.
 
@@ -81,7 +81,7 @@ So an evaluation metric should be chosen which punishes false negatives more tha
 
 ![sensors](images/sensors.png)
 
-Ten males and seven females participated in a study. A wireless sensor unit was fitted to the subject's waist and right thigh among other body parts as can be seen in the figure. The sensor unit comprises three tri-axial devices: accelerometer, gyroscope, and  magnetometer/compass. Raw motion data was recorded along three perpendicular axes (x, y, z) from the unit with a sampling frequency of 25 Hz yielding Acc_X, Acc_Y, Acc_Z ($m/s^2$), Gyr_X, Gyr_Y, Gyr_Z (°/s) and Mag_X, Mag_Y, Mag_Z (Gauss). A set of trials consists of 20 fall actions (see list 'Fall Actions' above) and 16 ADLs (see list 'Non-Fall Actions' above). Each trial lasted about 15s on average. The 17 volunteers repeated each test five times. Then the peak of the total acceleration vector $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ was detected, and two seconds of the sequence before and after the peak acceleration were kept.
+Ten males and seven females participated in a study. A wireless sensor unit was fitted to the subject's waist and right thigh among other body parts as can be seen in the figure. The sensor unit comprises three tri-axial devices: accelerometer, gyroscope, and  magnetometer/compass. Raw motion data was recorded along three perpendicular axes (x, y, z) from the unit with a sampling frequency of 25 Hz yielding Acc_X, Acc_Y, Acc_Z ($m/s^2$), Gyr_X, Gyr_Y, Gyr_Z (°/s) and Mag_X, Mag_Y, Mag_Z (Gauss). A set of trials consists of 20 fall actions (see list 'Fall Actions' above) and 16 activities of daily living (see list 'Non-Fall Actions' above). Each trial lasted about 15s on average. The 17 volunteers repeated each test five times. Then the peak of the total acceleration vector $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ was detected, and two seconds of the sequence before and after the peak acceleration were kept.
 
 About ten trials of the dataset have recording times that are too short in order to set the time window of four seconds around the peak acceleration. These trials have been dropped. Within a single trial sometimes the sensor data for a specific point in time is missing (NaN). Records containing NaNs have been dropped.
 
@@ -97,7 +97,7 @@ As an example, the first five records of the file `FallDataSet/101/Testler Expor
 | $\vdots$        | $\vdots$        | $\vdots$        | $\vdots$    | $\vdots$    | $\vdots$    | $\vdots$      | $\vdots$      | $\vdots$      |
 
 
-The dataset consists of 1822 (55.28%) falls and 1474 (44.72%) ADLs.
+The dataset consists of 1822 (55.28%) falls and 1474 (44.72%) activities of daily living.
 
 The FallDataSet kann be downloaded from
 
@@ -121,7 +121,7 @@ TODO:
 ![](images/101_901_Test_1_340535.png)
 
 The mean of the total acceleration of all 1474 falls plotted over a four second time interval around their peak at time 0 looks like this:
-  [TODO: Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html, und auch hier nur die ADLs eines bestimmten Typs (9xx) anzeigen.]
+  [TODO: Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html, und auch hier nur die activities of daily living eines bestimmten Typs (9xx) anzeigen.]
 
 ![](images/101_901_Test_1_340535.png)
 
@@ -135,7 +135,7 @@ The classifiers having the highest accuracies will be taken as solutions to the 
 
 ### Benchmark
 
-As can be seen in the accompanying jupyter notebook `DetectingFalls.ipynb`, a principal component analysis shows, that 98% variance in the data obtained by feature extraction (see section 'Data Preprocessing') is explained by the first principal component. Furthermore the first principal component points mainly (0.9974) in the direction of the feature `Acc_Z_var`, which is the variance of the acceleration in the z direction. So a classifier fitted to a training dataset consisting solely of the feature `Acc_Z_var` should have enough information to distinguish falls from ADLs. A Gaussian Naive Bayes (GaussianNB) classifier fitted to this training set yields an accuracy of 67% on the testing set, which is better than 56% accuracy for a classifier which classifies every action as a fall and better than 44% accuracy for a classifier which classifies every action as an activity of daily living. So the GaussianNB classifier will be the benchmark model.
+As can be seen in the accompanying jupyter notebook `DetectingFalls.ipynb`, a principal component analysis shows, that 98% variance in the data obtained by feature extraction (see section 'Data Preprocessing') is explained by the first principal component. Furthermore the first principal component points mainly (0.9974) in the direction of the feature `Acc_Z_var`, which is the variance of the acceleration in the z direction. So a classifier fitted to a training dataset consisting solely of the feature `Acc_Z_var` should have enough information to distinguish falls from activities of daily living. A Gaussian Naive Bayes (GaussianNB) classifier fitted to this training set yields an accuracy of 67% on the testing set, which is better than 56% accuracy for a classifier which classifies every action as a fall and better than 44% accuracy for a classifier which classifies every action as an activity of daily living. So the GaussianNB classifier will be the benchmark model.
 
 ## III. Methodology
 
@@ -219,7 +219,7 @@ Having high accuracies of above 99% the final models are significant enough to h
 
 The table below shows a fall (from a podium falling on the floor) and an activity of daily living (lying on the bed) which are both high-impact events having high total acceleration peaks in their time series diagrams:
 
-**Type:**               | Fall                                                          | ADL
+**Type:**               | Fall                                                          | activity of daily living
 --------------------|---------------------------------------------------------------|--------------------------------------------------------------
 **Action:**         | from vertical standing on a podium going on the floor         | from vertical lying on the bed
 **Video Snapshot:** | ![918-snapshot](images/918-2018-07-16-00h46m40s002-small.png) | ![815-snapshot](images/815-2018-07-16-01h01m56s830-small.png)
@@ -227,7 +227,7 @@ The table below shows a fall (from a podium falling on the floor) and an activit
 
 TODO: programmatisch bestätigen, dass diese beiden activities in obiger Tabelle vom final model korrekt unterschieden werden können.
 
-As both time series diagrams have differing total acceleration peaks, it seems that a threshold algorithm could distinguish this fall from the ADL. Maybe such a threshold algorithm also could have been a good candidate for a benchmark model.
+As both time series diagrams have differing total acceleration peaks, it seems that a threshold algorithm could distinguish this fall from the activity of daily living. Maybe such a threshold algorithm also could have been a good candidate for a benchmark model.
 
 ### Reflection
 
@@ -248,7 +248,7 @@ The main difference between these two classifiers is that the LSTM Recurrent Neu
 
 The FallDataSet was recorded under laboratory conditions performing voluntary falls. One possible improvement in detecting falls with wearable sensors is to obtain more realistic data by incorporating _involuntary_ falls, which are not that easy to get.
 
-The final models developed here have higher accuracies than the Support Vector Machine reported in [3] despite they operate on the same kind of data. The reason for this could be that in [3] 14 persons (seven males and seven females) participated in the study but meanwhile the dataset has grown to 17 persons (ten males and seven females). Maybe even higher accuracies can be obtained by further incorporating more falls and ADLs of more persons into the dataset.
+The final models developed here have higher accuracies than the Support Vector Machine reported in [3] despite they operate on the same kind of data. The reason for this could be that in [3] 14 persons (seven males and seven females) participated in the study but meanwhile the dataset has grown to 17 persons (ten males and seven females). Maybe even higher accuracies can be obtained by further incorporating more falls and activities of daily living of more persons into the dataset.
 
 ### References
 
