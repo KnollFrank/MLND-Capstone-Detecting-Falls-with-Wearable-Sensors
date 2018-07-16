@@ -219,10 +219,11 @@ Having high accuracies of above 99% the final models are significant enough to h
 
 The table below shows a fall (from a podium falling on the floor) and an activity of daily living (lying on the bed) which are both high-impact events having high total acceleration peaks in their time series diagrams:
 
-Action                                                | Type | Video Snapshot                                                | Time Series
-------------------------------------------------------|------|---------------------------------------------------------------|----------------------------------------------------
-from vertical standing on a podium going on the floor | fall | ![918-snapshot](images/918-2018-07-16-00h46m40s002-small.png) | ![918-timeseries](images/101_918_Test_1_340539.png)
-from vertical lying on the bed                        | ADL  | ![815-snapshot](images/815-2018-07-16-01h01m56s830-small.png) | ![815-timeseries](images/101_815_Test_1_340539.png)
+**Type:**               | Fall                                                          | ADL
+--------------------|---------------------------------------------------------------|--------------------------------------------------------------
+**Action:**         | from vertical standing on a podium going on the floor         | from vertical lying on the bed
+**Video Snapshot:** | ![918-snapshot](images/918-2018-07-16-00h46m40s002-small.png) | ![815-snapshot](images/815-2018-07-16-01h01m56s830-small.png)
+**Time Series:**    | ![918-timeseries](images/101_918_Test_1_340539.png)           | ![815-timeseries](images/101_815_Test_1_340539.png)
 
 TODO: programmatisch bestätigen, dass diese beiden activities in obiger Tabelle vom final model korrekt unterschieden werden können.
 
