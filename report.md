@@ -184,14 +184,8 @@ In order to improve the K-Nearest Neighbors classifier (which yielded an accurac
 In a attempt to reduce the number of features (153) I performed a Principal Component Analysis on the training feature dataset to obtain 54 dimensions which explain most of the variance in the training data. Then I fitted the optimized K-Nearest Neighbors classifier from the last step to this reduced dataset having only 54 dimensions. The accuracy score on the testing set was 99.85% which is the same accuracy the K-Nearest Neighbors classifier yielded on the full feature dataset having 153 features. So a dimensionality reduction of the feature space from 153 to 85 dimensions without any loss of accuracy is a succesful simplification.
 
 ## IV. Results
-_(approx. 2-3 pages)_
 
 ### Model Evaluation and Validation
-In this section, the final model and any supporting qualities should be evaluated in detail. It should be clear how the final model was derived and why this model was chosen. In addition, some type of analysis should be used to validate the robustness of this model and its solution, such as manipulating the input data or environment to see how the model’s solution is affected (this is called sensitivity analysis). Questions to ask yourself when writing this section:
-- _Is the final model reasonable and aligning with solution expectations? Are the final parameters of the model appropriate?_
-- _Has the final model been tested with various inputs to evaluate whether the model generalizes well to unseen data?_
-- _Is the model robust enough for the problem? Do small perturbations (changes) in training data or the input space greatly affect the results?_
-- _Can results found from the model be trusted?_
 
 Both evaluated models -- K-Nearest Neighbors classifier and LSTM Recurrent Neural Network -- generalize nearly equally well on unseen data with an accuracy above 99% as summarized in the table below:
 
