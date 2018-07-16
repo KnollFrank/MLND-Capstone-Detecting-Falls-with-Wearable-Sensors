@@ -259,19 +259,16 @@ In this section, the final model and any supporting qualities should be evaluate
 - _Is the model robust enough for the problem? Do small perturbations (changes) in training data or the input space greatly affect the results?_
 - _Can results found from the model be trusted?_
 
-TODO:
-- model’s qualities — such as parameters — are evaluated in detail: LSTM - Rohdaten, K-Nearest Neighbors - Featuress.
-- how the final model was derived:
-  - K-Nearest Neighbors und LSTM, beide haben fast gleiche Generalisierungsleistung (über 99% Accuracy)
-  - Vorteil LSTM: arbeitet direkt auf Rohdaten, ohne dass man sich schlaue Features überlegen muß, was man jedoch bei K-Nearest Neighbors tun mußte.
-- why this model was chosen:
-- model generalizes well to unseen data?
-  - Ja, wie der hohe Accuracy Score auf den **Testdaten** (= unseen data) zeigt.
+Both evaluated models -- K-Nearest Neighbors classifier and LSTM Recurrent Neural Network -- generalize nearly equally well on unseen data with an accuracy above 99% as summarized in the table below:
 
 Model                                                                            | Accuracy on test data
 ---------------------------------------------------------------------------------|----------------------
 K-Nearest Neighbors classifier operating on 54 (out of 153) principal components | 99.85%
 LSTM Recurrent Neural Network operating on raw sensor data                       | 99.70%
+
+One advantage of the LSTM Recurrent Neural Network is that it directly operates on _raw_ sensor data extracting features on it's own in it's convolutional layer whereas the K-Nearest Neighbors classifier has to be provided with features extracted from the raw sensor data in a preprocessing step.
+
+It looks as if neither model is much better than the other, so both -- K-Nearest Neighbors classifier and LSTM Recurrent Neural Network -- can be final models.
 
 ### Justification
 In this section, your model’s final solution and its results should be compared to the benchmark you established earlier in the project using some type of statistical analysis. You should also justify whether these results and the solution are significant enough to have solved the problem posed in the project. Questions to ask yourself when writing this section:
