@@ -298,13 +298,16 @@ In this section, you will need to provide some form of visualization that emphas
 - _Is the visualization thoroughly analyzed and discussed?_
 - _If a plot is provided, are the axes, title, and datum clearly defined?_
 
-TODO:
-- Sagen, dass einem spontan kein (Schwellwert-)Algorithmus einfällt um das Hinfallen und die ADL zu unterscheiden.
+The table below shows a fall (from a podium falling on the floor) and an activity of daily living (lying on the bed) which are both high-impact events having high total acceleration peaks in their time series diagrams:
 
-Action                                                      | Snapshot                                                      | Timeseries
-------------------------------------------------------------|---------------------------------------------------------------|----------------------------------------------------
-fall: from vertical standing on a podium going on the floor | ![918-snapshot](images/918-2018-07-16-00h46m40s002-small.png) | ![918-timeseries](images/101_918_Test_1_340539.png)
-ADL: from vertical lying on the bed                         | ![815-snapshot](images/815-2018-07-16-01h01m56s830-small.png) | ![815-timeseries](images/101_815_Test_1_340539.png)
+Action                                                | Type | Snapshot                                                      | Time Series
+------------------------------------------------------|------|---------------------------------------------------------------|----------------------------------------------------
+from vertical standing on a podium going on the floor | fall | ![918-snapshot](images/918-2018-07-16-00h46m40s002-small.png) | ![918-timeseries](images/101_918_Test_1_340539.png)
+from vertical lying on the bed                        | ADL  | ![815-snapshot](images/815-2018-07-16-01h01m56s830-small.png) | ![815-timeseries](images/101_815_Test_1_340539.png)
+
+TODO: programmatisch bestätigen, dass diese beiden activities in obiger Tabelle vom final model korrekt unterschieden werden können.
+
+As both time series diagrams have similar high total accelerations it seems to be very difficult for a threshold algorithm to distinguish this fall from the ADL. In contrast, the final models using machine learning techniques have successfully distinguished these two activities.
 
 ### Reflection
 In this section, you will summarize the entire end-to-end problem solution and discuss one or two particular aspects of the project you found interesting or difficult. You are expected to reflect on the project as a whole to show that you have a firm understanding of the entire process employed in your work. Questions to ask yourself when writing this section:
