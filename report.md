@@ -229,22 +229,17 @@ TODO: programmatisch bestätigen, dass diese beiden activities in obiger Tabelle
 As both time series diagrams have similar high total accelerations it seems to be very difficult for a threshold algorithm to distinguish this fall from the ADL. In contrast, the final models using machine learning techniques have successfully distinguished these two activities.
 
 ### Reflection
-In this section, you will summarize the entire end-to-end problem solution and discuss one or two particular aspects of the project you found interesting or difficult. You are expected to reflect on the project as a whole to show that you have a firm understanding of the entire process employed in your work. Questions to ask yourself when writing this section:
-- _Have you thoroughly summarized the entire process you used for this project?_
-- _Were there any interesting aspects of the project?_
-- _Were there any difficult aspects of the project?_
-- _Does the final model and solution fit your expectations for the problem, and should it be used in a general setting to solve these types of problems?_
 
 TODO:
 - discuss one or two particular aspects of the project you found interesting or difficult:
 
 The problem to solve is to distinguish falls from activities of daily living using sensor data. Two machine learning classifiers -- K-Nearest Neighbors classifier and LSTM Recurrent Neural Network -- were tested as potential solutions to this problem. In order to make them work, the following steps have been performed:
 
-Steps                                                       | apply step on K-Nearest Neighbors classifier?                                           | apply step on LSTM Recurrent Neural Network?
-------------------------------------------------------------|-----------------------------------------------------------------------------------------|---------------------------------------------
-get FallDataSet with time series data obtained from sensors | yes                                                                                     | yes
-extract features from FallDataSet                           | yes, extract features Min, Max, Mean, Variance, Kurtosis, Autocovariance, ... (see [2]) | no, operate on raw data instead
-train and improve classifier                                | yes, improve by applying grid search                                                    | yes
+Steps                                                       | Apply step on K-Nearest Neighbors classifier?                                 | Apply step on LSTM Recurrent Neural Network?
+------------------------------------------------------------|-------------------------------------------------------------------------------|---------------------------------------------
+get FallDataSet with time series data obtained from sensors | yes                                                                           | yes
+extract features from FallDataSet                           | yes, extract features Min, Max, Mean, Variance, Kurtosis, Autocovariance, ... | no, operate on raw data instead
+train and improve classifier                                | yes, improve by applying grid search                                          | yes
 
 The main difference between these two classifiers is that the LSTM Recurrent Neural Network directly operates on raw sensor data whereas the K-Nearest Neighbors classifier has to be provided with features extracted from the raw sensor data in a preprocessing step.
 
