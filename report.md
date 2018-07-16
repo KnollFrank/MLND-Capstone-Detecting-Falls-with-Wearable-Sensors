@@ -260,6 +260,7 @@ In this section, the final model and any supporting qualities should be evaluate
 - _Can results found from the model be trusted?_
 
 TODO:
+- model’s qualities — such as parameters — are evaluated in detail: LSTM - Rohdaten, K-Nearest Neighbors - Featuress.
 - how the final model was derived:
   - K-Nearest Neighbors und LSTM, beide haben fast gleiche Generalisierungsleistung (über 99% Accuracy)
   - Vorteil LSTM: arbeitet direkt auf Rohdaten, ohne dass man sich schlaue Features überlegen muß, was man jedoch bei K-Nearest Neighbors tun mußte.
@@ -279,9 +280,9 @@ In this section, your model’s final solution and its results should be compare
 - _Is the final solution significant enough to have solved the problem?_
 
 TODO:
+- Justification is made as to whether the final model and solution is significant enough to have adequately solved the problem.
 - compare final model to benchmark using statistical analysis (here: accuracy score): siehe Tabelle unten.
-- does final solution solve problem? Ja, mit einer Accuracy von über 99%
-- sogar besser als Ergebnis in [3], vielleicht weil mehr Daten zur Verfügung stehen als in [3]? (In [3]: seven males and seven females = 14 persons, hier: ten males and seven females = 17 persons)
+- does final solution solve problem? Ja, mit einer Accuracy von über 99%. sogar besser als Ergebnis in [3], vielleicht weil mehr Daten zur Verfügung stehen als in [3]? (In [3]: seven males and seven females = 14 persons, hier: ten males and seven females = 17 persons)
 
 Model                                                                             | Accuracy on test data
 ----------------------------------------------------------------------------------|----------------------
@@ -300,13 +301,10 @@ In this section, you will need to provide some form of visualization that emphas
 - _If a plot is provided, are the axes, title, and datum clearly defined?_
 
 TODO:
-- Bild (snapshot) einfügen, wie jemand hinfällt (mit Nummer 9xx und Beschreibung aus Tabelle im Paper).
-- Timeseries-diagramm für genau dieses Hinfallen einfügen
-- Bild einfügen einer ADL und deren Timeseries, die fast genau so aussieht wie die Hinfallen-Timeseries.
-- Sagen, dass einem da spontan kein (Schwellwert-)Algorithmus einfällt um das Hinfallen und die ADL zu unterscheiden.
+- Sagen, dass einem spontan kein (Schwellwert-)Algorithmus einfällt um das Hinfallen und die ADL zu unterscheiden.
 
-Action                                                      | Snapshot                                             | Timeseries
-------------------------------------------------------------|------------------------------------------------------|-----------------------------------------
+Action                                                      | Snapshot                                                      | Timeseries
+------------------------------------------------------------|---------------------------------------------------------------|----------------------------------------------------
 fall: from vertical standing on a podium going on the floor | ![918-snapshot](images/918-2018-07-16-00h46m40s002-small.png) | ![918-timeseries](images/101_918_Test_1_340539.png)
 ADL: from vertical lying on the bed                         | ![815-snapshot](images/815-2018-07-16-01h01m56s830-small.png) | ![815-timeseries](images/101_815_Test_1_340539.png)
 
@@ -317,6 +315,10 @@ In this section, you will summarize the entire end-to-end problem solution and d
 - _Were there any difficult aspects of the project?_
 - _Does the final model and solution fit your expectations for the problem, and should it be used in a general setting to solve these types of problems?_
 
+TODO:
+- summarize the entire end-to-end problem solution (the entire process):
+- discuss one or two particular aspects of the project you found interesting or difficult:
+
 ### Improvement
 In this section, you will need to provide discussion as to how one aspect of the implementation you designed could be improved. As an example, consider ways your implementation can be made more general, and what would need to be modified. You do not need to make this improvement, but the potential solutions resulting from these changes are considered and compared/contrasted to your current solution. Questions to ask yourself when writing this section:
 - _Are there further improvements that could be made on the algorithms or techniques you used in this project?_
@@ -324,8 +326,11 @@ In this section, you will need to provide discussion as to how one aspect of the
 - _If you used your final solution as the new benchmark, do you think an even better solution exists?_
 
 TODO:
-- Sagen, dass LSTM model noch verbessert werden kann.
-- Daten sammeln, wo jemand wirklich - und nicht künstlich im Labor - hingefallen ist.
+- how one aspect of the implementation could be improved:
+  - Sagen, dass LSTM model noch verbessert werden kann, z.B. tiefer werden (das kann ich aber auch ausprobieren im Abschnitt Refinement).
+  - Daten sammeln, wo jemand wirklich - und nicht künstlich im Labor - hingefallen ist.
+  - noch mehr Daten sammeln, denn wir kriegen schon bessere Ergebnisse als [3], wahrscheinlich weil wir mehr Daten haben.
+- Potential solutions resulting from these improvements are considered and compared/contrasted to the current solution.
 
 ### References
 
