@@ -175,17 +175,11 @@ The network architecture is taken from [4] an is shown in the figure below.
 The network is directly applied to the raw sensor training data yielding an accuracy score above 99% on the test data.
 
 ### Refinement
-In this section, you will need to discuss the process of improvement you made upon the algorithms and techniques you used in your implementation. For example, adjusting parameters for certain models to acquire improved solutions would fall under the refinement category. Your initial and final solutions should be reported, as well as any significant intermediate results as necessary. Questions to ask yourself when writing this section:
-- _Has an initial solution been found and clearly reported?_
-- _Is the process of improvement clearly documented, such as what techniques were used?_
-- _Are intermediate and final solutions clearly reported as the process is improved?_
 
 TODO:
-- discuss process of improvement (adjusting parameters): GridSearch, Auswahl der Features via PCA
-- report initial and final solutions (vorher vs. nachher)
 - improve LSTM model
 
-In order to improve the K-Nearest Neighbors classifier (which yielded an accuracy score of 99.7%) I used grid search on the classifiers hyper parameters 'n_neighbors' using values 5, 6 and 7, 'weights' using values 'uniform' and 'distance' and the 'p' parameter using values 1 and 2. The improved classifier yields an accuracy score of 99.85%.
+In order to improve the K-Nearest Neighbors classifier (which yielded an accuracy of 99.7%) I used grid search on the classifiers hyper parameters 'n_neighbors' using values 5, 6 and 7, 'weights' using values 'uniform' and 'distance' and the 'p' parameter using values 1 and 2. The resulting classifier yields an improved accuracy of 99.85%.
 
 In a attempt to reduce the number of features (153) I performed a Principal Component Analysis on the training feature dataset to obtain 54 dimensions which explain most of the variance in the training data. Then I fitted the optimized K-Nearest Neighbors classifier from the last step to this reduced dataset having only 54 dimensions. The accuracy score on the testing set was 99.85% which is the same accuracy the K-Nearest Neighbors classifier yielded on the full feature dataset having 153 features. So a dimensionality reduction of the feature space from 153 to 85 dimensions without any loss of accuracy is a succesful simplification.
 
