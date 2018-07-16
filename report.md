@@ -99,28 +99,11 @@ As an example, the first five records of the file `FallDataSet/101/Testler Expor
 
 The dataset consists of 1822 (55.28%) falls and 1474 (44.72%) ADLs.
 
-The mean of the total acceleration $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ of all 1822 falls plotted over a four second time interval around their peak at time 0 looks like this:
-
-TODO:
-- Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html]
-- vielleicht nur den Mean über alle Falls eines bestimmten Typs (8xx) anzeigen. Eventuell auch noch ein Diagramm einfügen, das die ersten x Falls anzeigt.
-
-![](images/101_901_Test_1_340535.png)
-
-The mean of the total acceleration of all 1474 falls plotted over a four second time interval around their peak at time 0 looks like this:
-[TODO: Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html, und auch hier nur die ADLs eines bestimmten Typs (9xx) anzeigen.]
-
-![](images/101_901_Test_1_340535.png)
-
 The FallDataSet kann be downloaded from
 
 https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t.
 
 ### Exploratory Visualization
-In this section, you will need to provide some form of visualization that summarizes or extracts a relevant characteristic or feature about the data. The visualization should adequately support the data being used. Discuss why this visualization was chosen and how it is relevant. Questions to ask yourself when writing this section:
-- _Have you visualized a relevant characteristic or feature about the dataset or input data?_
-- _Is the visualization thoroughly analyzed and discussed?_
-- _If a plot is provided, are the axes, title, and datum clearly defined?_
 
 TODO:
 - visualize relevant characteristic or feature:
@@ -128,6 +111,19 @@ TODO:
   - https://seaborn.pydata.org/generated/seaborn.pairplot.html oder pandas scatter_matrix, um die Korrelation der Features Min, Max, Mean, ... anzuzeigen (https://pandas.pydata.org/pandas-docs/stable/visualization.html).
 - why this visualization was chosen and how it is relevant:
   - PCA erklärt hier, dass wir nur wenige der Features den classifiern übergeben müssen.
+
+The mean of the total acceleration $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ of all 1822 falls plotted over a four second time interval around their peak at time 0 looks like this:
+
+TODO:
+  - Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html]
+  - nur den Mean über alle Falls eines bestimmten Typs (8xx) anzeigen. Eventuell auch noch ein Diagramm einfügen, das die ersten x Falls anzeigt.
+
+![](images/101_901_Test_1_340535.png)
+
+The mean of the total acceleration of all 1474 falls plotted over a four second time interval around their peak at time 0 looks like this:
+  [TODO: Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html, und auch hier nur die ADLs eines bestimmten Typs (9xx) anzeigen.]
+
+![](images/101_901_Test_1_340535.png)
 
 ### Algorithms and Techniques
 In this section, you will need to discuss the algorithms and techniques you intend to use for solving the problem. You should justify the use of each one based on the characteristics of the problem and the problem domain. Questions to ask yourself when writing this section:
