@@ -59,17 +59,13 @@ Non-Fall Actions (ADLs):
 - bending while walking and then continuing walking
 - coughing-sneezing | coughing or sneezing
 
-The intendet solution is to train several machine learning classifiers like Decision Tree, K-Nearest Neighbors, Random Forest, Support Vector Machine and a deep neural network on a data set containing falls and ADLs in order to learn to distinguish falls from activities of daily living.
+The intendet solution is to train several machine learning classifiers like Decision Tree, K-Nearest Neighbors, Random Forest, Support Vector Machine and a deep neural network on a dataset containing falls and ADLs in order to learn to distinguish falls from activities of daily living.
 
 ### Metrics
-In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
-- _Are the metrics you’ve chosen to measure the performance of your models clearly discussed and defined?_
-- _Have you provided reasonable justification for the metrics chosen based on the problem and solution?_
 
 TODO:
 - define metrics and clearly discuss them:
-  - vielleicht doch besser Accuracy und F-beta-score nehmen wie in finding_donors? Oder accuaracy, sensitivity und specificity und ROC curves wie im Paper?
-  - oder weil die Klassen fall und ADLs ausgewogen sind kann man auch Accuracy nehmen?
+  - verwende ausschließlich Accuracy, weil die Klassen fall und ADLs ausgewogen sind.
 - justification for the metrics:
 
 In distinguishing falls from ADLs, the following conditions must be met:
@@ -80,30 +76,16 @@ In distinguishing falls from ADLs, the following conditions must be met:
 So an evaluation metric should be chosen which punishes false negatives more than false positives. As can be seen from the formula of the $F_\beta$-score (https://en.wikipedia.org/wiki/F1_score) $F_\beta = \frac {(1 + \beta^2) \cdot \mathrm{true\ positive} }{(1 + \beta^2) \cdot \mathrm{true\ positive} + \beta^2 \cdot \mathrm{false\ negative} + \mathrm{false\ positive}}\,$ this can be achieved by setting $\beta>1$, e.g. $\beta = 2$. So the chosen evaluation metric is the $F_2$-score.
 
 ## II. Analysis
-_(approx. 2-4 pages)_
 
 ### Data Exploration
-In this section, you will be expected to analyze the data you are using for the problem. This data can either be in the form of a dataset (or datasets), input data (or input files), or even an environment. The type of data should be thoroughly described and, if possible, have basic statistics and information presented (such as discussion of input features or defining characteristics about the input or environment). Any abnormalities or interesting qualities about the data that may need to be addressed have been identified (such as features that need to be transformed or the possibility of outliers). Questions to ask yourself when writing this section:
-- _If a dataset is present for this problem, have you thoroughly discussed certain features about the dataset? Has a data sample been provided to the reader?_
-- _If a dataset is present for this problem, are statistics about the dataset calculated and reported? Have any relevant results from this calculation been discussed?_
-- _If a dataset is **not** present for this problem, has discussion been made about the input space or input data for your problem?_
-- _Are there any abnormalities or characteristics about the input space or dataset that need to be addressed? (categorical variables, missing values, outliers, etc.)_
-
-TODO:
-- (+) describe type of data: siehe Beschreibung unten
-- calculate and report basic statistics, discuss relevant results of statistics calculation:
-  - (+) Statistik (Mean, Min, Max, Varianz, ...) für alle Datensätze anzeigen.
-  - (+) Diagramm anzeigen: x-Achse: Zeit, y-Achse: z.B. Acc_X oder total acceleration (siehe Paper)
-  - (+) Verteilung der Falls und ADLs beschreiben: ungefähr fifty-fifty.
-  - vielleicht PCA mit Diagramm anzeigen, und dass nur wenige der Features Min, Max, Mean, Kurtosis, ... notwendig sind um die Varianz in den Daten zu erklären.
-- outliers, missing values:
-  - (+) missing values, weil manchmal zu wenig Werte vorhanden sind, um um den Peak ein Fenster der Breite 100 zu legen.
-  - (+) missing values auch, weil manchmal NaN in den CSV-Dateien steht => drop this rows
-- (+) data sample: siehe Tabelle unten
 
 ![sensors](images/sensors.png)
 
-Ten males and seven females participated in a study. A wireless sensor unit was fitted to the subject's waist among other body parts as can be seen in the figure. The sensor unit comprises three tri-axial devices: accelerometer, gyroscope, and  magnetometer/compass. Raw motion data was recorded along three perpendicular axes (x, y, z) from the unit with a sampling frequency of 25 Hz yielding Acc_X, Acc_Y, Acc_Z ($m/s^2$), Gyr_X, Gyr_Y, Gyr_Z (°/s) and Mag_X, Mag_Y, Mag_Z (Gauss). A set of trials consists of 20 fall actions (see table 'Fall Actions' above) and 16 ADLs (see table 'Non-Fall Actions' above). Each trial lasted about 15s on average. The 17 volunteers repeated each test for five times. Then the peak of the total acceleration vector was detected, and two seconds of the sequence before and after the peak acceleration were kept. About ten trials of the dataset have recording times that are too short in order to set the time window of four seconds around the data. These trials were dropped. Within a single trial sometimes the sensor data for a specific point in time is missing (NaN). Records containing NaNs have been dropped. As an example, the first five records of the file `FallDataSet/101/Testler Export/901/Test_1/340535.txt` which contains the recorded data from the waist sensor attached to a male while he was falling from vertical forward to the floor, look like this:
+Ten males and seven females participated in a study. A wireless sensor unit was fitted to the subject's waist and right thigh among other body parts as can be seen in the figure. The sensor unit comprises three tri-axial devices: accelerometer, gyroscope, and  magnetometer/compass. Raw motion data was recorded along three perpendicular axes (x, y, z) from the unit with a sampling frequency of 25 Hz yielding Acc_X, Acc_Y, Acc_Z ($m/s^2$), Gyr_X, Gyr_Y, Gyr_Z (°/s) and Mag_X, Mag_Y, Mag_Z (Gauss). A set of trials consists of 20 fall actions (see list 'Fall Actions' above) and 16 ADLs (see list 'Non-Fall Actions' above). Each trial lasted about 15s on average. The 17 volunteers repeated each test five times. Then the peak of the total acceleration vector $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ was detected, and two seconds of the sequence before and after the peak acceleration were kept.
+
+About ten trials of the dataset have recording times that are too short in order to set the time window of four seconds around the peak acceleration. These trials have been dropped. Within a single trial sometimes the sensor data for a specific point in time is missing (NaN). Records containing NaNs have been dropped.
+
+As an example, the first five records of the file `FallDataSet/101/Testler Export/901/Test_1/340535.txt` which contains the recorded data from the waist sensor attached to a male while he was falling from vertical forward to the floor, look like this:
 
 | Acc_X ($m/s^2$) | Acc_Y ($m/s^2$) | Acc_Z ($m/s^2$) | Gyr_X (°/s) | Gyr_Y (°/s) | Gyr_Z (°/s) | Mag_X (Gauss) | Mag_Y (Gauss) | Mag_Z (Gauss) |
 |-----------------|-----------------|-----------------|-------------|-------------|-------------|---------------|---------------|---------------|
@@ -117,13 +99,16 @@ Ten males and seven females participated in a study. A wireless sensor unit was 
 
 The dataset consists of 1822 (55.28%) falls and 1474 (44.72%) ADLs.
 
-The mean total acceleration $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ of all 1822 falls plotted over a four second time interval around their peak at time 0 looks like this:
-[TODO: Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html]
+The mean of the total acceleration $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ of all 1822 falls plotted over a four second time interval around their peak at time 0 looks like this:
+
+TODO:
+- Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html]
+- vielleicht nur den Mean über alle Falls eines bestimmten Typs (8xx) anzeigen. Eventuell auch noch ein Diagramm einfügen, das die ersten x Falls anzeigt.
 
 ![](images/101_901_Test_1_340535.png)
 
-The mean total acceleration of all 1474 falls plotted over a four second time interval around their peak at time 0 looks like this:
-[TODO: Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html]
+The mean of the total acceleration of all 1474 falls plotted over a four second time interval around their peak at time 0 looks like this:
+[TODO: Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html, und auch hier nur die ADLs eines bestimmten Typs (9xx) anzeigen.]
 
 ![](images/101_901_Test_1_340535.png)
 
@@ -156,7 +141,7 @@ TODO:
   - deep learning: CNN with LSTM arbeitet direkt auf den Rohdaten.
 - techniques?
 
-The following standard machine learning classifiers are applied to the data set (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') using 3-fold cross validation: Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine.
+The following standard machine learning classifiers are applied to the dataset (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') using 3-fold cross validation: Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine.
 
 Then by using the raw sensor data in contrast to the feature extracted data, LSTM recurrent neural networks are applied to the raw FallDataSet following [4].
 
@@ -205,7 +190,7 @@ TODO:
 #### Standard Machine Learning Classifiers
 The implementation was carried out in _python_ using the machine learning library _sklearn_.
 
-Each of the classifiers Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine was fitted to the training data set (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') and the resulting accuracy scores on the test data set were reported:
+Each of the classifiers Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine was fitted to the training dataset (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') and the resulting accuracy scores on the test dataset were reported:
 
 ![scores by classifier](images/scoresByClassifier.png)
 
@@ -236,7 +221,7 @@ TODO:
 
 In order to improve the K-Nearest Neighbors classifier (which yielded an accuracy score of 99.7%) I used grid search on the classifiers hyper parameters 'n_neighbors' using values 5, 6 and 7, 'weights' using values 'uniform' and 'distance' and the 'p' parameter using values 1 and 2. The improved classifier yields an accuracy score of 99.85%.
 
-In a attempt to reduce the number of features (153) I performed a Principal Component Analysis on the training feature data set to obtain 54 dimensions which explain most of the variance in the training data. Then I fitted the optimized K-Nearest Neighbors classifier from the last step to this reduced data set having only 54 dimensions. The accuracy score on the testing set was 99.85% which is the same accuracy the K-Nearest Neighbors classifier yielded on the full feature data set having 153 features. So a dimensionality reduction of the feature space from 153 to 85 dimensions without any loss of accuracy is a succesful simplification.
+In a attempt to reduce the number of features (153) I performed a Principal Component Analysis on the training feature dataset to obtain 54 dimensions which explain most of the variance in the training data. Then I fitted the optimized K-Nearest Neighbors classifier from the last step to this reduced dataset having only 54 dimensions. The accuracy score on the testing set was 99.85% which is the same accuracy the K-Nearest Neighbors classifier yielded on the full feature dataset having 153 features. So a dimensionality reduction of the feature space from 153 to 85 dimensions without any loss of accuracy is a succesful simplification.
 
 ## IV. Results
 _(approx. 2-3 pages)_
@@ -326,7 +311,7 @@ In this section, you will need to provide discussion as to how one aspect of the
 
 The FallDataSet was recorded under laboratory conditions performing voluntary falls. One possible improvement in detecting falls with wearable sensors is to obtain more realistic data by incorporating _involuntary_ falls, which are not that easy to get.
 
-The final models developed here have higher accuracies than the Support Vector Machine reported in [3] despite they operate on the same kind of data. The reason for this could be that in [3] 14 persons (seven males and seven females) participated in the study but meanwhile the data set has grown to 17 persons (ten males and seven females). Maybe even higher accuracies can be obtained by further incorporating more falls and ADLs of more persons into the data set.
+The final models developed here have higher accuracies than the Support Vector Machine reported in [3] despite they operate on the same kind of data. The reason for this could be that in [3] 14 persons (seven males and seven females) participated in the study but meanwhile the dataset has grown to 17 persons (ten males and seven females). Maybe even higher accuracies can be obtained by further incorporating more falls and ADLs of more persons into the dataset.
 
 ### References
 
