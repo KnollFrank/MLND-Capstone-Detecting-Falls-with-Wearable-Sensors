@@ -227,7 +227,7 @@ The table below shows a fall (from a podium falling on the floor) and an activit
 
 TODO: programmatisch bestätigen, dass diese beiden activities in obiger Tabelle vom final model korrekt unterschieden werden können.
 
-As both time series diagrams have similar high total accelerations it seems to be very difficult for a threshold algorithm to distinguish this fall from the ADL. In contrast, the final models using machine learning techniques have successfully distinguished these two activities.
+As both time series diagrams have differing total acceleration peaks, it seems that a threshold algorithm could distinguish this fall from the ADL. Maybe such a threshold algorithm also could have been a good candidate for a benchmark model.
 
 ### Reflection
 
