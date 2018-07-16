@@ -98,13 +98,13 @@ https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t.
 The mean of the total acceleration $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ of all 1822 falls plotted over a four second time interval around their peak at time 0 looks like this:
 
 TODO:
-  - Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html]
+  - Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.lineplot.html#seaborn.lineplot]
   - nur den Mean über alle Falls eines bestimmten Typs (8xx) anzeigen. Eventuell auch noch ein Diagramm einfügen, das die ersten x Falls anzeigt.
 
 ![](images/101_901_Test_1_340535.png)
 
 The mean of the total acceleration of all 1474 falls plotted over a four second time interval around their peak at time 0 looks like this:
-  [TODO: Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.tsplot.html, und auch hier nur die activities of daily living eines bestimmten Typs (9xx) anzeigen.]
+  [TODO: Verwende seaborn tsplot: https://seaborn.pydata.org/generated/seaborn.lineplot.html#seaborn.lineplot, und auch hier nur die activities of daily living eines bestimmten Typs (9xx) anzeigen.]
 
 ![](images/101_901_Test_1_340535.png)
 
