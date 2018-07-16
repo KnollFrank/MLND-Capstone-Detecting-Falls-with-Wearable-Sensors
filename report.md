@@ -95,13 +95,6 @@ https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t.
 
 ### Exploratory Visualization
 
-TODO:
-- visualize relevant characteristic or feature:
-  - vielleicht hier statt oben PCA anzeigen.
-  - https://seaborn.pydata.org/generated/seaborn.pairplot.html oder pandas scatter_matrix, um die Korrelation der Features Min, Max, Mean, ... anzuzeigen (https://pandas.pydata.org/pandas-docs/stable/visualization.html).
-- why this visualization was chosen and how it is relevant:
-  - PCA erklärt hier, dass wir nur wenige der Features den classifiern übergeben müssen.
-
 The mean of the total acceleration $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ of all 1822 falls plotted over a four second time interval around their peak at time 0 looks like this:
 
 TODO:
@@ -166,9 +159,6 @@ The network is directly applied to the raw sensor training data yielding an accu
 
 ### Refinement
 
-TODO:
-- improve LSTM model
-
 In order to improve the K-Nearest Neighbors classifier (which yielded an accuracy of 99.7%) I used grid search on the classifiers hyper parameters 'n_neighbors' using values 5, 6 and 7, 'weights' using values 'uniform' and 'distance' and the 'p' parameter using values 1 and 2. The resulting classifier yields an improved accuracy of 99.85%.
 
 In an attempt to reduce the number of features (153) I performed a Principal Component Analysis on the training feature dataset to obtain 54 dimensions which explain most of the variance in the training data. Then I fitted the optimized K-Nearest Neighbors classifier from the last step to this reduced dataset having only 54 dimensions. The accuracy score on the testing set was 99.85% which is the same accuracy the K-Nearest Neighbors classifier yielded on the full feature dataset having 153 features. So a dimensionality reduction of the feature space from 153 to 54 dimensions without any loss of accuracy is a succesful simplification.
@@ -215,14 +205,9 @@ The table below shows a fall (from a podium falling on the floor) and an activit
 **Video Snapshot:** | ![918-snapshot](images/918-2018-07-16-00h46m40s002-small.png) | ![815-snapshot](images/815-2018-07-16-01h01m56s830-small.png)
 **Time Series:**    | ![918-timeseries](images/101_918_Test_1_340539.png)           | ![815-timeseries](images/101_815_Test_1_340539.png)
 
-TODO: programmatisch bestätigen, dass diese beiden activities in obiger Tabelle vom final model korrekt unterschieden werden können.
-
 As both time series diagrams have differing total acceleration peaks, it seems that a threshold algorithm could distinguish this fall from the activity of daily living. Maybe such a threshold algorithm also could have been a good candidate for a benchmark model.
 
 ### Reflection
-
-TODO:
-- discuss one or two particular aspects of the project you found interesting or difficult:
 
 The problem to solve is to distinguish falls from activities of daily living using sensor data. Two machine learning classifiers -- K-Nearest Neighbors classifier and LSTM Recurrent Neural Network -- were tested as potential solutions to this problem. In order to make them work, the following steps have been performed:
 
