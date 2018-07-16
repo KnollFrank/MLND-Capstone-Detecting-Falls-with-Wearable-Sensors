@@ -276,17 +276,18 @@ In this section, your model’s final solution and its results should be compare
 - _Have you thoroughly analyzed and discussed the final solution?_
 - _Is the final solution significant enough to have solved the problem?_
 
-TODO:
-- Justification is made as to whether the final model and solution is significant enough to have adequately solved the problem.
-- compare final model to benchmark using statistical analysis (here: accuracy score): siehe Tabelle unten.
-- does final solution solve problem? Ja, mit einer Accuracy von über 99%. sogar besser als Ergebnis in [3], vielleicht weil mehr Daten zur Verfügung stehen als in [3]? (In [3]: seven males and seven females = 14 persons, hier: ten males and seven females = 17 persons)
+Both final models -- K-Nearest Neighbors classifier and LSTM Recurrent Neural Network -- have much higher accuracy than the GaussianNB benchark model as shown in the table below:
 
-Model                                                                             | Accuracy on test data
-----------------------------------------------------------------------------------|----------------------
-K-Nearest Neighbors classifier operating on 54 (out of 153) principal components  | 99.85%
-LSTM Recurrent Neural Network operating on raw sensor data                        | 99.70%
-Support Vector Machine applited to thigh sensor data, reported in [3]             | 99.48%
-benchmark model (GaussianNB) operating on single (out of 153) feature `Acc_Z_var` | 67%
+Model                                                                             | Type        | Accuracy on test data
+----------------------------------------------------------------------------------|-------------|----------------------
+K-Nearest Neighbors classifier operating on 54 (out of 153) principal components  | final model | 99.85%
+LSTM Recurrent Neural Network operating on raw sensor data                        | final model | 99.70%
+Support Vector Machine applied to thigh sensor data, reported in [3]             | benchmark   | 99.48%
+benchmark model (GaussianNB) operating on single (out of 153) feature `Acc_Z_var` | benchmark   | 67%
+
+Another model reported in [3] is a Support Vector Machine applied to thigh sesor data. It has an accuracy almost as high as the accuracies of the final models.
+
+Having high accuracies of above 99% the final models are significant enough to have adequately solved the problem.
 
 ## V. Conclusion
 _(approx. 1-2 pages)_
@@ -327,6 +328,7 @@ TODO:
   - Sagen, dass LSTM model noch verbessert werden kann, z.B. tiefer werden (das kann ich aber auch ausprobieren im Abschnitt Refinement).
   - Daten sammeln, wo jemand wirklich - und nicht künstlich im Labor - hingefallen ist.
   - noch mehr Daten sammeln, denn wir kriegen schon bessere Ergebnisse als [3], wahrscheinlich weil wir mehr Daten haben.
+  Ja, mit einer Accuracy von über 99%. sogar besser als Ergebnis in [3], vielleicht weil mehr Daten zur Verfügung stehen als in [3]? (In [3]: seven males and seven females = 14 persons, hier: ten males and seven females = 17 persons)
 - Potential solutions resulting from these improvements are considered and compared/contrasted to the current solution.
 
 ### References
