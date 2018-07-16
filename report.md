@@ -152,14 +152,6 @@ To be more specific, let $s = [s_1, s_2,\dots, s_N]^T$ be the raw data of a sign
 - $\operatorname{autocovariance}(s) = \frac{1}{N} \sum_{n=1}^{N - \Delta} (s_n - \mu)(s_{n + \Delta} - \mu)$, where $\Delta = 0, 1, \dots, N-1$
 
 ### Implementation
-In this section, the process for which metrics, algorithms, and techniques that you implemented for the given data will need to be clearly documented. It should be abundantly clear how the implementation was carried out, and discussion should be made regarding any complications that occurred during this process. Questions to ask yourself when writing this section:
-- _Is it made clear how the algorithms and techniques were implemented with the given datasets or input data?_
-- _Were there any complications with the original metrics or techniques that required changing prior to acquiring a solution?_
-- _Was there any part of the coding process (e.g., writing complicated functions) that should be documented?_
-
-TODO:
-- how were the algorithms and techniques implemented using the metrics and input data?
-- clarify how the implementation was carried out.
 
 #### Standard Machine Learning Classifiers
 The implementation was carried out in _python_ using the machine learning library _sklearn_.
@@ -172,7 +164,7 @@ The dashed line in the figure above is the score of the benchmark model.
 
 The best performing classifier is the K-Nearest Neighbors classifier yielding an accuracy score of 99.7%.
 
-#### LSTM Recurrent Neural Networks
+#### LSTM Recurrent Neural Network
 
 The implementation was carried out in _python_ using the neural networks API _keras_ and the _TensorFlow_ backend.
 
