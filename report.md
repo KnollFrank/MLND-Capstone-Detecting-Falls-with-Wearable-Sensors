@@ -101,7 +101,7 @@ The total accelerations $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}
 
 ![total accelerations of five falls](images/some_fall_total_accelerations.png)
 
-The mean of the total acceleration of all 1822 falls, where the shaded region is the standard deviation of the falls, is shown in Figure 3. As the shaded region in the figure is quite wide, the falls seem to have a non-uniform distribution.
+The mean of the total acceleration of all 1822 falls is shown in Figure 3. The shaded region is the standard deviation of the falls showing some variation around the mean fall.
 
 ![mean total acceleration and standard deviation of all 1822 falls](images/fall_total_accelerations.png)
 
@@ -111,7 +111,7 @@ The total accelerations of five activities of daily living are shown in Figure 4
 
 ![total accelerations of five activities of daily living](images/some_non_fall_total_accelerations.png)
 
-The mean of the total acceleration of all 1474 activities of daily living, where the shaded region is the standard deviation of the activities of daily living, is shown in Figure 5. As the shaded region in the figure is very wide, the activities of daily living have a non-uniform distribution.
+The mean of the total acceleration of all 1474 activities of daily living is shown in Figure 5. The shaded region is the standard deviation of the activities of daily living showing a quite high variation around the mean activity of daily living.
 
 ![mean total acceleration and standard deviation of all 1474 activities of daily living](images/non_fall_total_accelerations.png)
 
