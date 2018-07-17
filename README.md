@@ -1,7 +1,13 @@
 # Machine Learning Engineer Nanodegree
-## Specializations
-## Project: Capstone Proposal and Capstone Project
+## Setup
 
-The software depends on the requirements listed in the file `requirements/requirements.txt`.
+In order to execute the Jupyter Notebook DetectingFalls.ipynb, execute the following shell commands:
 
-The dataset is a subset of the dataset from https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t. It is archived in `data/FallDataSet.7z` and should manually be extracted.
+```shell
+conda create -n capstone python=3.6
+source activate capstone
+pip install -r requirements/requirements.txt
+python -m ipykernel install --user --name capstone
+7z x data/FallDataSet.7z -odata
+jupyter notebook DetectingFalls.ipynb
+```
