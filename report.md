@@ -57,7 +57,7 @@ Non-Fall Actions (activities of daily living):
 - walking with a limp
 - squatting, then standing up
 - bending while walking and then continuing walking
-- coughing-sneezing | coughing or sneezing
+- coughing or sneezing
 
 The intendet solution is to train several machine learning classifiers like Decision Tree, K-Nearest Neighbors, Random Forest, Support Vector Machine and a deep neural network on a dataset containing falls and activities of daily living in order to learn to distinguish falls from non-falls.
 
@@ -97,31 +97,23 @@ https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t.
 
 #### Falls
 
-The total accelerations $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ of five falls plotted over a four second time interval around their peak at time 0 look like this:
+The total accelerations $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ of five falls plotted over a four second time interval around their peak at time 0 are shown in Figure 2. The figure shows that the individual falls differ slightly from one another.
 
-![some fall total accelerations](images/some_fall_total_accelerations.png)
+![total accelerations of five falls](images/some_fall_total_accelerations.png)
 
-The figure shows that the individual falls differ slightly from one another.
+The mean of the total acceleration of all 1822 falls, where the shaded region is the standard deviation of the falls, is shown in Figure 3. As the shaded region in the figure is quite wide, the falls seem to have a non-uniform distribution.
 
-The mean of the total acceleration of all 1822 falls, where the shaded region is the standard deviation of the falls, looks like this:
-
-![total accelerations of falls](images/fall_total_accelerations.png)
-
-As the shaded region in the figure is quite wide, the falls seem to have a non-uniform distribution.
+![mean total acceleration and standard deviation of all 1822 falls](images/fall_total_accelerations.png)
 
 #### Activities of daily living
 
-The total accelerations of five activities of daily living look like this:
+The total accelerations of five activities of daily living are shown in Figure 4. The figure shows that the individual activities of daily living differ a lot from one another.
 
-![some non fall total accelerations](images/some_non_fall_total_accelerations.png)
+![total accelerations of five activities of daily living](images/some_non_fall_total_accelerations.png)
 
-The figure shows that the individual activities of daily living differ a lot from one another.
+The mean of the total acceleration of all 1474 activities of daily living, where the shaded region is the standard deviation of the activities of daily living, is shown in Figure 5. As the shaded region in the figure is very wide, the activities of daily living have a non-uniform distribution.
 
-The mean of the total acceleration of all 1474 activities of daily living, where the shaded region is the standard deviation of the activities of daily living, looks like this:
-
-![total accelerations of non-falls](images/non_fall_total_accelerations.png)
-
-As the shaded region in the figure is very wide, the activities of daily living have a non-uniform distribution.
+![mean total acceleration and standard deviation of all 1474 activities of daily living](images/non_fall_total_accelerations.png)
 
 ### Algorithms and Techniques
 
