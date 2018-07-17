@@ -1,6 +1,4 @@
-conda create -n capstone python=3.6
-source activate capstone
-pip install -r requirements/requirements.txt
-
-pip install $(pip list --outdated --format=columns |tail -n +3|cut -d" " -f1) --upgrade
 pandoc report.md -V geometry:a4paper -s -o report.pdf
+
+7z a -v80m FallDataSet -t7z -m0=lzma -mx=9 FallDataSet.7z FallDataSet
+7z x FallDataSet.7z.001

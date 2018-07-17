@@ -8,6 +8,6 @@ conda create -n capstone python=3.6
 source activate capstone
 pip install -r requirements/requirements.txt
 python -m ipykernel install --user --name capstone
-7z x data/FallDataSet.7z -odata
+cd data; 7z x FallDataSet.7z.001; cd ..
 jupyter notebook DetectingFalls.ipynb
 ```
