@@ -141,6 +141,8 @@ To be more specific, let $s = [s_1, s_2,\dots, s_N]^T$ be the raw data of a sign
 - $\operatorname{kurtosis}(s) = \frac{1}{N \sigma^4} \sum_{n=1}^{N} (s_n-\mu)^4$
 - $\operatorname{autocovariance}(s) = \frac{1}{N} \sum_{n=1}^{N - \Delta} (s_n - \mu)(s_{n + \Delta} - \mu)$, where $\Delta = 0, 1, \dots, N-1$
 
+Then the data set is split into 80% training data and 20% testing data.
+
 ### Implementation
 
 #### Standard Machine Learning Classifiers
