@@ -97,14 +97,15 @@ https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t.
 
 The mean of the total acceleration $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ of all 1822 falls plotted over a four second time interval around their peak at time 0 looks like this:
 
-TODO:
-  - Eventuell auch noch ein Diagramm einfügen, das die ersten x Falls anzeigt.
-
 ![total accelerations of falls](images/fall_total_accelerations.png)
+
+![some fall total accelerations](images/some_fall_total_accelerations.png)
 
 The mean of the total acceleration of all 1474 activities of daily living plotted over a four second time interval around their peak at time 0 looks like this:
 
 ![total accelerations of non-falls](images/non_fall_total_accelerations.png)
+
+![some non fall total accelerations](images/some_non_fall_total_accelerations.png)
 
 ### Algorithms and Techniques
 
