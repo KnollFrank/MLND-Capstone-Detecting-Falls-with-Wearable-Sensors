@@ -89,7 +89,7 @@ As an example, the first five records of the file `FallDataSet/101/Testler Expor
 
 The dataset consists of 1822 (55.28%) falls and 1474 (44.72%) activities of daily living.
 
-The dataset (from now on denoted as FallDataSet) can be downloaded from
+The dataset (from now on named FallDataSet) can be downloaded from
 
 https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t.
 
