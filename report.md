@@ -4,7 +4,7 @@
 
 ## Capstone Project
 Frank Knoll  
-July 19, 2018
+July 17, 2018
 
 ## I. Definition
 
@@ -71,7 +71,7 @@ As will be described in the section 'Data Exploration', the dataset consists of 
 
 ![sensors](images/sensors.png)
 
-Ten males and seven females participated in a study. A wireless sensor unit was fitted to the subject's waist and right thigh among other body parts as can be seen in the figure. The sensor unit comprises three tri-axial devices: accelerometer, gyroscope, and  magnetometer/compass. Raw motion data was recorded along three perpendicular axes (x, y, z) from the unit with a sampling frequency of 25 Hz yielding Acc_X, Acc_Y, Acc_Z ($m/s^2$), Gyr_X, Gyr_Y, Gyr_Z (°/s) and Mag_X, Mag_Y, Mag_Z (Gauss). A set of trials consists of 20 fall actions (see list 'Fall Actions' above) and 16 activities of daily living (see list 'Non-Fall Actions' above). Each trial lasted about 15s on average. The 17 volunteers repeated each test five times. Then the peak of the total acceleration vector $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ was detected, and two seconds of the sequence before and after the peak acceleration were kept.
+Ten males and seven females participated in a study. A wireless sensor unit was fitted to the subject's waist and right thigh among other body parts as can be seen in Figure 1. The sensor unit comprises three tri-axial devices: accelerometer, gyroscope, and  magnetometer/compass. Raw motion data was recorded along three perpendicular axes (x, y, z) from the unit with a sampling frequency of 25 Hz yielding Acc_X, Acc_Y, Acc_Z ($m/s^2$), Gyr_X, Gyr_Y, Gyr_Z (°/s) and Mag_X, Mag_Y, Mag_Z (Gauss). A set of trials consists of 20 fall actions (see list 'Fall Actions' above) and 16 activities of daily living (see list 'Non-Fall Actions' above). Each trial lasted about 15s on average. The 17 volunteers repeated each test five times. Then the peak of the total acceleration vector $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ was detected, and two seconds of the sequence before and after the peak acceleration were kept.
 
 About ten trials of the dataset have recording times that are too short in order to set the time window of four seconds around the peak acceleration. These trials have been dropped. Within a single trial sometimes the sensor data for a specific point in time is missing (NaN). Records containing NaNs have been dropped.
 
@@ -146,7 +146,7 @@ To be more specific, let $s = [s_1, s_2,\dots, s_N]^T$ be the raw data of a sign
 #### Standard Machine Learning Classifiers
 The implementation was carried out in _python_ using the machine learning library _sklearn_.
 
-Each of the classifiers Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine was fitted to the training dataset (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') and the resulting accuracy scores on the test dataset were reported (see figure below).
+Each of the classifiers Decision Tree, K-Nearest Neighbors, Random Forest and Support Vector Machine was fitted to the training dataset (obtained from the FallDataSet by feature extraction, see section 'Data Preprocessing') and the resulting accuracy scores on the test dataset were reported (see Figure 6).
 
 ![scores by classifier](images/scoresByClassifier.png)
 
@@ -158,7 +158,7 @@ The best performing classifier is the K-Nearest Neighbors classifier yielding an
 
 The implementation was carried out in _python_ using the neural networks API _keras_ and the _TensorFlow_ backend.
 
-The network architecture is taken from [4] and is shown in the figure below.
+The network architecture is taken from [4] and is shown in Figure 7.
 
 ![LSTM model](images/LSTM_model.png)
 
