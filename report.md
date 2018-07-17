@@ -95,17 +95,33 @@ https://drive.google.com/open?id=1gqS1fkTvtuAaKj_0cn9n04ng1qDAoZ2t.
 
 ### Exploratory Visualization
 
-The mean of the total acceleration $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ of all 1822 falls plotted over a four second time interval around their peak at time 0 looks like this:
+#### Falls
 
-![total accelerations of falls](images/fall_total_accelerations.png)
+The total accelerations $\sqrt{\text{Acc\_X}^2 + \text{Acc\_Y}^2 + \text{Acc\_Z}^2}$ of five falls plotted over a four second time interval around their peak at time 0 look like this:
 
 ![some fall total accelerations](images/some_fall_total_accelerations.png)
 
-The mean of the total acceleration of all 1474 activities of daily living plotted over a four second time interval around their peak at time 0 looks like this:
+The figure shows that the individual falls differ slightly from one another.
+
+The mean of the total acceleration of all 1822 falls, where the shaded region is the standard deviation of the falls, looks like this:
+
+![total accelerations of falls](images/fall_total_accelerations.png)
+
+As the shaded region in the figure is quite wide, the falls seem to have a non-uniform distribution.
+
+#### Activities of daily living
+
+The total accelerations of five activities of daily living look like this:
+
+![some non fall total accelerations](images/some_non_fall_total_accelerations.png)
+
+The figure shows that the individual activities of daily living differ a lot from one another.
+
+The mean of the total acceleration of all 1474 activities of daily living, where the shaded region is the standard deviation of the activities of daily living, looks like this:
 
 ![total accelerations of non-falls](images/non_fall_total_accelerations.png)
 
-![some non fall total accelerations](images/some_non_fall_total_accelerations.png)
+As the shaded region in the figure is very wide, the activities of daily living have a non-uniform distribution.
 
 ### Algorithms and Techniques
 
